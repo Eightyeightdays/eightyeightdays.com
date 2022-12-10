@@ -1,8 +1,36 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [state, setState] = useState()
+  const [title, setTitle] = useState()
+
+
+  const settings = {
+    credentials: "include",
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "bearer 404c8326209e572d140057cc450025db7cce4a00ff0a15910557ba2e149890f54dc4fa4fd86c1579e8e2dabccc481910516340e57fdc3b700a8c582e37060e836f880175dcd6bc6a6806f9b51b1e194a69c7d442499096a393534002ee11c869e0bbec14a4201bb5efcc00b1fa97da309f155dbf8b788f7bc9ee155b78e0a63e",
+    }
+  }
+
+  const url = "http://localhost:1337/api/posts"
+ 
+  useEffect(()=>{
+    fetch(url, settings)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.data)
+      setState(data.data)
+      setTitle(data.data[0].attributes.Title)
+    })
+  }, [])
+  
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +41,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {title}
         </h1>
 
         <p className={styles.description}>
