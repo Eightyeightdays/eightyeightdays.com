@@ -1,5 +1,11 @@
+.container{
+    width: 50%;
+    /* background: rgb(28, 158, 56); */
+}
+
 .nav{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1em;
 }
+

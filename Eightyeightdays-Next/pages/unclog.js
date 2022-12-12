@@ -12,7 +12,7 @@ export default function Unclog({data}){
             <Head>
                 <title>Unclog - The Art of Blog Therapy</title>
                 <meta name="description" content="Eightyeightdays" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.png" />
             </Head>
             <h1>Unclog</h1>
             {data.map((obj, index) => (

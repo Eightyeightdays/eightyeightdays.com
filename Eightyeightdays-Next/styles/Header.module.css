@@ -1,6 +1,5 @@
 .header{
     display: flex;
-    justify-content: center;
     align-items: center;
     background: black;
     color: white;
@@ -9,6 +8,10 @@
 }
 
 .header_title{
+    display: flex;
+    justify-content: flex-start;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
+    /* background: rgb(206, 81, 81); */
+    width: 50%;
 }

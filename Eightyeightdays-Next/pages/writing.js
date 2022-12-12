@@ -12,7 +12,7 @@ export default function Writing({data}){
             <Head>
                 <title>Writers Never Die</title>
                 <meta name="description" content="Eightyeightdays" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.png" />
             </Head>
             <h1>Writing</h1>
             {data.map((obj, index) => (

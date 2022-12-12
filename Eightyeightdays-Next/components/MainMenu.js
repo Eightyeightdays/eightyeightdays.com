@@ -3,12 +3,15 @@ import Link from "next/link"
 
 export default function MainMenu(){
     return (
-        <nav className={styles.nav}>
-            <div><Link href="/unclog">Unclog</Link></div>
-            <div><Link href="/writing">Writing</Link></div>
-            <div>Videos</div>
-            <div>Photography</div>
-            <div>About</div>
-        </nav>
+        <div className={styles.container}>
+            <nav className={styles.nav}>
+                <div><Link href="/unclog">Unclog</Link></div>
+                <div><Link href="/writing">Writing</Link></div>
+                <div>Videos</div>
+                <div>Photography</div>
+                <div>About</div>
+            </nav>
+        </div>
+        
     )
 }

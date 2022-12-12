@@ -6,7 +6,7 @@ export default function Home({data}) {
         <Head>
           <title>Eightyeightdays.com</title>
           <meta name="description" content="Eightyeightdays" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
 
         <h1>Welcome</h1>
