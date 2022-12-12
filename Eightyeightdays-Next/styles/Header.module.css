@@ -1,5 +1,14 @@
 .header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: black;
     color: white;
-    padding: 1em;
+    padding: 0.5em;
+    gap: 1em;
+}
+
+.header_title{
+    font-size: 3rem;
+    font-family: 'Cinzel', serif;
 }

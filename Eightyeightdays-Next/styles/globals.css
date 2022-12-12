@@ -1,7 +1,5 @@
 html{
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 *, *:before, *:after {
@@ -20,14 +18,3 @@ a {
   text-decoration: none;
 }
 
-
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
