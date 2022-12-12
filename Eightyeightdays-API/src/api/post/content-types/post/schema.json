@@ -12,22 +12,22 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
-    "Date": {
+    "date": {
       "type": "date"
     },
-    "Content": {
+    "content": {
       "type": "text"
     },
-    "Tags": {
+    "tags": {
       "type": "string"
     },
-    "Categories": {
+    "categories": {
       "type": "string"
     }
   }

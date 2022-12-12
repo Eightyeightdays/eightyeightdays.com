@@ -1,22 +1,6 @@
 import Head from 'next/head'
 import simplifyStrapiStructure from '../utils/simplifyStrapiStructure.js'
 
-export default function Home({json}) {
-  let test = simplifyStrapiStructure(json)
-  console.log(test)
-  return (
-    <div>
-      <Head>
-        <title>TEST</title>
-        <meta name="description" content="Test" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      
-    </div>
-  )
-}
-
 export async function getStaticProps(){
   const url = "http://localhost:1337/api/posts"
   const settings = {
@@ -30,6 +14,26 @@ export async function getStaticProps(){
   }
   const res = await fetch(url, settings)
   const json = await res.json()
+  const data = simplifyStrapiStructure(json)
   
-  return {props: {json}}
+  return {props: {data}}
 }
+
+export default function Home({data}) {
+  
+  return (
+    <div>
+      <Head>
+        <title>TEST</title>
+        <meta name="description" content="Test" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <h1>Title: {data[1].title}</h1>
+      
+      
+    </div>
+  )
+}
+
+
