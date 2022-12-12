@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "posts",
+  "collectionName": "articles",
   "info": {
-    "singularName": "post",
-    "pluralName": "posts",
-    "displayName": "Post",
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
     "description": ""
   },
   "options": {
@@ -18,16 +18,16 @@
     "description": {
       "type": "text"
     },
-    "date": {
-      "type": "date"
-    },
     "content": {
       "type": "text"
     },
-    "tags": {
-      "type": "string"
+    "date": {
+      "type": "date"
     },
     "categories": {
+      "type": "string"
+    },
+    "tags": {
       "type": "string"
     }
   }
