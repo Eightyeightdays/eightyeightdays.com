@@ -3,10 +3,10 @@ import Footer from "./Footer.js";
 
 export default function Layout({children}){
     return(
-        <>
+        <>        
             <Header />
             {children}
-            <Footer />
+            <Footer />  
         </>
     )
 }
