@@ -6,12 +6,10 @@ import styles from "../styles/Unclog.module.css"
 export async function getStaticProps(){
     const data = await fetchDataForProps("posts")
     return {props: {data}}
-    
 }
 
 export default function Unclog({data}){
     console.log(data)
-
     return(
         <>
             <Head>

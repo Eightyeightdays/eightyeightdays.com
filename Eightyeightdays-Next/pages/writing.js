@@ -6,6 +6,7 @@ export async function getStaticProps(){
   const data = await fetchDataForProps("articles")
   return {props: {data}}
 }
+
 export default function Writing({data}){
     return(
         <>
@@ -14,7 +15,9 @@ export default function Writing({data}){
                 <meta name="description" content="Eightyeightdays" />
                 <link rel="icon" href="/favicon.png" />
             </Head>
+
             <h1>Writing</h1>
+            
             {data.map((obj, index) => (
                 <ArticlePreview data={obj} key={index} />
             ))}

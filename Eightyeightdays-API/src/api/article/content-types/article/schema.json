@@ -33,6 +33,9 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "con": {
+      "type": "richtext"
     }
   }
 }
