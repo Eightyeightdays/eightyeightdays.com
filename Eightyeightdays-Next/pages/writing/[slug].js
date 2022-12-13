@@ -1,26 +1,26 @@
 import fetchDataForProps from "../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
+import parse from "html-react-parser";
+import styles from "../../styles/Article.module.css"
 
 export default function Article({data}){
     const article = data[0]
-    const htmlString = article.cont;
-    
-    const parse = require('html-react-parser');
-    const test = parse(htmlString)
-
-    console.log(data)
-    console.log(test)
+    const htmlString = article.content;
+    const content = parse(htmlString)
 
     return(
         <>
             <Head>
                 <title>{article.title}</title>
-                <meta name="description" content="Eightyeightdays" />
+                <meta name="description" content={article.metaDescription} />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <h1>{article.title}</h1>
-            <p>{article.description}</p>
-            <div>{test}</div>
+
+            <div className={styles.article_container}>
+                <h1>{article.title}</h1>
+                {/* <p>{article.description}</p> */}
+                <div className={styles.article_content}>{content}</div>
+            </div>
         </>
     )
 }

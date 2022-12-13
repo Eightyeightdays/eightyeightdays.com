@@ -5,6 +5,9 @@
     color: white;
     padding: 0.5em;
     gap: 1em;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .header_title{

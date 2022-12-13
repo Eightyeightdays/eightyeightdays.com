@@ -21,9 +21,6 @@
     "date": {
       "type": "date"
     },
-    "content": {
-      "type": "text"
-    },
     "tags": {
       "type": "string"
     },
@@ -33,6 +30,17 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "light"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "metaDescription": {
+      "type": "text",
+      "maxLength": 160
     }
   }
 }

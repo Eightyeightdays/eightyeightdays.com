@@ -18,9 +18,6 @@
     "description": {
       "type": "text"
     },
-    "content": {
-      "type": "text"
-    },
     "date": {
       "type": "date"
     },
@@ -34,12 +31,16 @@
       "type": "uid",
       "targetField": "title"
     },
-    "cont": {
+    "content": {
       "type": "customField",
       "options": {
         "preset": "light"
       },
       "customField": "plugin::ckeditor.CKEditor"
+    },
+    "metaDescription": {
+      "type": "text",
+      "maxLength": 160
     }
   }
 }

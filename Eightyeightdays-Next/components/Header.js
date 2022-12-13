@@ -4,11 +4,13 @@ import Link from "next/link"
 
 export default function Header(){
     return(
-        <header className={styles.header}>
-            <div className={styles.header_title}>
-                <Link href="/">Eightyeightdays</Link>
-            </div>
-            <MainMenu />
-        </header>
+        <>
+            <header id="header" className={styles.header}>
+                <div className={styles.header_title}>
+                    <Link href="/">Eightyeightdays</Link>
+                </div>
+                <MainMenu />
+            </header>
+        </>
     )
 }

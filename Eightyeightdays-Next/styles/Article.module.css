@@ -1,0 +1,12 @@
+.article_container{
+    background: rgb(103, 173, 113);   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    margin-top: 3em;
+}
+
+.article_content{
+    width: 50%;
+}
