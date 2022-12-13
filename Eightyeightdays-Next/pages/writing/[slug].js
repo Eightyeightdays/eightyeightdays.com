@@ -2,9 +2,15 @@ import fetchDataForProps from "../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
 
 export default function Article({data}){
-    console.log(data)
     const article = data[0]
-    console.log(article.con)
+    const htmlString = article.cont;
+    
+    const parse = require('html-react-parser');
+    const test = parse(htmlString)
+
+    console.log(data)
+    console.log(test)
+
     return(
         <>
             <Head>
@@ -14,7 +20,7 @@ export default function Article({data}){
             </Head>
             <h1>{article.title}</h1>
             <p>{article.description}</p>
-            <div>{article.con}</div>
+            <div>{test}</div>
         </>
     )
 }

@@ -34,8 +34,12 @@
       "type": "uid",
       "targetField": "title"
     },
-    "con": {
-      "type": "richtext"
+    "cont": {
+      "type": "customField",
+      "options": {
+        "preset": "light"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }
