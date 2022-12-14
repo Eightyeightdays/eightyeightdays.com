@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    align-items: center;
+    background: transparent;
+    color: transparent;
+    padding: 0.5em;
+    gap: 1em;
+    width: 100%;
+}
+
+.header_title{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    width: 50%;
+}

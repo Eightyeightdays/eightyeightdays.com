@@ -1,7 +1,7 @@
 import fetchDataForProps from "../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
 import parse from "html-react-parser";
-import styles from "../../styles/Post.module.css"
+import styles from "../../styles//unclog/Unclog.Single.module.css"
 
 export default function Post({data}){
     const post = data[0]
@@ -16,11 +16,14 @@ export default function Post({data}){
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <div className={styles.post_container}>
-                <h1>{post.title}</h1>
-                <p>{post.description}</p>
-                <div className="content">{content}</div>
+            <div className={styles.main_container}>
+                <div className={styles.post_container}>
+                    <h1>{post.title}</h1>
+                    {/* <p>{post.description}</p> */}
+                    <div className={styles.article_content}>{content}</div>
+                </div>
             </div>
+                
         </>
     )
 }

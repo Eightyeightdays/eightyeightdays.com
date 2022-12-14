@@ -1,4 +1,4 @@
-import styles from "../styles/MainMenu.module.css"
+import styles from "../../styles/layout/MainMenu.module.css"
 import Link from "next/link"
 
 export default function MainMenu(){

@@ -15,11 +15,12 @@ export default function Article({data}){
                 <meta name="description" content={article.metaDescription} />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-
-            <div className={styles.article_container}>
-                <h1>{article.title}</h1>
-                {/* <p>{article.description}</p> */}
-                <div className={styles.article_content}>{content}</div>
+            <div className={styles.main_container}>
+                <div className={styles.article_container}>
+                    <h1>{article.title}</h1>
+                    {/* <p>{article.description}</p> */}
+                    <div className={styles.article_content}>{content}</div>
+                </div>
             </div>
         </>
     )

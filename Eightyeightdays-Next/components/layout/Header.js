@@ -1,4 +1,4 @@
-import styles from "../styles/Header.module.css"
+import styles from "../../styles/layout/Header.module.css"
 import MainMenu from "./MainMenu.js"
 import Link from "next/link"
 

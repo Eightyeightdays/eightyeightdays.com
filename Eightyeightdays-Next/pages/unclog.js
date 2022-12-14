@@ -1,7 +1,7 @@
 import fetchDataForProps from '../utils/fetchDataForProps.js'
-import PostPreview from '../components/PostPreview.js'
+import UnclogPreview from '../components/Unclog.Preview.js'
 import Head from 'next/head.js'
-import styles from "../styles/Unclog.module.css"
+import styles from "../styles/unclog/Unclog.module.css"
 
 export async function getStaticProps(){
     const data = await fetchDataForProps("posts")
@@ -22,7 +22,7 @@ export default function Unclog({data}){
 
             <div className={styles.posts_container}>
                 {data.map((obj, index) => (
-                    <PostPreview data={obj} key={index} />
+                    <UnclogPreview data={obj} key={index} />
                 ))}
             </div>
         </>
