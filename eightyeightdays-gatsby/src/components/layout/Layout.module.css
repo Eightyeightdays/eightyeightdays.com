@@ -7,6 +7,7 @@
   --marginS: var(--paddingS);
   --marginM: var(--paddingM);
   --marginL: var(--paddingL);
+  font-family: 'Poppins', sans-serif;
 }
 
 html {

@@ -1,0 +1,37 @@
+.menu{
+    font-size: 20px;
+    letter-spacing: 0.15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--paddingM)
+}
+
+.menu_item{
+    position: relative;
+}
+
+.menu_title{
+    padding: var(--paddingS);
+}
+
+.menu_content{
+    display: none;
+    position: absolute;
+}
+
+.menu_content_item{
+    background: black;
+    padding: var(--paddingS);
+    display: block;
+}
+
+.menu_item:hover .menu_content{
+    display: block;
+}
+
+.menu_item:hover .menu_title, .menu_content_item:hover{
+    background: white;
+    color: black;
+    cursor: pointer;
+}
