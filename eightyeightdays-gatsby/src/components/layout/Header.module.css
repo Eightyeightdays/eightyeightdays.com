@@ -1,0 +1,31 @@
+@import "./Layout.module.css";
+
+.header{
+    background: black;
+    color: white;
+    display:  flex;
+    padding: var(--paddingM)
+}
+
+.header_titleContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    
+}
+
+.header_title{
+    background: teal;
+}
+
+.header_menuContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+}
+
+.header_menu{
+    background: tomato;
+}

@@ -11,4 +11,9 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => (
+  <>
+    <title>Eightyeightdays.com - The Wisdom Of Multiple Perspectives</title>
+    <meta name="description" content="Art, Photography, Rationality, Experience" />
+  </>
+)
