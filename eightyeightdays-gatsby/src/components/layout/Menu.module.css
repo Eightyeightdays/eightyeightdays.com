@@ -4,7 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--paddingM)
+    gap: var(--paddingM);
+    /* height: 100%; */
 }
 
 .menu_item{

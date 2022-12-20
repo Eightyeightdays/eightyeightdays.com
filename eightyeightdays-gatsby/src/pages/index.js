@@ -17,3 +17,5 @@ export const Head = () => (
     <meta name="description" content="Art, Photography, Rationality, Experience" />
   </>
 )
+
+
