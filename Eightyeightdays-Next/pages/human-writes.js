@@ -8,6 +8,7 @@ export async function getStaticProps(){
 }
 
 export default function Writing({data}){
+    console.log(data)
     return(
         <>
             <Head>

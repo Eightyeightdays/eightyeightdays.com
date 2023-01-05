@@ -3,7 +3,13 @@
     padding: 1em;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    gap: 3rem;
+}
+
+.footer a{
+    display: flex;
+    align-items: center;
 }
 
 .icon{

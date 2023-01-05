@@ -1,16 +1,18 @@
-import React from "react"
-import * as styles from "./Menu.module.css"
-import {Link} from "gatsby";
+import styles from "./Menu.module.css"
+import Link from "next/link"
 
 export default function Menu(){
     return(
         <div className={styles.menu}>
             <div className={styles.menu_title}>
-                <Link to="/human-writes/">Human Writes</Link>
+                <Link href="/unclog/">Unclog</Link>
+            </div>
+            <div className={styles.menu_title}>
+                <Link href="/human-writes/">Human Writes</Link>
             </div>
             <div className={styles.menu_item}>
                 <div className={styles.menu_title}>
-                    <Link to="/an-eye-for-an-eye/">An Eye For An Eye</Link>
+                    <Link href="/an-eye-for-an-eye/">An Eye For An Eye</Link>
                 </div>
                 <div className={styles.menu_content}>
                     <div className={styles.menu_content_item}>Series</div>

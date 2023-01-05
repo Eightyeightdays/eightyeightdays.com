@@ -1,6 +1,6 @@
 import styles from "../../styles/layout/Header.module.css"
-import MainMenu from "./MainMenu.js"
 import Link from "next/link"
+import Menu from "../Menu.js"
 
 export default function Header(){
     return(
@@ -9,7 +9,10 @@ export default function Header(){
                 <div className={styles.header_title}>
                     <Link href="/">Eightyeightdays</Link>
                 </div>
-                <MainMenu />
+                <div className={styles.menu_container}>
+                    <Menu />
+                </div>
+                
             </header>
         </>
     )
