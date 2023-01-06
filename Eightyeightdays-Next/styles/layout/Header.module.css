@@ -1,9 +1,9 @@
 .header{
     display: flex;
     align-items: center;
+    /* justify-content: center; */
     background: black;
     color: white;
-    padding: 0.5em;
     gap: 1em;
     position: fixed;
     top: 0;
@@ -15,6 +15,11 @@
     justify-content: flex-start;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
-    /* background: rgb(206, 81, 81); */
+    width: 50%;
+    padding-left: 1rem;
+    /* background: deepskyblue */
+}
+
+.menu_container{
     width: 50%;
 }
