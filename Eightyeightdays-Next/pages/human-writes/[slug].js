@@ -17,8 +17,7 @@ export default function Article({data}){
             </Head>
             <div className={styles.main_container}>
                 <div className={styles.article_container}>
-                    <h1>{article.title}</h1>
-                    {/* <p>{article.description}</p> */}
+                    <h1 className={styles.article_title}>{article.title}</h1>
                     <div className={styles.article_content}>{content}</div>
                 </div>
             </div>

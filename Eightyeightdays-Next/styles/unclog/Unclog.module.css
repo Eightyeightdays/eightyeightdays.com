@@ -1,9 +1,0 @@
-.posts_container{
-    background: tomato;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    width: 66%;
-    gap: 0.5em;
-    margin-top: 3em;
-}

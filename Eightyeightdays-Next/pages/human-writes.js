@@ -1,8 +1,7 @@
 import fetchDataForProps from '../utils/fetchDataForProps.js'
 import ArticlePreview from '../components/ArticlePreview.js'
 import Head from 'next/head.js'
-import styles from "../styles/unclog/Unclog.module.css"
-import styles2 from "../styles/Human-Writes.module.css"
+import styles from "../styles/Human-Writes.module.css"
 import { useEffect, useState } from 'react'
 
 export async function getStaticProps(){
@@ -14,10 +13,8 @@ export async function getStaticProps(){
   return {props: {articles: data, images: json, categories: categories}}
 }
 
-export function Category({title, imgUrl, fun, count, latest="No posts yet"}){
-    if(latest == undefined){
-        latest = "No posts yet"
-    }
+export function Category({title, imgUrl, fun, count, latest}){
+    let date = new Date(latest).toString().substring(0,15)
     let text ="";
     if(count == 1){
         text = "Post"
@@ -25,11 +22,11 @@ export function Category({title, imgUrl, fun, count, latest="No posts yet"}){
         text = "Posts"
     }
     return(
-        <div className={styles2.category_card} onClick={()=>fun(title)}>
+        <div className={styles.category_card} onClick={()=>fun(title)}>
             <h2>{title}</h2>
-            <img src={`http://localhost:1337${imgUrl}`} className={styles2.category_image}></img>
+            <img src={`http://localhost:1337${imgUrl}`} className={styles.category_image}></img>
             <p>{count} {text}</p>
-            <p>Last updated: {latest}</p>
+            <p>Last updated: {date}</p>
         </div>
     )
 }
@@ -103,19 +100,10 @@ export default function Writing({articles, images, categories}){
             case "Non Martial Arts":
             setPosts(nmaPosts);
         }
+        console.log("POSTS SET")
+        console.log(posts)
     }
     
-    categories.map(item=>{
-        // item.articles.data.map(post =>{
-        //     console.log(post.attributes.publishedAt)
-        // })
-        // console.log(item.articles.data)
-        console.log(item.articles.data[0].attributes.publishedAt)
-    })
-
-    // item.articles.data[0].attributes.publishedAt
-
-    console.log(categories)
     return(
         <>
             <Head>
@@ -123,23 +111,22 @@ export default function Writing({articles, images, categories}){
                 <meta name="description" content="Eightyeightdays" />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-
             <h1>Human Writes</h1>
 
-            <div className={styles2.category_container}>
+            <div className={styles.category_container}>
                 <p>Select a category</p>
-                <div className={styles2.category}>
+                <div className={styles.category}>
                     {categories.map((item, index) =>(
                         <Category key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
                 </div>
             </div>
             
-            <div className={styles2.posts_container}>
+            <div className={styles.posts_container}>
                 {posts && posts.map((obj, index) => (
                     <ArticlePreview data={obj} key={index} />
                 ))}
-            </div>
+            </div>   
         </>
     )
 }

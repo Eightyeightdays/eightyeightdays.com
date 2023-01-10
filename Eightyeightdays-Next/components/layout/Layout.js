@@ -1,13 +1,14 @@
 import Header from "./Header.js";
-import HeaderHidden from "./Header.Hidden.js";
 import Footer from "./Footer.js";
+import styles from "../../styles/layout/Content.module.css"
 
 export default function Layout({children}){
     return(
         <>        
             <Header />
-            <HeaderHidden />
-            {children}
+            <div className={styles.content}>
+                {children}
+            </div>
             <Footer />  
         </>
     )
