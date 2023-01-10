@@ -1,0 +1,37 @@
+.category_container{
+    padding: 1rem;
+    background: gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.category{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.category_card{
+    display: flex;
+    flex-direction: column;
+    background: gainsboro;
+    padding: 1rem;
+    width: 300px;
+}
+
+.category_image{
+    opacity: 100%;
+    transition: all 0.4s ease-out;
+}
+
+.category_card:hover{
+    cursor: pointer;
+
+}
+
+.category_card:hover .category_image{
+    opacity: 50%;
+    filter: saturate(70%)
+}
