@@ -14,7 +14,10 @@ export async function getStaticProps(){
   return {props: {articles: data, images: json, categories: categories}}
 }
 
-export function Category({title, imgUrl, fun, count}){
+export function Category({title, imgUrl, fun, count, latest="No posts yet"}){
+    if(latest == undefined){
+        latest = "No posts yet"
+    }
     let text ="";
     if(count == 1){
         text = "Post"
@@ -26,6 +29,7 @@ export function Category({title, imgUrl, fun, count}){
             <h2>{title}</h2>
             <img src={`http://localhost:1337${imgUrl}`} className={styles2.category_image}></img>
             <p>{count} {text}</p>
+            <p>Last updated: {latest}</p>
         </div>
     )
 }
@@ -100,6 +104,16 @@ export default function Writing({articles, images, categories}){
             setPosts(nmaPosts);
         }
     }
+    
+    categories.map(item=>{
+        // item.articles.data.map(post =>{
+        //     console.log(post.attributes.publishedAt)
+        // })
+        // console.log(item.articles.data)
+        console.log(item.articles.data[0].attributes.publishedAt)
+    })
+
+    // item.articles.data[0].attributes.publishedAt
 
     console.log(categories)
     return(
@@ -116,7 +130,7 @@ export default function Writing({articles, images, categories}){
                 <p>Select a category</p>
                 <div className={styles2.category}>
                     {categories.map((item, index) =>(
-                        <Category key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length}/>
+                        <Category key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
                 </div>
             </div>
