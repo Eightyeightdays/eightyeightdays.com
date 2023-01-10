@@ -3,47 +3,105 @@ import ArticlePreview from '../components/ArticlePreview.js'
 import Head from 'next/head.js'
 import styles from "../styles/unclog/Unclog.module.css"
 import styles2 from "../styles/Human-Writes.module.css"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export async function getStaticProps(){
     const data = await fetchDataForProps("articles?populate=*")
     const test = await fetch("http://localhost:1337/api/category-preview-images?populate=*")
     const json = await test.json()
-    const categories = await fetchDataForProps("categories")
+    const categories = await fetchDataForProps("categories?populate=*")
 
   return {props: {articles: data, images: json, categories: categories}}
 }
 
-export function Category({title, url, data, fun}){
+export function Category({title, imgUrl, fun, count}){
+    let text ="";
+    if(count == 1){
+        text = "Post"
+    }else{
+        text = "Posts"
+    }
     return(
-        <div className={styles2.category_card} onClick={()=>fun(title, data)}>
+        <div className={styles2.category_card} onClick={()=>fun(title)}>
             <h2>{title}</h2>
-            <img src={`http://localhost:1337${url}`} className={styles2.category_image}></img>
+            <img src={`http://localhost:1337${imgUrl}`} className={styles2.category_image}></img>
+            <p>{count} {text}</p>
         </div>
     )
 }
 
-export default function Writing({articles, images, categories}){
-    // console.log(images.data[0].attributes.image.data.attributes.url)
-    console.log(categories)
-    const url = images.data[0].attributes.image.data.attributes.url
+function getImageUrls(data){
+    let arr =[]
+    data.data.map(obj=>{
+        arr.push(obj.attributes.image.data.attributes.url)
+    })
+    return arr
+}
 
+export default function Writing({articles, images, categories}){
+    const urls = getImageUrls(images)
     const [posts, setPosts] = useState([])
-    const FilterCategories = (title, data) =>{
-        let arr = []
-        data.map(post=>{
-            post.categories.data.map(category=>{
-                if(category.attributes.category == title){
-                    arr.push(post)
-                }else{
-                    console.log("no match")
-                    return null
-                }
-            })
-        })
-        setPosts(arr)
-    }
+    const [artPosts, setArtPosts] = useState([])
+    const [photoPosts, setPhotoPosts] = useState([])
+    const [philPosts, setPhilPosts] = useState([])
+    const [textPosts, setTextPosts] = useState([])
+    const [nmaPosts, setNmaPosts] = useState([])
     
+    let artArr = []
+    let photoArr = []
+    let philArr = []
+    let textArr = []
+    let nmaArr = []
+
+    articles.map(post=>{
+        post.categories.data.map(category=>{
+            switch(category.attributes.category){
+                case "Art":
+                artArr.push(post);
+                break;
+                case "Photography":
+                photoArr.push(post);
+                break;
+                case "Philosophy":
+                philArr.push(post)
+                break;
+                case "Creative Writing":
+                textArr.push(post)
+                break;
+                case "Non Martial Arts":
+                nmaArr.push(post)
+            }
+        })
+    })
+    
+    useEffect(()=>{
+        setArtPosts(artArr)
+        setPhotoPosts(photoArr)
+        setPhilPosts(philArr)
+        setTextPosts(textArr)
+        setNmaPosts(nmaArr)
+    }, [])
+
+    function FilterCategories(category){
+        switch(category){
+            case "Art":
+            setPosts(artPosts);
+            break;
+            case "Photography":
+            setPosts(photoPosts);
+            break;
+            case "Philosophy":
+            setPosts(philPosts);
+            break;
+            case "Creative Writing":
+            setPosts(textPosts);
+            break;
+            case "Non Martial Arts":
+            setPosts(nmaPosts);
+        }
+    }
+
+    console.log(categories)
     return(
         <>
             <Head>
@@ -57,8 +115,8 @@ export default function Writing({articles, images, categories}){
             <div className={styles2.category_container}>
                 <p>Select a category</p>
                 <div className={styles2.category}>
-                    {categories.map((category, index) =>(
-                         <Category key={index} title={category.category} url={url} data={articles} fun={FilterCategories}/>
+                    {categories.map((item, index) =>(
+                        <Category key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length}/>
                     ))}
                 </div>
             </div>
