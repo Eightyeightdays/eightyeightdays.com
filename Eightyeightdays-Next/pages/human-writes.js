@@ -9,8 +9,9 @@ export async function getStaticProps(){
     const data = await fetchDataForProps("articles?populate=*")
     const test = await fetch("http://localhost:1337/api/category-preview-images?populate=*")
     const json = await test.json()
+    const categories = await fetchDataForProps("categories")
 
-  return {props: {articles: data, images: json}}
+  return {props: {articles: data, images: json, categories: categories}}
 }
 
 export function Category({title, url, data, fun}){
@@ -22,8 +23,9 @@ export function Category({title, url, data, fun}){
     )
 }
 
-export default function Writing({articles, images}){
+export default function Writing({articles, images, categories}){
     // console.log(images.data[0].attributes.image.data.attributes.url)
+    console.log(categories)
     const url = images.data[0].attributes.image.data.attributes.url
 
     const [posts, setPosts] = useState([])
@@ -55,17 +57,17 @@ export default function Writing({articles, images}){
             <div className={styles2.category_container}>
                 <p>Select a category</p>
                 <div className={styles2.category}>
-                    <Category title="Art" url={url} data={articles} fun={FilterCategories}/>
-                    <Category title="Philosophy" url={url} data={articles} fun={FilterCategories}/>
-                    <Category title="Creative Writing" url={url} data={articles} fun={FilterCategories}/>
-                    <Category title="Photography" url={url} data={articles} fun={FilterCategories}/>
-                    <Category title="Non Martial Arts" url={url} data={articles} fun={FilterCategories}/>
+                    {categories.map((category, index) =>(
+                         <Category key={index} title={category.category} url={url} data={articles} fun={FilterCategories}/>
+                    ))}
                 </div>
             </div>
             
-           {posts && posts.map((obj, index) => (
+            <div className={styles2.posts_container}>
+                {posts && posts.map((obj, index) => (
                     <ArticlePreview data={obj} key={index} />
                 ))}
+            </div>
         </>
     )
 }
