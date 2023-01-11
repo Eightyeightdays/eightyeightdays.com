@@ -18,6 +18,12 @@
     transition: all 0.3s ease-out;
 }
 
+.menu_dropdown_link{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
 .menu_content{
     display: none;
     position: absolute;
@@ -38,10 +44,12 @@
     display: block;
 }
 
-.menu_dropdown:hover .menu_title, 
+.menu_dropdown_link:hover,
 .menu_content_item:hover, 
 .menu_title:hover{
     background: gold;
     color: black;
     cursor: pointer;
 }
+
+

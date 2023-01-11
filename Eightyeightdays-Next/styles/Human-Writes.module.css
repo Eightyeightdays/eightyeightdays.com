@@ -42,3 +42,7 @@
     gap: 1rem;
     padding: 1rem;
 }
+
+.highlighted{
+    border: 5px solid red;
+}

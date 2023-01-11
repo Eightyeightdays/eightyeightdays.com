@@ -13,7 +13,7 @@ export async function getStaticProps(){
   return {props: {articles: data, images: json, categories: categories}}
 }
 
-export function Category({title, imgUrl, fun, count, latest}){
+export function Category({title, imgUrl, fun, count, latest, name}){
     let date = new Date(latest).toString().substring(0,15)
     let text ="";
     if(count == 1){
@@ -22,7 +22,7 @@ export function Category({title, imgUrl, fun, count, latest}){
         text = "Posts"
     }
     return(
-        <div className={styles.category_card} onClick={()=>fun(title)}>
+        <div id={name} className={`${styles.category_card} card`} onClick={(event)=>fun(event, title)}>
             <h2>{title}</h2>
             <img src={`http://localhost:1337${imgUrl}`} className={styles.category_image}></img>
             <p>{count} {text}</p>
@@ -83,7 +83,7 @@ export default function Writing({articles, images, categories}){
         setNmaPosts(nmaArr)
     }, [])
 
-    function FilterCategories(category){
+    function FilterCategories(event, category){
         switch(category){
             case "Art":
             setPosts(artPosts);
@@ -99,11 +99,21 @@ export default function Writing({articles, images, categories}){
             break;
             case "Non Martial Arts":
             setPosts(nmaPosts);
-        }
-        console.log("POSTS SET")
-        console.log(posts)
+        }    
+
+        let id = event.target.closest(".card").id
+        let element = document.getElementById(id)
+        element.classList.add("highlighted")
+        console.log(element)
     }
     
+    function HighlightCategory(){
+        // let id = event.target.closest(".card").id
+        // let element = document.getElementById(id)
+        // element.classList.add("highlighted")
+        // console.log(element)
+    }
+
     return(
         <>
             <Head>
@@ -117,7 +127,7 @@ export default function Writing({articles, images, categories}){
                 <p>Select a category</p>
                 <div className={styles.category}>
                     {categories.map((item, index) =>(
-                        <Category key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
+                        <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
                 </div>
             </div>
@@ -127,6 +137,14 @@ export default function Writing({articles, images, categories}){
                     <ArticlePreview data={obj} key={index} />
                 ))}
             </div>   
+
+            <style jsx>
+                {`
+                    .highlighted{
+                        border: 5px solid red;
+                    }
+                `}
+            </style>
         </>
     )
 }

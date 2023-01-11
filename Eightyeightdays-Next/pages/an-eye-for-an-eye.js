@@ -1,6 +1,8 @@
 import Head from 'next/head.js'
+import styles from "../styles/An-Eye-For-An-Eye.module.css"
+import Link from 'next/link'
 
-export default function Writing({data}){
+export default function AnEyeForAnEye({data}){
     console.log(data)
     return(
         <>
@@ -11,11 +13,27 @@ export default function Writing({data}){
             </Head>
 
             <h1>Photography Home</h1>
-            <div className='container'>
-                <div>Series</div>
-                <div>Processes</div>
-                <div>On Photography</div>
-                <div>Galeries</div>
+            <div className={styles.container}>
+                <Link href="/an-eye-for-an-eye/series" className={styles.card}>
+                    <h2 className={styles.title}>Series</h2>
+                    <img className={styles.preview_image} src=""></img>
+                    <div className={styles.description}></div>
+                </Link>
+                <Link href="/an-eye-for-an-eye/processes" className={styles.card}>
+                    <h2 className={styles.title}>Processes</h2>
+                    <img className={styles.preview_image} src=""></img>
+                    <div className={styles.description}></div>
+                </Link >
+                <Link  href="/an-eye-for-an-eye/on-photography" className={styles.card}>
+                    <h2 className={styles.title}>On Photography</h2>
+                    <img className={styles.preview_image} src=""></img>
+                    <div className={styles.description}></div>
+                </Link >
+                <Link href="/an-eye-for-an-eye/videos" className={styles.card}>
+                    <h2 className={styles.title}>Videos</h2>
+                    <img className={styles.preview_image} src=""></img>
+                    <div className={styles.description}></div>
+                </Link >
             </div>
             
         </>

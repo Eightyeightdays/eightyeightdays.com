@@ -6,17 +6,17 @@ export default function Menu(){
         <div className={styles.menu}>
             <Link className={styles.menu_title} href="/human-writes/">Human Writes</Link>
             <div className={styles.menu_dropdown}>
-                <div className={styles.menu_title}><Link href="/an-eye-for-an-eye/">An Eye For An Eye</Link></div>
+                <div><Link className={styles.menu_dropdown_link} href="/an-eye-for-an-eye/">An Eye For An Eye</Link></div>
                 <div className={styles.menu_content}>
-                    <div className={styles.menu_content_item}>Serialisation</div>
-                    <div className={styles.menu_content_item}>Photosynthesis</div>
-                    <div className={styles.menu_content_item}>On Photography</div>
-                    <div className={styles.menu_content_item}>Videos</div>  
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/series">Serialisation</Link>
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/processes">Photosynthesis</Link>
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/on-photography">On Photography</Link>
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/videos">Videos</Link>  
                 </div>
             </div>
-            <div className={styles.menu_title}>Non Martial Arts</div>
-            <div className={styles.menu_title}>Exhibitionism</div>
-            <div className={styles.menu_title}>About</div>
+            <Link className={styles.menu_title} href="/non-martial-arts/">Non Martial Arts</Link>
+            <Link className={styles.menu_title} href="/exhibitionism/">Exhibitionism</Link>
+            <Link className={styles.menu_title} href="/about/">About</Link>
         </div>
     )
 }
