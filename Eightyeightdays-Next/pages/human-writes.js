@@ -5,7 +5,8 @@ import styles from "../styles/Human-Writes.module.css"
 import { useEffect, useState } from 'react'
 
 export async function getStaticProps(){
-    const data = await fetchDataForProps("articles?populate=*")
+    let data = await fetchDataForProps("articles?populate=*")
+    data.sort((a,b)=> a.createdAt > b.createdAt? -1 : 1)
     const test = await fetch("http://localhost:1337/api/category-preview-images?populate=*")
     const json = await test.json()
     const categories = await fetchDataForProps("categories?populate=*")
@@ -26,7 +27,7 @@ export function Category({title, imgUrl, fun, count, latest, name}){
             <h2>{title}</h2>
             <img src={`http://localhost:1337${imgUrl}`} className={styles.category_image}></img>
             <p>{count} {text}</p>
-            <p>Last updated: {date}</p>
+            <p>Updated: {date}</p>
         </div>
     )
 }
@@ -41,18 +42,20 @@ function getImageUrls(data){
 
 export default function Writing({articles, images, categories}){
     const urls = getImageUrls(images)
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState(articles)
     const [artPosts, setArtPosts] = useState([])
     const [photoPosts, setPhotoPosts] = useState([])
     const [philPosts, setPhilPosts] = useState([])
     const [textPosts, setTextPosts] = useState([])
     const [nmaPosts, setNmaPosts] = useState([])
+    const [blogPosts, setBlogPosts] = useState([])
     
     let artArr = []
     let photoArr = []
     let philArr = []
     let textArr = []
     let nmaArr = []
+    let blogArr = []
 
     articles.map(post=>{
         post.categories.data.map(category=>{
@@ -70,17 +73,21 @@ export default function Writing({articles, images, categories}){
                 textArr.push(post)
                 break;
                 case "Non Martial Arts":
-                nmaArr.push(post)
+                nmaArr.push(post);
+                break;
+                case "Unclog":
+                blogArr.push(post)
             }
         })
     })
-    
+
     useEffect(()=>{
         setArtPosts(artArr)
         setPhotoPosts(photoArr)
         setPhilPosts(philArr)
         setTextPosts(textArr)
         setNmaPosts(nmaArr)
+        setBlogPosts(blogArr)
     }, [])
 
     function FilterCategories(event, category){
@@ -99,6 +106,9 @@ export default function Writing({articles, images, categories}){
             break;
             case "Non Martial Arts":
             setPosts(nmaPosts);
+            break;
+            case "Unclog":
+            setPosts(blogPosts)
         }    
 
         let id = event.target.closest(".card").id
