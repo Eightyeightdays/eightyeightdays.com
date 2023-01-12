@@ -39,6 +39,20 @@
     filter: saturate(70%)
 }
 
+.category_button{
+    border: 3px solid black;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    transition: all 0.3s ease-out;
+}
+
+.category_button:hover{
+    cursor: pointer;
+    background: black;
+    color: white;
+}
+
 .posts_container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

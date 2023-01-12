@@ -49,6 +49,7 @@ export default function Writing({articles, images, categories}){
     const [textPosts, setTextPosts] = useState([])
     const [nmaPosts, setNmaPosts] = useState([])
     const [blogPosts, setBlogPosts] = useState([])
+    const [flag, setFlag] = useState(false)
     
     let artArr = []
     let photoArr = []
@@ -111,10 +112,12 @@ export default function Writing({articles, images, categories}){
             setPosts(blogPosts)
         }    
 
-        let id = event.target.closest(".card").id
-        let element = document.getElementById(id)
-        element.classList.add("highlighted")
-        console.log(element)
+        // let id = event.target.closest(".card").id
+        // let element = document.getElementById(id)
+        // element.classList.add("highlighted")
+        // console.log(element)
+
+        setFlag(true)
     }
     
     function HighlightCategory(){
@@ -122,6 +125,10 @@ export default function Writing({articles, images, categories}){
         // let element = document.getElementById(id)
         // element.classList.add("highlighted")
         // console.log(element)
+    }
+
+    function ShowAllCategories(){
+        setPosts(articles)
     }
 
     return(
@@ -140,6 +147,7 @@ export default function Writing({articles, images, categories}){
                         <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
                 </div>
+                {flag && <div className={styles.category_button} onClick={ShowAllCategories}>Show All Categories</div>}
             </div>
             
             <div className={styles.posts_container}>
