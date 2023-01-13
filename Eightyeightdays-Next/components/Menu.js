@@ -8,10 +8,10 @@ export default function Menu(){
             <div className={styles.menu_dropdown}>
                 <div><Link className={styles.menu_dropdown_link} href="/an-eye-for-an-eye/">An Eye For An Eye</Link></div>
                 <div className={styles.menu_content}>
-                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/series">Serialisation</Link>
-                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/processes">Photosynthesis</Link>
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/illustration">Illustration</Link>
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/photosynthesis">Photosynthesis</Link>
                     <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/on-photography">On Photography</Link>
-                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/videos">Videos</Link>  
+                    <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/videos">Succession Stories</Link>  
                 </div>
             </div>
             <Link className={styles.menu_title} href="/non-martial-arts/">Non Martial Arts</Link>

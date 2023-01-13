@@ -3,6 +3,7 @@
     padding: 1rem;
     /* height: 200px; */
     width: 100%;
+    transition: all 0.3s ease-out;
  }
  
  .post_description{
@@ -16,4 +17,8 @@
  .h2{
      background: white;
  
+ }
+
+ .post:hover{
+    opacity: 50%;
  }

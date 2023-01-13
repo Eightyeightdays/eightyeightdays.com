@@ -54,31 +54,44 @@ export default function AnEyeForAnEye({processes, series, videos}){
             </Head>
 
             <h1>Visuals</h1>
-            <div className={styles.container}>
-                <Link href="/an-eye-for-an-eye/series" className={styles.card}>
-                    <h2 className={styles.title}>Series</h2>
-                    {series.map(item =>(
-                        <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
-                    ))}
-                    <div className={styles.description}></div>
-                </Link>
-                <Link href="/an-eye-for-an-eye/processes" className={styles.card}>
-                    <h2 className={styles.title}>Processes</h2>
-                    <img className={styles.preview_image} src=""></img>
-                    <div className={styles.description}></div>
-                </Link >
-                <Link  href="/an-eye-for-an-eye/on-photography" className={styles.card}>
-                    <h2 className={styles.title}>On Photography</h2>
-                    <img className={styles.preview_image} src=""></img>
-                    <div className={styles.description}></div>
-                </Link >
-                <Link href="/an-eye-for-an-eye/videos" className={styles.card}>
-                    <h2 className={styles.title}>Videos</h2>
-                    <img className={styles.preview_image} src=""></img>
-                    <div className={styles.description}></div>
-                </Link >
+            <div className={styles.main_container}>
+                <div className={styles.container}>
+                    <Link href="/an-eye-for-an-eye/illustration" className={styles.card}>
+                        {/* <h2 className={styles.title}>Illustration</h2> */}
+                        <div className={`${styles.image_container} ${styles.card_1}`}>
+                            {series.map(item =>(
+                                <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
+                            ))}    
+                        </div>
+                        <div className={styles.description}></div>
+                    </Link>
+                    <Link href="/an-eye-for-an-eye/photosynthesis" className={styles.card}>
+                        {/* <h2 className={styles.title}>Photosynthesis</h2> */}
+                        <div className={`${styles.image_container} ${styles.card_2}`}>
+                            {processes.map(item =>(
+                                <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
+                            ))}    
+                        </div>
+                        <div className={styles.description}></div>
+                    </Link >
+                    <Link  href="/an-eye-for-an-eye/on-photography" className={styles.card}>
+                        {/* <h2 className={styles.title}>On Photography</h2> */}
+                        <div className={`${styles.image_container} ${styles.card_3}`}>
+                            <img className={styles.single_image} src="http://localhost:1337/uploads/48631295161_e1a3d0e4ea_h_1449642f9e.jpg"></img>
+                        </div>
+                        <div className={styles.description}></div>
+                    </Link >
+                    <Link href="/an-eye-for-an-eye/videos" className={styles.card}>
+                        {/* <h2 className={styles.title}>Succession Stories</h2> */}
+                        <div className={`${styles.image_container} ${styles.card_4}`}>
+                            {videos.map(item =>(
+                                <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
+                            ))}    
+                        </div>
+                        <div className={styles.description}></div>
+                    </Link >
+                </div>
             </div>
-            
         </>
     )
 }
