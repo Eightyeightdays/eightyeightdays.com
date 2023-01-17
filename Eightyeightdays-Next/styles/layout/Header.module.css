@@ -1,14 +1,13 @@
 .header{
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    background: black;
+    background: rgb(0, 0, 0);
     color: white;
-    gap: 1em;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 99;
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    height: 3rem;
 }
 
 .header_title{
@@ -16,13 +15,47 @@
     justify-content: flex-start;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
-    width: 25%;
+    /* width: 25%; */
     padding-left: 1rem;
     /* background: deepskyblue */
 }
 
 .menu_container{
-    width: 75%;
+    width: max-content;
+    position: absolute;
+    right: 0px;
+    top: 3rem;
+    z-index: 2;
+    background: rgb(0, 0, 0);
+    display: none;
+    transition: all 0.2s ease-out;
+}
+
+.menu_container_clicked{
+    width: max-content;
+    position: absolute;
+    right: 0px;
+    top: 3rem;
+    z-index: 2;
+    background: rgb(0, 0, 0);
+    display: flex;
+    transition: all 0.2s ease-out;
+}
+
+.menu_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: gold;
+    color: black;
+}
+
+.menu_button_clicked{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    color: black;
 }
 
 .header_title a{
@@ -31,4 +64,8 @@
 
 .header_title a:hover{
     color: gold;
+}
+
+.menu_button:hover, .menu_button_clicked:hover{
+    cursor: pointer;
 }

@@ -6,20 +6,20 @@
 
 .container{
     border-radius: 1rem;
-    background: white;
+    background: rgb(204, 29, 29);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    margin: 1rem;
+    margin: 4rem;
     justify-items: center;
     align-items: center;
-    width: 70vw;
-    height: 75vh;
+    width: 50vw;
+    height: 50vh;
     position: relative;
 }
 
 .card{
-    height: calc(75vh/2); /* can't be a percentage */
+    height: calc(50vh/2); /* can't be a percentage */
     position: relative;
 }
 

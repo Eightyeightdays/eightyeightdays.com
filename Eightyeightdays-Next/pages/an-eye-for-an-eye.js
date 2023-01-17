@@ -53,7 +53,7 @@ export default function AnEyeForAnEye({processes, series, videos}){
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <h1>Visuals</h1>
+            {/* <h1>Visuals</h1> */}
             <div className={styles.main_container}>
                 <div className={styles.container}>
                     <Link href="/an-eye-for-an-eye/illustration" className={styles.card}>

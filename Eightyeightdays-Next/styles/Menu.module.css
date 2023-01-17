@@ -1,10 +1,11 @@
 .menu{
-    font-size: 16px;
+    font-size: 1rem;
     letter-spacing: 0.15rem;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     align-items: center;
     height: 100%;
+    width: 100%;
 }
 
 .menu_dropdown{
@@ -13,6 +14,14 @@
 }
 
 .menu_title{
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease-out;
+    display: none;
+}
+
+.menu_title_clicked{
+    display: flex;
     padding: 1rem;
     text-align: center;
     transition: all 0.3s ease-out;
@@ -29,11 +38,14 @@
     position: absolute;
     z-index: 1;
     width: 100%;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
+    right: 100%;
+    top: 0;
 }
 
 .menu_content_item{
-    background: black;
+    background: rgb(255, 255, 255);
+    color: black;
     padding: 1rem;
     display: block;
     width: 100%;
@@ -52,4 +64,31 @@
     cursor: pointer;
 }
 
+.menu_dropdown:hover .menu_dropdown_link{
+    background: gold;
+    color: black;
+}
 
+@media (max-width: 1450px){
+    .menu{
+        font-size: 12px;
+    }
+
+}
+
+.menu_title_1{
+
+}
+.menu_title_2{
+    transition-delay: 0.2s;
+    background: red;
+}
+.menu_title_3{
+    transition-delay: 0.3s;
+}
+.menu_title_4{
+    transition-delay: 0.4s;
+}
+.menu_title_5{
+    transition-delay: 0.5s;
+}
