@@ -16,7 +16,7 @@ export default function Header(){
                 <div className={styles.header_title}>
                     <Link href="/" onClick={toggleMenu}>Eightyeightdays</Link>
                 </div>
-                <div className={menu ? styles.menu_container : styles.menu_container_clicked} onClick={toggleMenu}>
+                <div className={menu ? styles.menu_container_clicked : styles.menu_container} onClick={toggleMenu}>
                     <Menu toggle={menu}/>
                 </div>
                 <div className={menu? styles.menu_button_clicked : styles.menu_button} onClick={toggleMenu}>{menu? "X" : "Y"}</div>
