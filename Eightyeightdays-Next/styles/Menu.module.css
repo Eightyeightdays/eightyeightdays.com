@@ -1,24 +1,28 @@
+.container{
+    display: flex;
+}
+
 .menu{
     font-size: 1rem;
     letter-spacing: 0.15rem;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    align-items: center;
+    grid-template-columns: 1fr;
+    align-items: start;
+    justify-items: left;
     height: 100%;
     width: 100%;
 }
 
-.menu_dropdown{
-    position: relative;
-    text-align: center;
-}
 
 .menu_title{
     padding: 1rem;
-    text-align: center;
     transition: all 0.3s ease-out;
     animation: fade 0.3s ease-out 1 forwards paused;
     opacity: 0;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
 }
 
 @keyframes fade{
@@ -27,37 +31,95 @@
     }
 }
 
-.menu_dropdown_link{
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    animation: fade 0.3s ease-out 1 forwards paused;
-    opacity: 0;
+.menu_dropdown{
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
-.menu_title_clicked, .menu_dropdown_link_clicked{
+.menu_dropdown_link{
+    /* padding: 1rem; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1rem;
+    animation: fade 0.4s ease-out 1 forwards paused;
+    opacity: 0;
+    height: 3rem;
+    width: 100%;
+}
+
+.submenu_button{
+    padding: 1rem;
+    margin-left: 1rem;
+    background: gold;
+    color: black;
+    position: relative;
+    right: 0;
+    visibility: hidden;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 3rem;
+}
+
+.clicked{
     animation-play-state: running;
 }
-
-
 
 .menu_content{
     display: none;
     position: absolute;
     z-index: 1;
-    width: 100%;
+    width: max-content;
     transition: all 0.3s ease-out;
     right: 100%;
     top: 0;
+}
+
+.menu_content_clicked{
+    display: block;
 }
 
 .menu_content_item{
     background: rgb(255, 255, 255);
     color: black;
     padding: 1rem;
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
+    height: 3rem;
     transition: all 0.3s ease-out;
+}
+
+.test{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background: rgb(212, 206, 206);
+    color: black;
+    width: 3rem;
+}
+
+.test_button{
+    background: gold;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.test_button_clicked{
+    background: white;
+}
+
+.test_button:hover{
+    cursor: pointer;
 }
 
 .menu_dropdown:hover .menu_content{
@@ -77,6 +139,8 @@
     color: black;
 }
 
+
+
 @media (max-width: 1450px){
     .menu{
         font-size: 12px;
@@ -84,18 +148,28 @@
 
 }
 
-.menu_title_1{
+@media only screen and (hover: none) and (pointer: coarse){
+
+    /* Mobile rules here */
+    .submenu_button{
+        display: flex;
+        visibility: visible;
+    }
+    
+}
+
+.delay_1{
     animation-delay: 0.1s;
 }
-.menu_title_2{
+.delay_2{
+    animation-delay: 0.15s;
+}
+.delay_3{
     animation-delay: 0.2s;
 }
-.menu_title_3{
+.delay_4{
+    animation-delay: 0.25s;
+}
+.delay_5{
     animation-delay: 0.3s;
-}
-.menu_title_4{
-    animation-delay: 0.4s;
-}
-.menu_title_5{
-    animation-delay: 0.5s;
 }
