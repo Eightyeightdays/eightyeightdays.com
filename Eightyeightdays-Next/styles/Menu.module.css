@@ -25,12 +25,6 @@
     align-items: center;
 }
 
-@keyframes fade{
-    100%{
-        opacity: 1;
-    }
-}
-
 .menu_dropdown{
     position: relative;
     text-align: center;
@@ -65,10 +59,6 @@
     width: 3rem;
 }
 
-.clicked{
-    animation-play-state: running;
-}
-
 .menu_content{
     display: none;
     position: absolute;
@@ -91,7 +81,13 @@
     align-items: center;
     width: 100%;
     height: 3rem;
+    opacity: 0;
     transition: all 0.3s ease-out;
+    animation: fade 0.4s ease-out 1 forwards paused;
+}
+
+.clicked{
+    animation-play-state: running;
 }
 
 .test{
@@ -139,7 +135,11 @@
     color: black;
 }
 
-
+@keyframes fade{
+    100%{
+        opacity: 1;
+    }
+}
 
 @media (max-width: 1450px){
     .menu{

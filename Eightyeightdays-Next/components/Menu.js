@@ -21,10 +21,10 @@ export default function Menu({toggle, toggleMenu, subToggle, toggleSubMenu, setS
                         </Link>
                     </div>
                     <div className={`${styles.menu_content} ` + (subToggle ? `${styles.menu_content_clicked}` : "")}>
-                        <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/illustration">Illustration</Link>
-                        <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/photosynthesis">Photosynthesis</Link>
-                        <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/on-photography">On Photography</Link>
-                        <Link className={styles.menu_content_item} href="/an-eye-for-an-eye/videos">Succession Stories</Link>  
+                        <Link className={`${styles.menu_content_item} ` + `${styles.delay_1} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/illustration">Illustration</Link>
+                        <Link className={`${styles.menu_content_item} ` + `${styles.delay_2} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/photosynthesis">Photosynthesis</Link>
+                        <Link className={`${styles.menu_content_item} ` + `${styles.delay_3} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/on-photography">On Photography</Link>
+                        <Link className={`${styles.menu_content_item} ` + `${styles.delay_4} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/videos">Succession Stories</Link>  
                     </div>
                 </div>
             </div>
