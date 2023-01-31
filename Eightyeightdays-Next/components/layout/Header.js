@@ -22,9 +22,9 @@ export default function Header(){
                     <Link href="/">Eightyeightdays</Link>
                 </div>
                 <div className={toggle ? styles.menu_container_clicked : styles.menu_container} >
-                    <Menu toggle={toggle} toggleMenu={toggleMenu} subToggle={subToggle} toggleSubMenu={toggleSubMenu} setSubToggle={setSubToggle}/>
+                    <Menu toggle={toggle} toggleMenu={toggleMenu} setToggle={setToggle} subToggle={subToggle} toggleSubMenu={toggleSubMenu} setSubToggle={setSubToggle}/>
                 </div>
-                <div className={`${styles.menu_button} ` + (toggle? `${styles.menu_button_clicked}` : "")} onClick={toggleMenu}>{toggle? "X" : "Y"}</div>
+                <div data-area="menu" className={`${styles.menu_button} ` + (toggle? `${styles.menu_button_clicked}` : "")} onClick={toggleMenu}>{toggle? "X" : "Y"}</div>
             </header>
         </>
     )
