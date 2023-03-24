@@ -156,13 +156,6 @@ export default function Writing({articles, images, categories}){
                 ))}
             </div>   
 
-            <style jsx>
-                {`
-                    .highlighted{
-                        border: 5px solid red;
-                    }
-                `}
-            </style>
         </>
     )
 }

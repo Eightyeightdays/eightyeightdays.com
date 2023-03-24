@@ -1,0 +1,50 @@
+.menu{
+    background: black;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
+.menu_item{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.menu_item_title, .submenu_item_title{
+    color: white;
+}
+
+.menu_item:hover{
+    background: gold;
+    cursor: pointer;
+    color: black;
+}
+
+.submenu{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+}
+
+.submenu_item{
+    background: teal;
+    padding: 0.5rem;
+}
+
+.submenu_item:hover{
+    background: gold;
+}
+
+.menu_item:hover .submenu{
+    display: flex;
+}

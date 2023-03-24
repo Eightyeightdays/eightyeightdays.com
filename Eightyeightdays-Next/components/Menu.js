@@ -5,7 +5,7 @@ import { useEffect } from "react"
 export default function Menu({toggle, toggleMenu, setToggle, subToggle, toggleSubMenu, setSubToggle}){
 
     useEffect(()=>{
-    document.addEventListener("click", function(event){
+        document.addEventListener("click", function(event){
             if(event.target.dataset.area !== "menu"){
                 console.log("toggle set to false")
                 setSubToggle(false)
@@ -25,7 +25,7 @@ export default function Menu({toggle, toggleMenu, setToggle, subToggle, toggleSu
                 <Link data-area="menu" className={`${styles.menu_title} ` + `${styles.delay_1} ` + (toggle ? `${styles.clicked}` : "")} href="/about/">Pars Pro Toto</Link>
                 <Link data-area="menu" className={`${styles.menu_title} ` + `${styles.delay_2} ` + (toggle ? `${styles.clicked}` : "")} href="/human-writes/">Human Writes</Link>
                 <Link data-area="menu" className={`${styles.menu_title} ` + `${styles.delay_3} ` + (toggle ? `${styles.clicked}` : "")} href="/non-martial-arts/">Non Martial Arts</Link>
-                <Link data-area="menu" className={`${styles.menu_title} ` + `${styles.delay_4} ` + (toggle ? `${styles.clicked}` : "")} href="/exhibitionism/">Indecent Exposures</Link>
+                {/* <Link data-area="menu" className={`${styles.menu_title} ` + `${styles.delay_4} ` + (toggle ? `${styles.clicked}` : "")} href="/exhibitionism/">Indecent Exposures</Link> */}
                 <div data-area="menu" className={styles.menu_dropdown}>
                     <div data-area="menu">
                         <Link data-area="menu" className={`${styles.menu_dropdown_link} ` + `${styles.delay_5} ` + (toggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/">
@@ -37,6 +37,8 @@ export default function Menu({toggle, toggleMenu, setToggle, subToggle, toggleSu
                         <Link data-area="menu" className={`${styles.menu_content_item} ` + `${styles.delay_2} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/photosynthesis">Photosynthesis</Link>
                         <Link data-area="menu" className={`${styles.menu_content_item} ` + `${styles.delay_3} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/on-photography">On Photography</Link>
                         <Link data-area="menu" className={`${styles.menu_content_item} ` + `${styles.delay_4} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/videos">Succession Stories</Link>  
+                        <Link data-area="menu" className={`${styles.menu_content_item} ` + `${styles.delay_4} ` + (subToggle ? `${styles.clicked}` : "")} href="/an-eye-for-an-eye/exhibitionism/">Indecent Exposures</Link>
+
                     </div>
                 </div>
             </div>
