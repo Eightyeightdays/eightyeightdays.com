@@ -1,0 +1,22 @@
+.menu{
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    justify-self: end;
+    gap: 1rem;
+    margin-right: 1rem;
+    background: #ededed;
+    font-family: "Quicksand";
+}
+
+.menu_item{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.menu_item:hover{
+    background: gold;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}

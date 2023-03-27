@@ -1,27 +1,30 @@
 .header{
-    background: rgb(0, 0, 0);
-    color: white;
+    background: #ededed;
+    /* color: black; */
     position: fixed;
     top: 0;
+    padding-top: 1rem;
     width: 100%;
     z-index: 99;
     display: grid;
-    grid-template-columns: 1fr 3rem;
-    height: 3rem;
+    grid-template-columns: 1fr 5fr;
+    height: 4rem;
+    
 }
 
 .header_title{
+    /* background: deepskyblue; */
     display: flex;
     justify-content: flex-start;
     font-size: 2rem;
-    font-family: 'Poppins', sans-serif;
-    /* width: 25%; */
+    font-family: "Quicksand";
     padding-left: 1rem;
     height: 3rem;
-    /* background: deepskyblue */
 }
 
-.menu_container{
+
+
+/* .menu_container{
     width: max-content;
     position: absolute;
     right: 0px;
@@ -68,4 +71,4 @@
 
 .menu_button:hover, .menu_button_clicked:hover{
     cursor: pointer;
-}
+} */

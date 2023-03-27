@@ -53,44 +53,35 @@ export default function AnEyeForAnEye({processes, series, videos}){
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            {/* <h1>Visuals</h1> */}
-            <div className={styles.main_container}>
-                <div className={styles.container}>
-                    <Link href="/an-eye-for-an-eye/illustration" className={styles.card}>
-                        {/* <h2 className={styles.title}>Illustration</h2> */}
-                        <div className={`${styles.image_container} ${styles.card_1}`}>
-                            {series.map(item =>(
-                                <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
-                            ))}    
-                        </div>
-                        <div className={styles.description}></div>
-                    </Link>
-                    <Link href="/an-eye-for-an-eye/photosynthesis" className={styles.card}>
-                        {/* <h2 className={styles.title}>Photosynthesis</h2> */}
-                        <div className={`${styles.image_container} ${styles.card_2}`}>
-                            {processes.map(item =>(
-                                <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
-                            ))}    
-                        </div>
-                        <div className={styles.description}></div>
-                    </Link >
-                    <Link  href="/an-eye-for-an-eye/on-photography" className={styles.card}>
-                        {/* <h2 className={styles.title}>On Photography</h2> */}
-                        <div className={`${styles.image_container} ${styles.card_3}`}>
-                            <img className={styles.single_image} src="http://localhost:1337/uploads/48631295161_e1a3d0e4ea_h_1449642f9e.jpg"></img>
-                        </div>
-                        <div className={styles.description}></div>
-                    </Link >
-                    <Link href="/an-eye-for-an-eye/videos" className={styles.card}>
-                        {/* <h2 className={styles.title}>Succession Stories</h2> */}
-                        <div className={`${styles.image_container} ${styles.card_4}`}>
-                            {videos.map(item =>(
-                                <img className={styles.preview_image} src={`http://localhost:1337${item}`}></img>
-                            ))}    
-                        </div>
-                        <div className={styles.description}></div>
-                    </Link >
+            <div className={styles.category_container}>
+                <div className={styles.category_card}>
+                    <div className={styles.category_card_title}>Catastrophe And The Curator</div>
+                    <img src={`http://localhost:1337${processes[2]}`} alt="" className={styles.category_card_img} />
                 </div>
+                <div className={styles.category_card}>
+                    <div className={styles.category_card_title}>Photosynthesis</div>
+                    <img src={`http://localhost:1337${processes[3]}`} alt="" className={styles.category_card_img} />
+                </div>
+                <div className={styles.category_card}>
+                    <div className={styles.category_card_title}>Illustrious</div>
+                    <img src={`http://localhost:1337${series[4]}`} alt="" className={styles.category_card_img} />
+                </div>
+                <div className={styles.category_card}>
+                    <div className={styles.category_card_title}>Domestication</div>
+                    <img src={`http://localhost:1337${series[5]}`} alt="" className={styles.category_card_img} />
+                </div>
+                <div className={styles.category_card}>
+                    <div className={styles.category_card_title}>To Succeed</div>
+                    <img src={`http://localhost:1337${videos[4]}`} alt="" className={styles.category_card_img} />
+                </div>
+                <div className={styles.category_card}>
+                    <div className={styles.category_card_title}>The Process Is The Subject</div>
+                    <img src={`http://localhost:1337${processes[5]}`} alt="" className={styles.category_card_img} />
+                </div>
+            </div>
+
+            <div className={styles.project_container}>
+
             </div>
         </>
     )

@@ -141,7 +141,7 @@ export default function Writing({articles, images, categories}){
             <h1>Human Writes</h1>
 
             <div className={styles.category_container}>
-                <p>Select a category</p>
+                {/* <p>Select a category</p> */}
                 <div className={styles.category}>
                     {categories.map((item, index) =>(
                         <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
