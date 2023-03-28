@@ -18,6 +18,7 @@
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     transition: all 0.30s ease-in;
+    border: 1px solid transparent;
 }
 
 .category_card_img{
@@ -41,16 +42,15 @@
     font-family: 'Cormorant';
     color: rgb(105, 105, 105);
     padding: 0 1rem 1rem 1rem;
-}
-
-.category_card_description{
     text-align: center;
-}
 
+}
 
 .category_card:hover, .preview_card:hover{
     cursor: pointer;
     background: rgb(255, 255, 255);
+    border: 1px solid rgb(105, 105, 105);
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
 }
 
 .category_card:hover .category_card_img,
@@ -86,6 +86,8 @@
     align-items: center;
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
+    padding-bottom: 1rem;
+    border: 1px solid transparent;
     transition: all 0.30s ease-in;
 }
 
@@ -110,9 +112,14 @@
 }
 
 .preview_card_year{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: 'Cormorant';
     text-align: center;
     color: rgb(105, 105, 105);
-    font-weight: bolder;
+    /* color: black; */
+    /* font-weight: 900; */
+}
+
+.symbol_container{
+    color: rgb(105, 105, 105);
 }

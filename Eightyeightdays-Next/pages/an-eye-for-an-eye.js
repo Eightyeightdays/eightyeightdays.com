@@ -139,6 +139,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                         <div className={styles.preview_card_title}>{preview.title}</div>
                         <div className={styles.preview_card_description}>{preview.description}</div>
                         <div className={styles.preview_card_year}>{preview.year}</div>
+                        <div className={styles.symbol_container}>&#9830;</div>
                     </Link>)
                 )
                 }
