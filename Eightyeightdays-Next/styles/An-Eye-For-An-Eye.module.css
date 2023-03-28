@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     place-items: center;
-    gap: 3rem;
+    gap: 2rem;
     padding: 2rem;
     margin-top: 5rem;
 }
@@ -105,10 +105,12 @@
     text-decoration: underline;
     text-underline-offset: 0.5rem;
     line-height: 2rem;
+    transition: all 0.3s ease-in;
 }
 
 .preview_card_description{
     font-style: italic;
+    transition: all 0.3s ease-in;
 }
 
 .preview_card_year{
@@ -118,8 +120,19 @@
     color: rgb(105, 105, 105);
     /* color: black; */
     /* font-weight: 900; */
+    transition: all 0.3s ease-in;
+}
+
+.preview_card:hover .preview_card_title, .preview_card:hover .preview_card_description, .preview_card:hover .preview_card_year{
+    color: gainsboro;
+    text-shadow: 1px 2px 0 #EEE, 0 0 0 #000, 1px 2px 0 #EEE;
+}
+
+.preview_card:hover .symbol_container{
+    color: #ededed;
 }
 
 .symbol_container{
     color: rgb(105, 105, 105);
+    transition: all 0.3s ease-in;
 }
