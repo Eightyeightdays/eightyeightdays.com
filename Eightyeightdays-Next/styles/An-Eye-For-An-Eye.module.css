@@ -3,7 +3,9 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     place-items: center;
-    gap: 1rem;
+    gap: 3rem;
+    padding: 2rem;
+    margin-top: 5rem;
 }
 
 .category_card{
@@ -13,8 +15,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    transition: all 0.30s ease-in;
 }
-
 
 .category_card_img{
     width: 100%;
@@ -22,20 +26,93 @@
     object-fit: cover;
     box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
     margin-bottom: 2rem;
+    transition: all 0.30s ease-in;
 }
 
-.category_card_title{
+.category_card_title, .preview_card_title{
     font-family: 'Cormorant';
     margin-bottom: 0.5rem;
+    text-align: center;
+
+}
+
+.category_card_description, .preview_card_description{
+    font-size: 0.8rem;
+    font-family: 'Cormorant';
+    color: rgb(105, 105, 105);
+    padding: 0 1rem 1rem 1rem;
 }
 
 .category_card_description{
-    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+.category_card:hover, .preview_card:hover{
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+}
+
+.category_card:hover .category_card_img,
+.preview_card:hover .preview_card_img{
+    opacity: 0.7;
+}
+
+.divider_container{
+    display: grid;
+    place-items: center;
+}
+
+.divider{
+    width: 60%;
+    height: 1px;
+    background: rgb(105, 105, 105);
+}
+
+/* PREVIEW CONTAINER */
+
+.preview_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 4rem;
+    /* background: gold; */
+}
+
+.preview_card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    transition: all 0.30s ease-in;
+}
+
+.preview_card_img{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: all 0.30s ease-in;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
+}
+
+.preview_card_title{
+    margin: 1rem 0;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+    line-height: 2rem;
+}
+
+.preview_card_description{
+    font-style: italic;
+}
+
+.preview_card_year{
+    font-size: 0.8rem;
     font-family: 'Cormorant';
     text-align: center;
     color: rgb(105, 105, 105);
-}
-
-.category_card:hover{
-    background: rgb(255, 255, 255);
+    font-weight: bolder;
 }

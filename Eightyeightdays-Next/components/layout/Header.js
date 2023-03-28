@@ -20,7 +20,8 @@ export default function Header(){
         <>
             <header id="header" className={styles.header}>
                 <div className={styles.header_title}>
-                    <Link href="/">Eightyeightdays</Link>
+                    {/* <Link href="/">Eightyeightdays</Link> */}
+                    <Link href="/">EIGHTYEIGHTDAYS</Link>
                 </div>
                 {/* <div className={toggle ? styles.menu_container_clicked : styles.menu_container} >
                     <Menu toggle={toggle} toggleMenu={toggleMenu} setToggle={setToggle} subToggle={subToggle} toggleSubMenu={toggleSubMenu} setSubToggle={setSubToggle}/>
