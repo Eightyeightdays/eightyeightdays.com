@@ -1,5 +1,5 @@
 export default function Exhibitionism(){
     return(
-        <h1>Random Image gallery</h1>
+        <h1>Random Art gallery</h1>
     )
 }

@@ -1,33 +1,17 @@
 import styles from "../../styles/layout/Header.module.css"
 import Link from "next/link"
-import Menu from "../NewMenu.js"
-import { useState } from "react"
-import NewMenu from "../NewMenu.js";
+import Menu from "../Menu.js";
 
 export default function Header(){
-    const [toggle, setToggle] = useState(false);
-    const [subToggle, setSubToggle] = useState(false);
-
-    function toggleMenu(){
-        setToggle(!toggle)
-    }
-
-    function toggleSubMenu(){
-        setSubToggle(!subToggle)
-    }
 
     return(
         <>
             <header id="header" className={styles.header}>
                 <div className={styles.header_title}>
-                    {/* <Link href="/">Eightyeightdays</Link> */}
-                    <Link href="/">EIGHTYEIGHTDAYS</Link>
+                    <Link href="/">Eightyeightdays</Link>
+                    {/* <Link href="/">EIGHTYEIGHTDAYS</Link> */}
                 </div>
-                {/* <div className={toggle ? styles.menu_container_clicked : styles.menu_container} >
-                    <Menu toggle={toggle} toggleMenu={toggleMenu} setToggle={setToggle} subToggle={subToggle} toggleSubMenu={toggleSubMenu} setSubToggle={setSubToggle}/>
-                </div>
-                <div data-area="menu" className={`${styles.menu_button} ` + (toggle? `${styles.menu_button_clicked}` : "")} onClick={toggleMenu}>{toggle? "X" : "Y"}</div> */}
-                <NewMenu />
+                <Menu />
             </header>
         </>
     )

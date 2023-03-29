@@ -22,8 +22,8 @@ export async function getStaticProps(){
     }
 
     previews.forEach(preview =>{
-        switch(preview.type){       // verify this corresponds with collection attributes
-            case "curated":
+        switch(preview.type){       // verify this corresponds with collection attributes in API
+            case "catastrophe-and-the-curator":
                 extractImageUrl(preview);
                 curatedPreviews.push(preview);
             break;
@@ -43,7 +43,7 @@ export async function getStaticProps(){
                 extractImageUrl(preview);
                 proceduralPreviews.push(preview);
             break;
-            case "misc":
+            case "illustrious":
                 extractImageUrl(preview);
                 miscPreviews.push(preview);
         }
