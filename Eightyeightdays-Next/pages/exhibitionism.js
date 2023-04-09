@@ -10,7 +10,10 @@ export async function getStaticProps(){
 
 
 export default function Exhibitionism({galleryItems}){
-
+    function openModal(id){
+        console.log(`${id} id was clicked`)
+    }
+    
     return(
         <>
             <Head>
@@ -21,7 +24,7 @@ export default function Exhibitionism({galleryItems}){
             <h1>Random Art gallery</h1>
             <div className={styles.gallery_container}>
                 {galleryItems.map((item, index)=>(
-                    <GalleryPost key={index} data={item}/>
+                    <GalleryPost key={index} data={item} click={openModal}/>
                 ))}
             </div>
         </>

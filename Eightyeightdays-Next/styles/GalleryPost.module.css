@@ -1,6 +1,6 @@
 .post_card{
-    background: black;
-
+    display: flex;
+    background: gold;
 }
 
 .post_video{
