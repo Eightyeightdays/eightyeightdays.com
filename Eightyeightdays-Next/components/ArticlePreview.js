@@ -12,7 +12,7 @@ export default function ArticlePreview({data}){   // props object destructured i
             <div className={styles.preview_card_description}>{data.description}</div>
             <div className={styles.preview_card_preview}>{preview}</div>
             <div className={styles.symbol_container}>&#9830;</div>
-            <div className={styles.preview_card_date}>Date posted: {date}</div>
+            <div className={styles.preview_card_date}>Posted {date}</div>
         </Link>
     )
 }

@@ -93,6 +93,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                 <meta name="description" content="Eightyeightdays" />
                 <link rel="icon" href="/favicon.png" />
             </Head>
+            <h1>An Eye For An Eye</h1>
 
             <div className={styles.category_container}>
                 <div className={styles.category_card} onClick={()=>selectCategory("curated")}>
