@@ -8,21 +8,6 @@
     margin-top: 5rem;
 }
 
-.post_card{
-    background: black;
-
-}
-
-.post_video{
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    display: grid;
-    place-items: center;
-}
-
-.post_img{
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
+.gallery_container:hover{
+    cursor: pointer;
 }

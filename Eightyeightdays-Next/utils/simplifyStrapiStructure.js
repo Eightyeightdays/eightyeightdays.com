@@ -8,6 +8,7 @@
 export default function simplifyStrapiStructure(obj){
     let simpleArray = []
     obj.data.forEach(el => {
+        el.attributes.id = el.id;
         simpleArray.push(el.attributes)
     });
     
