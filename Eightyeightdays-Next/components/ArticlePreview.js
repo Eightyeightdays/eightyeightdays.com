@@ -7,11 +7,12 @@ export default function ArticlePreview({data}){   // props object destructured i
     let htmlString = data.content.substring(0, 150)
     const preview = parse(htmlString)
     return(
-        <Link href={`/human-writes/${data.slug}`} className={styles.post}>
-            <h2 className={styles.h2}>{data.title}</h2>
-            <div className={styles.post_description}>{data.description}</div>
-            <div>{preview}</div>
-            <div>Date posted: {date}</div>
+        <Link href={`/human-writes/${data.slug}`} className={styles.preview_card}>
+            <div className={styles.preview_card_title}>{data.title}</div>
+            <div className={styles.preview_card_description}>{data.description}</div>
+            <div className={styles.preview_card_preview}>{preview}</div>
+            <div className={styles.symbol_container}>&#9830;</div>
+            <div className={styles.preview_card_date}>Date posted: {date}</div>
         </Link>
     )
 }

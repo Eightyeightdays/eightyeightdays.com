@@ -24,10 +24,10 @@ export function Category({title, imgUrl, fun, count, latest, name}){
     }
     return(
         <div id={name} className={`${styles.category_card} card`} onClick={(event)=>fun(event, title)}>
-            <h2>{title}</h2>
-            <img src={`http://localhost:1337${imgUrl}`} className={styles.category_image} alt="" ></img>
-            <p>{count} {text}</p>
-            <p>Updated: {date}</p>
+            <img src={`http://localhost:1337${imgUrl}`} className={styles.category_card_img} alt="" ></img>
+            <div className={styles.category_card_title}>{title}</div>
+            <p className={styles.category_card_details}>{count} {text}</p>
+            <p className={styles.category_card_details}>Updated: {date}</p>
         </div>
     )
 }
@@ -125,15 +125,20 @@ export default function Writing({articles, images, categories}){
             <h1>Human Writes</h1>
 
             <div className={styles.category_container}>
-                <div className={styles.category}>
                     {categories.map((item, index) =>(
                         <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[item.category]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
-                </div>
-                {flag && <div className={styles.category_button} onClick={ShowAllCategories}>Show All Categories</div>}
+            </div>
+
+            <div className={styles.category_button_container}>
+                <div className={flag? styles.category_button: styles.category_button_hidden} onClick={ShowAllCategories}>{flag ? "Show All Categories" : ""}</div>
             </div>
             
-            <div className={styles.posts_container}>
+            <div className={styles.divider_container}>
+                <div className={styles.divider}></div>
+            </div>
+            
+            <div className={styles.preview_container}>
                 {posts && posts.map((obj, index) => (
                     <ArticlePreview data={obj} key={index} />
                 ))}

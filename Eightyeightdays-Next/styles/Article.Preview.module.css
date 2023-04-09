@@ -1,24 +1,52 @@
-.post{
-    background: gainsboro; 
-    padding: 1rem;
-    /* height: 200px; */
+ .preview_card{
+    background: white;
     width: 100%;
-    transition: all 0.3s ease-out;
- }
- 
- .post_description{
-     background: palevioletred
- }
- 
- .post_content{
-     background: rgb(175, 238, 206);
- }
- 
- .h2{
-     background: white;
- 
- }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    padding: 1rem;
+    border: 1px solid transparent;
+    transition: all 0.30s ease-in;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
+    font-family: 'Cormorant';
+    gap: 0.5rem;
+}
 
- .post:hover{
-    opacity: 50%;
- }
+.preview_card div{
+    transition: all 0.3s ease-in;
+    text-align: center;
+}
+
+.preview_card_title{
+    margin: 1rem 0;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+    line-height: 2rem;
+}
+
+.preview_card_description{
+    font-style: italic;
+}
+
+.preview_card_preview{
+    font-size: 0.9rem;
+    color: rgb(105, 105, 105);
+}
+
+.preview_card:hover div{
+    color: gainsboro;
+    text-shadow: 1px 2px 0 #EEE, 0 0 0 #000, 1px 2px 0 #EEE;
+}
+
+.preview_card:hover{
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(105, 105, 105);
+}
+
+.symbol_container{
+    color: rgb(105, 105, 105);
+}
