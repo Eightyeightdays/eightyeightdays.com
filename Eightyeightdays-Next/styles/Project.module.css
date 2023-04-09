@@ -1,0 +1,15 @@
+.richTextImage{
+    border-radius: 50%;
+}
+
+.image{
+    display: grid;
+    grid-template-columns: 1fr;
+    background: hotpink;
+    width: 700px;
+}
+
+.image img{
+    border-radius: 50px;
+    align-self: end;
+}

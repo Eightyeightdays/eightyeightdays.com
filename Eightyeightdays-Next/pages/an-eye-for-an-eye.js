@@ -2,7 +2,7 @@ import Head from 'next/head.js'
 import styles from "../styles/An-Eye-For-An-Eye.module.css"
 import Link from 'next/link'
 import fetchDataForProps from 'utils/fetchDataForProps.js'
-import { useState } from 'react'
+import { useState } from 'react';
 
 export async function getStaticProps(){
     const categoryImages = await fetchDataForProps("category-preview-images?populate=*");
@@ -31,7 +31,7 @@ export async function getStaticProps(){
                 extractImageUrl(preview);
                 darkroomPreviews.push(preview);
             break;
-            case "videos":
+            case "to-succeed":
                 extractImageUrl(preview);
                 videoPreviews.push(preview)
             break;
@@ -61,7 +61,6 @@ export async function getStaticProps(){
 }
 
 export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews}){
-    console.log(domesticationPreviews)
     
     const [category, setCategory] = useState(null);
 
@@ -99,7 +98,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                 <div className={styles.category_card} onClick={()=>selectCategory("curated")}>
                     <img src={`http://localhost:1337${categoryImages[6].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>Catastrophe & The Curator</div>
-                    <div className={styles.category_card_description}>Curated series of found photos</div>
+                    <div className={styles.category_card_description}>Curated series of found and accidental photos</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>selectCategory("darkroom")}>
                     <img src={`http://localhost:1337${categoryImages[8].url}`} alt="" className={styles.category_card_img} />
@@ -114,7 +113,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                 <div className={styles.category_card} onClick={()=>selectCategory("domestication")}>
                     <img src={`http://localhost:1337${categoryImages[10].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>Domestication</div>
-                    <div className={styles.category_card_description}>A group of series based on the conceptual metaphor of "domestication"</div>
+                    <div className={styles.category_card_description}>A group of series based on the conceptual metaphor of &quot;domestication&quot;</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>selectCategory("video")}>
                     <img src={`http://localhost:1337${categoryImages[9].url}`} alt="" className={styles.category_card_img} />

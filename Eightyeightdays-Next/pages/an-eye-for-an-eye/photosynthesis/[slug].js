@@ -1,10 +1,13 @@
 import fetchDataForProps from "../../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
 import parse from "html-react-parser";
-import styles from "../../../styles/Project.module.css"
+import styles from "../../../styles/Project.module.css";
+
 
 export async function getStaticPaths(){
-    const projects = await fetchDataForProps("projects")
+    // const projects = await fetchDataForProps("projects");
+    const projects = await fetchDataForProps("projects?&filters[type][$eq]=photosynthesis")
+
     const paths = projects.map(obj=>({
         params: {slug: obj.slug}
     }))

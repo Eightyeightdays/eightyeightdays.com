@@ -25,7 +25,7 @@ export function Category({title, imgUrl, fun, count, latest, name}){
     return(
         <div id={name} className={`${styles.category_card} card`} onClick={(event)=>fun(event, title)}>
             <h2>{title}</h2>
-            <img src={`http://localhost:1337${imgUrl}`} className={styles.category_image}></img>
+            <img src={`http://localhost:1337${imgUrl}`} className={styles.category_image} alt="" ></img>
             <p>{count} {text}</p>
             <p>Updated: {date}</p>
         </div>
@@ -33,22 +33,20 @@ export function Category({title, imgUrl, fun, count, latest, name}){
 }
 
 function getImageUrls(data){
-    let arr =[]
+    // let arr =[]
+    let imageObj = {};
     data.data.map(obj=>{
-        arr.push(obj.attributes.image.data.attributes.url)
+        // arr.push(obj.attributes.image.data.attributes.url)
+        imageObj[obj.attributes.title] = obj.attributes.image.data.attributes.url;
     })
-    return arr
+    // return arr
+    return imageObj;
 }
 
 export default function Writing({articles, images, categories}){
     const urls = getImageUrls(images)
+    console.log(urls);
     const [posts, setPosts] = useState(articles)
-    const [artPosts, setArtPosts] = useState([])
-    const [photoPosts, setPhotoPosts] = useState([])
-    const [philPosts, setPhilPosts] = useState([])
-    const [textPosts, setTextPosts] = useState([])
-    const [nmaPosts, setNmaPosts] = useState([])
-    const [blogPosts, setBlogPosts] = useState([])
     const [flag, setFlag] = useState(false)
     
     let artArr = []
@@ -82,14 +80,12 @@ export default function Writing({articles, images, categories}){
         })
     })
 
-    useEffect(()=>{
-        setArtPosts(artArr)
-        setPhotoPosts(photoArr)
-        setPhilPosts(philArr)
-        setTextPosts(textArr)
-        setNmaPosts(nmaArr)
-        setBlogPosts(blogArr)
-    }, [])
+    const [artPosts, setArtPosts] = useState(artArr)
+    const [photoPosts, setPhotoPosts] = useState(photoArr)
+    const [philPosts, setPhilPosts] = useState(philArr)
+    const [textPosts, setTextPosts] = useState(textArr)
+    const [nmaPosts, setNmaPosts] = useState(nmaArr)
+    const [blogPosts, setBlogPosts] = useState(blogArr)
 
     function FilterCategories(event, category){
         switch(category){
@@ -112,19 +108,7 @@ export default function Writing({articles, images, categories}){
             setPosts(blogPosts)
         }    
 
-        // let id = event.target.closest(".card").id
-        // let element = document.getElementById(id)
-        // element.classList.add("highlighted")
-        // console.log(element)
-
         setFlag(true)
-    }
-    
-    function HighlightCategory(){
-        // let id = event.target.closest(".card").id
-        // let element = document.getElementById(id)
-        // element.classList.add("highlighted")
-        // console.log(element)
     }
 
     function ShowAllCategories(){
@@ -141,10 +125,9 @@ export default function Writing({articles, images, categories}){
             <h1>Human Writes</h1>
 
             <div className={styles.category_container}>
-                {/* <p>Select a category</p> */}
                 <div className={styles.category}>
                     {categories.map((item, index) =>(
-                        <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[index]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
+                        <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[item.category]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
                 </div>
                 {flag && <div className={styles.category_button} onClick={ShowAllCategories}>Show All Categories</div>}
@@ -155,14 +138,6 @@ export default function Writing({articles, images, categories}){
                     <ArticlePreview data={obj} key={index} />
                 ))}
             </div>   
-
-            <style jsx>
-                {`
-                    .highlighted{
-                        border: 5px solid red;
-                    }
-                `}
-            </style>
         </>
     )
 }
