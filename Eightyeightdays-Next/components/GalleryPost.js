@@ -2,11 +2,12 @@ import parse from "html-react-parser";
 import styles from "../styles/GalleryPost.module.css"
 
 export default function GalleryPost({data, click}){
-console.log(data)
+// console.log(data.title)
 
     var 
     htmlText,
     imgUrl,
+    largeImgUrl,
     videoPreview;
 
 
@@ -14,7 +15,7 @@ console.log(data)
         htmlText = parse(data.htmlDescription);
     }
     if(data.image.data){
-        // imgUrl = data.image.data.attributes.url;
+        largeImgUrl = data.image.data.attributes.url;
         imgUrl = data.image.data.attributes.formats.small.url;
     }
     if(data.videoPreview.data){
@@ -22,12 +23,21 @@ console.log(data)
     }
 
     return(
-        <div className={styles.post_card} onClick={()=>click(data.id)}>
+        <div className={styles.post_card} onClick={()=>click({
+            title: data.title, 
+            description: data.description, 
+            html: data.htmlDescription, 
+            alt: data.alt, 
+            imgUrl: largeImgUrl})}>
+
             {data.videoUrl && 
             <a className={styles.video_link} href={data.videoUrl}>
                 <img className={styles.post_video} src={`http://localhost:1337${videoPreview}`} alt={data.alt}/>
-            </a>}
+            </a>
+            }
+
             {imgUrl && <img className={styles.post_img} src={`http://localhost:1337${imgUrl}`} alt={data.alt} />}
+
         </div>
     )
 }
