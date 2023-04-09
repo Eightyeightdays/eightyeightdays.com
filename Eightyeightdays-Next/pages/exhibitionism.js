@@ -1,7 +1,6 @@
 import styles from "../styles/Exhibitionism.module.css";
 import Head from "next/head";
 import fetchDataForProps from "utils/fetchDataForProps";
-import extractImageUrl from "utils/extractImageUrl";
 import parse from "html-react-parser";
 
 export async function getStaticProps(){
@@ -11,34 +10,33 @@ export async function getStaticProps(){
 
 function Post({data}){
     var 
-    video, 
     htmlText,
-    imgUrl;
+    imgUrl,
+    videoPreview;
 
-    if(data.video){
-        video = parse(data.video);
-    }
+
     if(data.htmlDescription){
         htmlText = parse(data.htmlDescription);
     }
-    if(data.image){
-        // extractImageUrl(data.image)
-        console.log(data.image.data?.attributes?.url)
-        imgUrl = data.image.data?.attributes?.url
+    if(data.image.data){
+        imgUrl = data.image.data.attributes.url;
+    }
+    if(data.videoPreview.data){
+        videoPreview = data.videoPreview.data.attributes.url;
     }
 
     return(
         <div className={styles.post_card}>
-            <div className={styles.post_title}>{data.title}</div>
-            {data.video && <div className={styles.post_video}>{video}</div>}
-            {imgUrl && <img className={styles.post_img} src={`http://localhost:1337${imgUrl}`} alt="" />}
+            {data.videoUrl && 
+            <a className={styles.video_link} href={data.videoUrl}>
+                <img className={styles.post_video} src={`http://localhost:1337${videoPreview}`} alt={data.alt}/>
+            </a>}
+            {imgUrl && <img className={styles.post_img} src={`http://localhost:1337${imgUrl}`} alt={data.alt} />}
         </div>
     )
 }
 
 export default function Exhibitionism({galleryItems}){
-    console.log(galleryItems)
-    const content = parse(galleryItems[0].video)
     return(
         <>
             <Head>
@@ -48,8 +46,8 @@ export default function Exhibitionism({galleryItems}){
             </Head>
             <h1>Random Art gallery</h1>
             <div className={styles.gallery_container}>
-                {galleryItems.map(item=>(
-                    <Post data={item} />
+                {galleryItems.map((item, index)=>(
+                    <Post key={index} data={item} />
                 ))}
             </div>
         </>

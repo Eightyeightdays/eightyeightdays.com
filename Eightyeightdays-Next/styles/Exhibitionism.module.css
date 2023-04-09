@@ -9,8 +9,16 @@
 }
 
 .post_card{
-    background: white;
+    background: black;
 
+}
+
+.post_video{
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: grid;
+    place-items: center;
 }
 
 .post_img{
