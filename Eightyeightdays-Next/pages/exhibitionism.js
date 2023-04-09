@@ -3,6 +3,7 @@ import Head from "next/head";
 import fetchDataForProps from "utils/fetchDataForProps";
 import GalleryPost from "components/GalleryPost";
 import { useState } from "react";
+// import parse from "html-react-parser";
 
 export async function getStaticProps(){
     const galleryItems = await fetchDataForProps("random-media-posts?populate=*");
@@ -31,10 +32,15 @@ export default function Exhibitionism({galleryItems}){
             </div>
             {modal && 
                 <div className={styles.modal} onClick={closeModal}>
-                    <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
+                    <div className={styles.modal_image_container}>
+                        <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
+                    </div>
                     <div className={styles.modal_text_container}>
                         <div className={styles.modal_title}>{modal.title}</div>
-                        <div className={styles.modal_description}>{modal.description}</div>
+                        {(modal.description || modal.html) && <div className={styles.symbol_container}>&#9830;</div>}
+                        {modal.description && <div className={styles.modal_description}>{modal.description}</div>}
+                        {modal.html && <div className={styles.modal_html}>{modal.html}</div>}
+
                     </div>
                 </div>
             }

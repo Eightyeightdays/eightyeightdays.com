@@ -1,8 +1,8 @@
 import parse from "html-react-parser";
-import styles from "../styles/GalleryPost.module.css"
+import styles from "../styles/GalleryPost.module.css";
 
 export default function GalleryPost({data, click}){
-// console.log(data.title)
+console.log(data)
 
     var 
     htmlText,
@@ -22,11 +22,12 @@ export default function GalleryPost({data, click}){
         videoPreview = data.videoPreview.data.attributes.url;
     }
 
+    // should only return an object with non-null values
     return(
         <div className={styles.post_card} onClick={()=>click({
             title: data.title, 
             description: data.description, 
-            html: data.htmlDescription, 
+            html: parse(data.htmlDescription), 
             alt: data.alt, 
             imgUrl: largeImgUrl})}>
 
