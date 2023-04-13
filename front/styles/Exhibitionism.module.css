@@ -12,7 +12,6 @@
     cursor: pointer;
 }
 
-
 .modal{
     position: absolute;
     top: 0;
@@ -23,21 +22,21 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     align-items: center;
-    /* background: rgba(0, 0, 0, 0.2); */
-    background: red;
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    overflow: hidden;
 }
 
 .modal_image_container{
-    background: white;
+    height: 100%;
+    width: 100%;
+    /* background: white; */
     display: grid;
     place-items: center;
 }
 
 .modal_image{
     max-width: 100%;
-    max-height: 100%;
+    max-height: 100vh;
     object-fit: cover;
 }
 
