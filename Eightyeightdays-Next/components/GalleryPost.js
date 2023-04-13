@@ -12,6 +12,8 @@ console.log(data)
 
 
     if(data.htmlDescription){
+        // add style tags to rich text
+        var regex = / /
         htmlText = parse(data.htmlDescription);
     }
     if(data.image.data){
@@ -22,7 +24,7 @@ console.log(data)
         videoPreview = data.videoPreview.data.attributes.url;
     }
 
-    // should only return an object with non-null values
+    // TODO: should only return an object with non-null values
     return(
         <div className={styles.post_card} onClick={()=>click({
             title: data.title, 
