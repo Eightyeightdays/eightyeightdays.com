@@ -1,10 +1,11 @@
 .gallery_container{
-    background: lemonchiffon;
+    /* background: lemonchiffon; */
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    gap: 1rem;
-    padding: 0 10rem;
+    gap: 2rem;
+    /* padding: 0 10rem; */
+    /* width: 60vw; */
     margin-top: 5rem;
 }
 
@@ -12,8 +13,13 @@
     cursor: pointer;
 }
 
+/* .modal_container{
+    height: 100%;
+    width: 100%;
+} */
+
 .modal{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
@@ -21,6 +27,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: 100vh;
     align-items: center;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);

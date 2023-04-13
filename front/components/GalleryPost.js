@@ -2,18 +2,15 @@ import parse from "html-react-parser";
 import styles from "../styles/GalleryPost.module.css";
 
 export default function GalleryPost({data, click}){
-console.log(data)
-
     var imgUrl;
 
     let state = {
-        title: data.title, 
-        description: data.description, 
+        title: data.title,  
         alt: data.alt, 
     };
 
-    if(data.htmlDescription){
-        state.html = parse(data.htmlDescription);
+    if(data.description){
+        state.description = parse(data.description);
     }
     if(data.image.data){
         state.imgUrl = data.image.data.attributes.url;
@@ -24,7 +21,11 @@ console.log(data)
     }
 
     return(
-        <div className={styles.post_card} onClick={()=>click(state)}>
+        <div className={styles.post_card} onClick={()=>{
+            click(state)
+            document.getElementsByTagName("body")[0].style.overflow = "hidden";
+        }
+        }>
 
             {data.videoUrl && 
             <a className={styles.video_link} href={data.videoUrl}>

@@ -26,19 +26,24 @@ export default function Exhibitionism({galleryItems}){
                     <GalleryPost key={index} data={item} click={setModal}/>
                 ))}
             </div>
+            {/* <div className={styles.modal_container}> */}
             {modal && 
-                <div className={styles.modal} onClick={()=>setModal(null)}>
+                <div className={styles.modal} onClick={()=>{
+                    setModal(null)
+                    document.getElementsByTagName("body")[0].style.overflow = "scroll";
+                    }}>
                     <div className={styles.modal_image_container}>
                         <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
                     </div>
                     <div className={styles.modal_text_container}>
                         <div className={styles.modal_title}>{modal.title}</div>
-                        {(modal.description || modal.html) && <div className={styles.symbol_container}>&#9830;</div>}
+                        <div className={styles.symbol_container}>&#9830;</div>
                         {modal.description && <div className={styles.modal_description}>{modal.description}</div>}
-                        {modal.html && <div className={styles.modal_html}>{modal.html}</div>}
+                        
                     </div>
                 </div>
             }
+            {/* </div> */}
         </>
     )
 }
