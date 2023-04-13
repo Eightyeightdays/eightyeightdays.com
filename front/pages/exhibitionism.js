@@ -13,9 +13,6 @@ export async function getStaticProps(){
 
 export default function Exhibitionism({galleryItems}){
     const [modal, setModal] = useState();
-    function closeModal(){
-        setModal(null);
-    }
 
     return(
         <>
@@ -31,7 +28,7 @@ export default function Exhibitionism({galleryItems}){
                 ))}
             </div>
             {modal && 
-                <div className={styles.modal} onClick={closeModal}>
+                <div className={styles.modal} onClick={()=>setModal(null)}>
                     <div className={styles.modal_image_container}>
                         <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
                     </div>
