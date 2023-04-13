@@ -26,7 +26,7 @@ export default function GalleryPost({data, setModalState}){
     }
 
     return(
-        <div className={styles.post_card} onClick={()=>openModal()}>
+        <div className={styles.post_card} onClick={setModalState? ()=>openModal() : null}>
 
             {data.videoUrl && 
                 <a className={styles.video_link} href={data.videoUrl}>

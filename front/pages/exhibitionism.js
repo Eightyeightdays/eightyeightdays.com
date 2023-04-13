@@ -11,6 +11,7 @@ export async function getStaticProps(){
 
 
 export default function Exhibitionism({galleryItems}){
+    console.log(galleryItems)
     const [modal, setModal] = useState();
     function closeModal(){
         setModal(null);
@@ -26,9 +27,18 @@ export default function Exhibitionism({galleryItems}){
             </Head>
             <h1>Random Art gallery</h1>
             <div className={styles.gallery_container}>
-                {galleryItems.map((item, index)=>(
-                    <GalleryPost key={index} data={item} setModalState={setModal}/>
-                ))}
+                {galleryItems.map((item, index)=>{
+                    if(item.videoPreview.data){
+                        return(
+                            <GalleryPost key={index} data={item} setModalState={false}/>
+                        )
+                    }else{
+                        return(
+                            <GalleryPost key={index} data={item} setModalState={setModal}/>
+                        )
+                    }
+                    
+                })}
             </div>
 
             {modal && 
