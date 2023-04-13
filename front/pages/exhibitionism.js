@@ -12,6 +12,10 @@ export async function getStaticProps(){
 
 export default function Exhibitionism({galleryItems}){
     const [modal, setModal] = useState();
+    function closeModal(){
+        setModal(null);
+        document.getElementsByTagName("body")[0].style.overflow = "scroll";
+    }
 
     return(
         <>
@@ -23,15 +27,12 @@ export default function Exhibitionism({galleryItems}){
             <h1>Random Art gallery</h1>
             <div className={styles.gallery_container}>
                 {galleryItems.map((item, index)=>(
-                    <GalleryPost key={index} data={item} click={setModal}/>
+                    <GalleryPost key={index} data={item} setModalState={setModal}/>
                 ))}
             </div>
-            {/* <div className={styles.modal_container}> */}
+
             {modal && 
-                <div className={styles.modal} onClick={()=>{
-                    setModal(null)
-                    document.getElementsByTagName("body")[0].style.overflow = "scroll";
-                    }}>
+                <div className={styles.modal} onClick={()=>closeModal()}>
                     <div className={styles.modal_image_container}>
                         <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
                     </div>
@@ -43,7 +44,7 @@ export default function Exhibitionism({galleryItems}){
                     </div>
                 </div>
             }
-            {/* </div> */}
+            
         </>
     )
 }
