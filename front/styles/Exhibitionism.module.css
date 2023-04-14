@@ -9,7 +9,7 @@
     margin-top: 5rem;
 }
 
-.gallery_container:hover{
+.gallery_container:hover, .modal_button:hover{
     cursor: pointer;
 }
 
@@ -26,6 +26,25 @@
     align-items: center;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
+}
+
+.modal_button{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    /* border: 1px solid black; */
+    border: 1px solid white;
+    background: black;
+    color: white;
+    padding: 0.5rem;
+    transition: all 0.3s ease-in;
+}
+
+.modal_button:hover{
+    background: white;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.4);
+    color: black;
+    border: 1px solid black;
 }
 
 .modal_image_container{

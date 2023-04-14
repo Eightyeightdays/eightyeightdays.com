@@ -42,11 +42,12 @@ export default function Exhibitionism({galleryItems}){
             </div>
 
             {modal && 
-                <div className={styles.modal} onClick={()=>closeModal()}>
+                <div className={styles.modal}>
                     <div className={styles.modal_image_container}>
                         <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
                     </div>
                     <div className={styles.modal_text_container}>
+                        <div className={styles.modal_button} onClick={()=>closeModal()}>X</div>
                         <div className={styles.modal_title}>{modal.title}</div>
                         <div className={styles.symbol_container}>&#9830;</div>
                         {modal.description && <div className={styles.modal_description}>{modal.description}</div>}
