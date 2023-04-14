@@ -56,7 +56,7 @@ export default function Writing({articles, images, categories}){
     let nmaArr = []
     let blogArr = []
 
-    articles.map(post=>{
+    articles.map(post=>{    // this can be moved to getStaticProps ***
         post.categories.data.map(category=>{
             switch(category.attributes.category){
                 case "Art":
