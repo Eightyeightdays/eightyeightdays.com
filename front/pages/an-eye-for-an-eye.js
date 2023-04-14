@@ -5,7 +5,7 @@ import fetchDataForProps from 'utils/fetchDataForProps.js'
 import { useState } from 'react';
 
 export async function getStaticProps(){
-    const categoryImages = await fetchDataForProps("category-preview-images?populate=*");
+    const categoryImages = await fetchDataForProps("visual-category-preview-images?populate=*");
     categoryImages.forEach(el => extractImageUrl(el));
     const previews = await fetchDataForProps("previews?populate=*");
     var curatedPreviews = [];
@@ -61,7 +61,7 @@ export async function getStaticProps(){
 }
 
 export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews}){
-    console.log(curatedPreviews)
+    console.log(categoryImages)
     const [category, setCategory] = useState(null);
 
     return(
@@ -75,32 +75,32 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
 
             <div className={styles.category_container}>
                 <div className={styles.category_card} onClick={()=>setCategory(curatedPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[6].url}`} alt="" className={styles.category_card_img} />
+                    <img src={`http://localhost:1337${categoryImages[5].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>Catastrophe & The Curator</div>
                     <div className={styles.category_card_description}>Curated series of found and accidental photos</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>setCategory(darkroomPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[8].url}`} alt="" className={styles.category_card_img} />
+                    <img src={`http://localhost:1337${categoryImages[4].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>Photosynthesis</div>
                     <div className={styles.category_card_description}>Alternative photography processes for the darkroom</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>setCategory(miscPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[11].url}`} alt="" className={styles.category_card_img} />
+                    <img src={`http://localhost:1337${categoryImages[3].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>Illustrious</div>
                     <div className={styles.category_card_description}>Conceptual photography series</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>setCategory(domesticationPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[10].url}`} alt="" className={styles.category_card_img} />
+                    <img src={`http://localhost:1337${categoryImages[2].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>Domestication</div>
                     <div className={styles.category_card_description}>A group of series based on the conceptual metaphor of &quot;domestication&quot;</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>setCategory(videoPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[9].url}`} alt="" className={styles.category_card_img} />
+                    <img src={`http://localhost:1337${categoryImages[1].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>To Succeed</div>
                     <div className={styles.category_card_description}>Moving images / Images moving</div>
                 </div>
                 <div className={styles.category_card} onClick={()=>setCategory(proceduralPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[7].url}`} alt="" className={styles.category_card_img} />
+                    <img src={`http://localhost:1337${categoryImages[0].url}`} alt="" className={styles.category_card_img} />
                     <div className={styles.category_card_title}>The Process Is The Subject</div>
                     <div className={styles.category_card_description}>Photographic series focused on the process</div>
                 </div>

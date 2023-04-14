@@ -2,16 +2,23 @@ import fetchDataForProps from '../utils/fetchDataForProps.js'
 import ArticlePreview from '../components/ArticlePreview.js'
 import Head from 'next/head.js'
 import styles from "../styles/Human-Writes.module.css"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export async function getStaticProps(){
-    let data = await fetchDataForProps("articles?populate=*")
-    data.sort((a,b)=> a.createdAt > b.createdAt? -1 : 1)
-    const test = await fetch("http://localhost:1337/api/category-preview-images?populate=*")
-    const json = await test.json()
-    const categories = await fetchDataForProps("categories?populate=*")
+    let articles = await fetchDataForProps("articles?populate=*");
+    articles.sort((a,b)=> a.createdAt > b.createdAt? -1 : 1); // Sort by newest first
 
-  return {props: {articles: data, images: json, categories: categories}}
+    const imageData = await fetch("http://localhost:1337/api/writing-category-preview-images?populate=*");
+    const images = await imageData.json();
+    // create an object where the category type is the key and the image url is the value //
+    let imageObj = {};
+    images.data.map(item=>{
+        imageObj[item.attributes.type] = item.attributes.image.data.attributes.url;
+    })
+
+    const categories = await fetchDataForProps("categories?populate=*");
+
+  return {props: {articles: articles, images: imageObj, categories: categories}}
 }
 
 export function Category({title, imgUrl, fun, count, latest, name}){
@@ -32,20 +39,9 @@ export function Category({title, imgUrl, fun, count, latest, name}){
     )
 }
 
-function getImageUrls(data){
-    // let arr =[]
-    let imageObj = {};
-    data.data.map(obj=>{
-        // arr.push(obj.attributes.image.data.attributes.url)
-        imageObj[obj.attributes.title] = obj.attributes.image.data.attributes.url;
-    })
-    // return arr
-    return imageObj;
-}
-
 export default function Writing({articles, images, categories}){
-    const urls = getImageUrls(images)
-    console.log(urls);
+    console.log(images);
+    
     const [posts, setPosts] = useState(articles)
     const [flag, setFlag] = useState(false)
     
@@ -126,7 +122,7 @@ export default function Writing({articles, images, categories}){
 
             <div className={styles.category_container}>
                     {categories.map((item, index) =>(
-                        <Category name={`category_${index}`} key={index} title={item.category} imgUrl={urls[item.category]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
+                        <Category name={`category_${index}`} key={index} title={item.category} imgUrl={images[item.category]} fun={FilterCategories} count={item.articles.data.length} latest={item.articles.data[0].attributes.publishedAt}/>
                     ))}
             </div>
 
