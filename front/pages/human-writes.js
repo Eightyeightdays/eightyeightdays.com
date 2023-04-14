@@ -21,7 +21,7 @@ export async function getStaticProps(){
   return {props: {articles: articles, images: imageObj, categories: categories}}
 }
 
-export function Category({title, imgUrl, fun, count, latest, name}){
+export function Category({title, imgUrl, fun, count, latest, name}){    // extract to component
     let date = new Date(latest).toString().substring(0,15)
     let text ="";
     if(count == 1){

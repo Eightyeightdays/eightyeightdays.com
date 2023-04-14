@@ -3,10 +3,30 @@ import styles from "../styles/An-Eye-For-An-Eye.module.css"
 import Link from 'next/link'
 import fetchDataForProps from 'utils/fetchDataForProps.js'
 import { useState } from 'react';
+import VisualCategoryCard from 'components/VisualCategoryCard';
 
 export async function getStaticProps(){
     const categoryImages = await fetchDataForProps("visual-category-preview-images?populate=*");
+
+    function extractImageUrl(obj){
+        let url = obj.image.data.attributes.url;
+        obj.url = url;
+        // delete obj.image; // can be removed from the structure if data not needed
+    }
+    
     categoryImages.forEach(el => extractImageUrl(el));
+    // only keep url and alt text for categoryImages
+    let imgObj = {};
+    categoryImages.map(item=>{
+        imgObj[item.type] = item;
+        delete imgObj[item.type].id;
+        delete imgObj[item.type].image;
+        delete imgObj[item.type].publishedAt;
+        delete imgObj[item.type].createdAt;
+        delete imgObj[item.type].updatedAt;
+        delete imgObj[item.type].type;
+    })
+
     const previews = await fetchDataForProps("previews?populate=*");
     var curatedPreviews = [];
     var darkroomPreviews = [];
@@ -15,11 +35,7 @@ export async function getStaticProps(){
     var proceduralPreviews = [];
     var miscPreviews = [];
 
-    function extractImageUrl(obj){
-        let url = obj.image.data.attributes.url;
-        obj.url = url;
-        // delete obj.image; // can be removed from the structure if data not needed
-    }
+    
 
     previews.forEach(preview =>{
         switch(preview.type){       // in case of errors verify this corresponds with collection attributes in API
@@ -56,12 +72,11 @@ export async function getStaticProps(){
         domesticationPreviews: domesticationPreviews,
         proceduralPreviews: proceduralPreviews,
         miscPreviews: miscPreviews,
-        categoryImages: categoryImages  
+        categoryImages: imgObj  
     }}
 }
 
 export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews}){
-    console.log(categoryImages)
     const [category, setCategory] = useState(null);
 
     return(
@@ -72,38 +87,14 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                 <link rel="icon" href="/favicon.png" />
             </Head>
             <h1>An Eye For An Eye</h1>
-
+            
             <div className={styles.category_container}>
-                <div className={styles.category_card} onClick={()=>setCategory(curatedPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[5].url}`} alt="" className={styles.category_card_img} />
-                    <div className={styles.category_card_title}>Catastrophe & The Curator</div>
-                    <div className={styles.category_card_description}>Curated series of found and accidental photos</div>
-                </div>
-                <div className={styles.category_card} onClick={()=>setCategory(darkroomPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[4].url}`} alt="" className={styles.category_card_img} />
-                    <div className={styles.category_card_title}>Photosynthesis</div>
-                    <div className={styles.category_card_description}>Alternative photography processes for the darkroom</div>
-                </div>
-                <div className={styles.category_card} onClick={()=>setCategory(miscPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[3].url}`} alt="" className={styles.category_card_img} />
-                    <div className={styles.category_card_title}>Illustrious</div>
-                    <div className={styles.category_card_description}>Conceptual photography series</div>
-                </div>
-                <div className={styles.category_card} onClick={()=>setCategory(domesticationPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[2].url}`} alt="" className={styles.category_card_img} />
-                    <div className={styles.category_card_title}>Domestication</div>
-                    <div className={styles.category_card_description}>A group of series based on the conceptual metaphor of &quot;domestication&quot;</div>
-                </div>
-                <div className={styles.category_card} onClick={()=>setCategory(videoPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[1].url}`} alt="" className={styles.category_card_img} />
-                    <div className={styles.category_card_title}>To Succeed</div>
-                    <div className={styles.category_card_description}>Moving images / Images moving</div>
-                </div>
-                <div className={styles.category_card} onClick={()=>setCategory(proceduralPreviews)}>
-                    <img src={`http://localhost:1337${categoryImages[0].url}`} alt="" className={styles.category_card_img} />
-                    <div className={styles.category_card_title}>The Process Is The Subject</div>
-                    <div className={styles.category_card_description}>Photographic series focused on the process</div>
-                </div>
+                <VisualCategoryCard setCategory={setCategory} categoryData={curatedPreviews} url={categoryImages["Curated"].url} alt={""} title="Catastrophe & The Curator" description="Curated series of found and accidental photos"/>
+                <VisualCategoryCard setCategory={setCategory} categoryData={darkroomPreviews} url={categoryImages["Darkroom"].url} alt={""} title="Photosynthesis" description="Alternative photography processes for the darkroom"/>
+                <VisualCategoryCard setCategory={setCategory} categoryData={miscPreviews} url={categoryImages["Conceptual"].url} alt={""} title="Illustrious" description="Conceptual photography series"/>
+                <VisualCategoryCard setCategory={setCategory} categoryData={domesticationPreviews} url={categoryImages["Domestication"].url} alt={""} title="Domestication" description="A group of series based on the conceptual metaphor of &quot;domestication&quot;"/>
+                <VisualCategoryCard setCategory={setCategory} categoryData={videoPreviews} url={categoryImages["Video"].url} alt={""} title="To Succeed" description="Moving images / Images moving"/>
+                <VisualCategoryCard setCategory={setCategory} categoryData={proceduralPreviews} url={categoryImages["Process Based"].url} alt={""} title="The Process Is The Subject" description="Photographic series focused on the process"/>
             </div>
 
             <div className={styles.divider_container}>
