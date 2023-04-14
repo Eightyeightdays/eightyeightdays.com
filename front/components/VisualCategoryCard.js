@@ -1,6 +1,5 @@
 import styles from "../styles/VisualCategoryCard.module.css";
 
-
 export default function VisualCategoryCard({setCategory, categoryData, url, alt, title, description}){
     return(
         <div className={styles.category_card} onClick={()=>setCategory(categoryData)}>

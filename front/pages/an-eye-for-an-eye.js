@@ -4,6 +4,7 @@ import Link from 'next/link'
 import fetchDataForProps from 'utils/fetchDataForProps.js'
 import { useState } from 'react';
 import VisualCategoryCard from 'components/VisualCategoryCard';
+import ProjectPreviewCard from 'components/ProjectPreviewCard';
 
 export async function getStaticProps(){
     const categoryImages = await fetchDataForProps("visual-category-preview-images?populate=*");
@@ -103,15 +104,8 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
 
             <div className={styles.preview_container}>
                 {category &&  category.map((preview, index) =>
-                    (<Link className={styles.preview_card} key={index} href={`/an-eye-for-an-eye/${preview.type}/${preview.slug}`}>
-                        <img className={styles.preview_card_img} src={`http://localhost:1337${preview.url}`} alt={preview.alt} />
-                        <div className={styles.preview_card_title}>{preview.title}</div>
-                        <div className={styles.preview_card_description}>{preview.description}</div>
-                        <div className={styles.preview_card_year}>{preview.year}</div>
-                        <div className={styles.symbol_container}>&#9830;</div>
-                    </Link>)
-                )
-                }
+                    (<ProjectPreviewCard index={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} />)
+                )}
             </div>
         </>
     )
