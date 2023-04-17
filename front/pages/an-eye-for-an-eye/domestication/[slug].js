@@ -2,6 +2,7 @@ import fetchDataForProps from "../../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
 import parse from "html-react-parser";
 import styles from "../../../styles/Project.module.css";
+import Link from "next/link.js";
 
 export async function getStaticPaths(){
     const projects = await fetchDataForProps("visual-projects?&filters[type][$eq]=domestication");
@@ -35,6 +36,7 @@ export default function Project({data}){
             </Head>
 
             <div className={styles.main_container}>
+                <div><Link href="/an-eye-for-an-eye?category=domesticationPreviews">Navigate to main category</Link></div>
                 <div className={styles.project_container}>
                     <h1 className={styles.project_title}>{project.title}</h1>
                     <div className={styles.project_content}>{content}</div>

@@ -4,6 +4,7 @@ import styles from "../styles/An-Eye-For-An-Eye.module.css"
 import fetchDataForProps from 'utils/fetchDataForProps.js'
 import VisualCategoryCard from 'components/VisualCategoryCard';
 import ProjectPreviewCard from 'components/ProjectPreviewCard';
+import { useSearchParams } from "next/navigation";
 
 export async function getStaticProps(){
     const categoryImages = await fetchDataForProps("visual-category-preview-images?populate=*");
@@ -77,7 +78,7 @@ export async function getStaticProps(){
         },
         domestication: {
             title: "Domestication",
-            description: "A group of series based on the conceptual metaphor of &quot;domestication&quot;"
+            description: "A group of series based on the conceptual metaphor of 'domestication'"
         },
         video: {
             title: "To Succeed",
@@ -102,9 +103,14 @@ export async function getStaticProps(){
 }
 
 export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data}){
-    console.log(categoryImages)
-    const [category, setCategory] = useState(null);
-
+    
+    const params = useSearchParams();
+    var search = params.get("category");
+    if(search === "domesticationPreviews"){
+        search = domesticationPreviews;
+    }
+    const [category, setCategory] = useState(search);
+   
     return(
         <>
             <Head>
@@ -129,7 +135,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
 
             <div className={styles.preview_container}>
                 {category &&  category.map((preview, index) =>
-                    (<ProjectPreviewCard index={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} />)
+                    (<ProjectPreviewCard key={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} />)
                 )}
             </div>
         </>
