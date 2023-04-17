@@ -103,13 +103,20 @@ export async function getStaticProps(){
 }
 
 export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data}){
-    
     const params = useSearchParams();
-    var search = params.get("category");
-    if(search === "domesticationPreviews"){
-        search = domesticationPreviews;
+    var query = params.get("category");
+    var initialState;
+
+    switch(query){
+        case "domestication":
+            initialState = domesticationPreviews;
+        break;
+        case "photosynthesis":
+            initialState = darkroomPreviews;
+        break;
     }
-    const [category, setCategory] = useState(search);
+    
+    const [category, setCategory] = useState(initialState);
    
     return(
         <>

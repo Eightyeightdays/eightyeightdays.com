@@ -9,7 +9,6 @@ export default function Header(){
             <header id="header" className={styles.header}>
                 <div className={styles.header_title}>
                     <Link href="/">Eightyeightdays</Link>
-                    {/* <Link href="/">EIGHTYEIGHTDAYS</Link> */}
                 </div>
                 <Menu />
             </header>

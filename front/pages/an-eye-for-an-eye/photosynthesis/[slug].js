@@ -2,11 +2,11 @@ import fetchDataForProps from "../../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
 import parse from "html-react-parser";
 import styles from "../../../styles/Project.module.css";
+import Link from "next/link.js";
 
 
 export async function getStaticPaths(){
-    // const projects = await fetchDataForProps("projects");
-    const projects = await fetchDataForProps("projects?&filters[type][$eq]=photosynthesis")
+    const projects = await fetchDataForProps("visual-projects?&filters[type][$eq]=photosynthesis")
 
     const paths = projects.map(obj=>({
         params: {slug: obj.slug}
@@ -16,7 +16,7 @@ export async function getStaticPaths(){
 }
 
 export async function getStaticProps({params}){
-    const apiUrl = `projects?populate=*&filters[slug][$eq]=${params.slug}`
+    const apiUrl = `visual-projects?populate=*&filters[slug][$eq]=${params.slug}`
     const data = await fetchDataForProps(apiUrl)
 
     return {props: {data}}
@@ -37,6 +37,7 @@ export default function Project({data}){
             </Head>
 
             <div className={styles.main_container}>
+            <div><Link href="/an-eye-for-an-eye?category=photosynthesis">Navigate to main category</Link></div>
                 <div className={styles.project_container}>
                     <h1 className={styles.project_title}>{project.title}</h1>
                     <div className={styles.project_content}>{content}</div>
