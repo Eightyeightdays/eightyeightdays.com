@@ -2,13 +2,14 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: gold;
+    background: rgba(237, 237, 237, 0.3);
     color: white;
     padding: 1rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
     transition: background 0.3s ease-out;
+    backdrop-filter: blur(5px);
 }
 
 .footer a{
@@ -18,10 +19,12 @@
 
 .icon{
     height: 2rem;
+    /* fill: white; */
+    transition: transform 0.1s ease-out;
 }
 
 .footer:hover .icon{
-    fill: gold;
+    fill: white;
 }
 
 .footer:hover{
@@ -29,5 +32,5 @@
 }
 
 .icon:hover{
-    transform: scale(1.5);
+    /* transform: scale(1.5); */
 }

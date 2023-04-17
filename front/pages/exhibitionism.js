@@ -5,7 +5,6 @@ import GalleryPost from "components/GalleryPost";
 import { useState } from "react";
 
 export async function getStaticProps(){
-    // const galleryItems = await fetchDataForProps("random-media-posts?populate=*");
     const galleryItems = await fetchDataForProps("random-media-posts?sort[0]=publishedAt:desc&populate=*");
     return {props:{galleryItems:galleryItems}}
 }

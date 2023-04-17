@@ -1,11 +1,11 @@
 .gallery_container{
     /* background: lemonchiffon; */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     place-items: center;
     gap: 2rem;
     /* padding: 0 10rem; */
-    /* width: 60vw; */
+    padding: 2rem;
     margin-top: 5rem;
 }
 
