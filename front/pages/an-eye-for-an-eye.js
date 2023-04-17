@@ -8,27 +8,24 @@ import ProjectPreviewCard from 'components/ProjectPreviewCard';
 export async function getStaticProps(){
     const categoryImages = await fetchDataForProps("visual-category-preview-images?populate=*");
 
-    function extractImageUrl(obj){
-        let url = obj.image.data.attributes.url;
+    function extractImageUrl(obj, type){
+        let url = obj[`${type}`].data.attributes.url;
         obj.url = url;
-        // delete obj.image; // can be removed from the structure if data not needed
+        delete obj[`${type}`];
+        delete obj.publishedAt;
+        delete obj.createdAt;
+        delete obj.updatedAt;
+        delete obj.id;
     }
     
-    categoryImages.forEach(el => extractImageUrl(el));
-
-    // only keep url and alt text for categoryImages
     let imgObj = {};
     categoryImages.map(item=>{
+        extractImageUrl(item, "image");
         imgObj[item.type] = item;
-        delete imgObj[item.type].id;
-        delete imgObj[item.type].image;
-        delete imgObj[item.type].publishedAt;
-        delete imgObj[item.type].createdAt;
-        delete imgObj[item.type].updatedAt;
-        delete imgObj[item.type].type;
+        delete item.type;
     })
 
-    const previews = await fetchDataForProps("previews?populate=*");
+    const previews = await fetchDataForProps("visual-projects?&populate=*");
     var curatedPreviews = [];
     var darkroomPreviews = [];
     var videoPreviews = [];
@@ -39,27 +36,27 @@ export async function getStaticProps(){
     previews.forEach(preview =>{
         switch(preview.type){       // in case of errors verify this corresponds with collection attributes in API
             case "catastrophe-and-the-curator":
-                extractImageUrl(preview);
+                extractImageUrl(preview, "previewImg");
                 curatedPreviews.push(preview);
             break;
             case "photosynthesis":
-                extractImageUrl(preview);
+                extractImageUrl(preview, "previewImg");
                 darkroomPreviews.push(preview);
             break;
             case "to-succeed":
-                extractImageUrl(preview);
+                extractImageUrl(preview, "previewImg");
                 videoPreviews.push(preview)
             break;
             case "domestication":
-                extractImageUrl(preview);
+                extractImageUrl(preview, "previewImg");
                 domesticationPreviews.push(preview);
             break;
             case "procedural":
-                extractImageUrl(preview);
+                extractImageUrl(preview, "previewImg");
                 proceduralPreviews.push(preview);
             break;
             case "illustrious":
-                extractImageUrl(preview);
+                extractImageUrl(preview, "previewImg");
                 miscPreviews.push(preview);
         }
     })
@@ -105,6 +102,7 @@ export async function getStaticProps(){
 }
 
 export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data}){
+    console.log(categoryImages)
     const [category, setCategory] = useState(null);
 
     return(

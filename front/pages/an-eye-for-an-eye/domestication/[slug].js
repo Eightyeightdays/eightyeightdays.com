@@ -4,8 +4,7 @@ import parse from "html-react-parser";
 import styles from "../../../styles/Project.module.css";
 
 export async function getStaticPaths(){
-    // const projects = await fetchDataForProps("projects");
-    const projects = await fetchDataForProps("projects?&filters[type][$eq]=domestication");
+    const projects = await fetchDataForProps("visual-projects?&filters[type][$eq]=domestication");
 
     const paths = projects.map(obj=>({
         params: {slug: obj.slug}
@@ -15,7 +14,7 @@ export async function getStaticPaths(){
 }
 
 export async function getStaticProps({params}){
-    const apiUrl = `projects?populate=*&filters[slug][$eq]=${params.slug}`
+    const apiUrl = `visual-projects?populate=*&filters[slug][$eq]=${params.slug}`
     const data = await fetchDataForProps(apiUrl)
 
     return {props: {data}}
