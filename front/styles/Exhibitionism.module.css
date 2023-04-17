@@ -72,10 +72,19 @@
     gap: 1rem;
     padding: 2rem;
     font-family: "Cormorant";
+    position: relative;
 }
 
 .modal_title{
     font-size: 1.5rem;
+}
+
+.modal_date{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-weight: bold;
+    color: rgb(105, 105, 105);
 }
 
 .symbol_container{

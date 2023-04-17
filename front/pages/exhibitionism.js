@@ -5,13 +5,14 @@ import GalleryPost from "components/GalleryPost";
 import { useState } from "react";
 
 export async function getStaticProps(){
-    const galleryItems = await fetchDataForProps("random-media-posts?populate=*");
+    // const galleryItems = await fetchDataForProps("random-media-posts?populate=*");
+    const galleryItems = await fetchDataForProps("random-media-posts?sort[0]=publishedAt:desc&populate=*");
     return {props:{galleryItems:galleryItems}}
 }
 
 
 export default function Exhibitionism({galleryItems}){
-    console.log(galleryItems)
+    // console.log(galleryItems)
     const [modal, setModal] = useState();
     function closeModal(){
         setModal(null);
@@ -51,7 +52,7 @@ export default function Exhibitionism({galleryItems}){
                         <div className={styles.modal_title}>{modal.title}</div>
                         <div className={styles.symbol_container}>&#9830;</div>
                         {modal.description && <div className={styles.modal_description}>{modal.description}</div>}
-                        
+                        <div className={styles.modal_date}><u>{modal.date}</u></div>
                     </div>
                 </div>
             }

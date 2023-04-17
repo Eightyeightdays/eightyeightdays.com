@@ -3,10 +3,13 @@ import styles from "../styles/GalleryPost.module.css";
 
 export default function GalleryPost({data, setModalState}){
     var imgUrl;
+    var dateObj = new Date(data.publishedAt);
+    var date = dateObj.toDateString();
 
     let state = {
         title: data.title,  
         alt: data.alt, 
+        date: date,
     };
 
     if(data.description){
