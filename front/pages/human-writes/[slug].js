@@ -34,15 +34,13 @@ export default function Article({data}){
                 <link rel="icon" href="/favicon.png" />
             </Head>
             <div className={styles.main_container}>
-            <div>
-                <Link href={`/human-writes?category=${category}`}>Navigate to {category} category</Link>
-            </div>
-
+                <Link className={styles.navigate_button} href={`/human-writes?category=${category}#previewContainer`}>Back to {category}</Link>
                 <div className={styles.article_container}>
                     <h1 className={styles.article_title}>{article.title}</h1>
                     <h2 className={styles.article_description}>{article.description}</h2>
                     <div className={styles.divider}></div>
                     <div className={styles.article_content}>{content}</div>
+                    <div className={styles.symbol_container}>&#9830; &#9830; &#9830;</div>
                 </div>
             </div>
         </>

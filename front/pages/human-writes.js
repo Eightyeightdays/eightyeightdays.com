@@ -160,7 +160,7 @@ export default function Writing({articles, images, categories, art, photography,
                 <div className={styles.divider}></div>
             </div>
             
-            <div className={styles.preview_container}>
+            <div className={styles.preview_container} id="previewContainer">
                 {posts && posts.map((obj, index) => (
                     <ArticlePreview data={obj} key={index} />
                 ))}

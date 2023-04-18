@@ -37,7 +37,7 @@ export default function Project({data}){
             </Head>
 
             <div className={styles.main_container}>
-            <div><Link href="/an-eye-for-an-eye?category=photosynthesis">Navigate to main category</Link></div>
+            <div><Link href="/an-eye-for-an-eye?category=photosynthesis#previewContainer">Navigate to main category</Link></div>
                 <div className={styles.project_container}>
                     <h1 className={styles.project_title}>{project.title}</h1>
                     <div className={styles.project_content}>{content}</div>

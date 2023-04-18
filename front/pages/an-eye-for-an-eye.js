@@ -146,7 +146,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                 <div className={styles.divider}></div>
             </div>
 
-            <div className={styles.preview_container}>
+            <div className={styles.preview_container} id="previewContainer">
                 {category &&  category.map((preview, index) =>
                     (<ProjectPreviewCard key={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} />)
                 )}
