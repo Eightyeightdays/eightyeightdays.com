@@ -13,6 +13,7 @@ export async function getStaticProps(){
 export default function Exhibitionism({galleryItems}){
     // console.log(galleryItems)
     const [modal, setModal] = useState();
+    const subtitle = "Not everything is a series.";
 
     function closeModal(){
         setModal(null);
@@ -27,21 +28,27 @@ export default function Exhibitionism({galleryItems}){
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <h1 className={styles.title}>Exhibitionism</h1>
+            <div className={styles.heading_container}>
+                <h1 className={styles.title}>Exhibitionism</h1>
+                <h2 className={styles.subtitle}>{subtitle}</h2>
+                <div className={styles.divider}></div>
+            </div>
 
             <div className={styles.gallery_container}>
-                {galleryItems.map((item, index)=>{
-                    if(item.videoPreview.data){
-                        return(
-                            <GalleryPost key={index} data={item} setModalState={false}/>
-                        )
-                    }else{
-                        return(
-                            <GalleryPost key={index} data={item} setModalState={setModal}/>
-                        )
-                    }
-                    
-                })}
+                <div className={styles.gallery}>
+                    {galleryItems.map((item, index)=>{
+                        if(item.videoPreview.data){
+                            return(
+                                <GalleryPost key={index} data={item} setModalState={false}/>
+                            )
+                        }else{
+                            return(
+                                <GalleryPost key={index} data={item} setModalState={setModal}/>
+                            )
+                        }
+                        
+                    })}
+                </div>
             </div>
 
             {modal && 

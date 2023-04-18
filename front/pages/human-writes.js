@@ -96,6 +96,8 @@ export default function Writing({articles, images, categories, art, photography,
         setPosts(articles)
     }
 
+    const subtitle = "Texts, articles, poems and thoughts, on various topics from art and rationality to exercise, mental health, and darkroom photography."
+    
     return(
         <>
             <Head>
@@ -104,7 +106,11 @@ export default function Writing({articles, images, categories, art, photography,
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <h1 className={styles.title}>Human Writes</h1>
+            <div className={styles.heading_container}>
+                <h1 className={styles.title}>Human Writes</h1>
+                <h2 className={styles.subtitle}>{subtitle}</h2>
+                <div className={styles.divider}></div>
+            </div>
 
             <div className={styles.category_container}>
                 {categories.map((item, index) =>(

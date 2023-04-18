@@ -1,9 +1,26 @@
+.heading_container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    font-family: "Cormorant";
+    align-items: center;
+    /* background: white; */
+}
+
 .title{
-    text-align: end;
-    font-family: "Alegreya";
     letter-spacing: 0.15rem;
     text-decoration: underline;
-    padding-right: 2rem;
+    
+}
+
+.subtitle{
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    color: rgb(105, 105, 105);
+    font-style: italic;
+    width: 50%;
+    text-align: center;
 }
 
 .category_container{
@@ -13,7 +30,7 @@
     place-items: center;
     gap: 2rem;
     padding: 2rem;
-    margin-top: 5rem;
+    /* margin-top: 2rem; */
 }
 
 .preview_card_title{
