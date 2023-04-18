@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import Head from 'next/head.js'
-import fetchDataForProps from '../utils/fetchDataForProps.js'
-import ArticlePreview from '../components/ArticlePreview.js'
-import WritingCategoryCard from 'components/WritingCategoryCard.js'
-import styles from "../styles/Human-Writes.module.css"
+import { useState } from 'react';
+import Head from 'next/head.js';
+import fetchDataForProps from '../utils/fetchDataForProps.js';
+import ArticlePreview from '../components/ArticlePreview.js';
+import WritingCategoryCard from 'components/WritingCategoryCard.js';
+import styles from "../styles/Human-Writes.module.css";
+import { useSearchParams } from "next/navigation";
 
 export async function getStaticProps(){
     let articles = await fetchDataForProps("articles?populate=*");
@@ -65,8 +66,34 @@ export async function getStaticProps(){
 }
 
 export default function Writing({articles, images, categories, art, photography, philosophy, writing, nma, unclog}){
-    const [posts, setPosts] = useState(articles)
     const [flag, setFlag] = useState(false)
+    const params = useSearchParams();
+    var query = params.get("category");
+    var initialState;
+
+    switch(query){
+        case "Art":
+            initialState = art;
+        break;
+        case "Photography":
+            initialState = photography;
+        break;
+        case "Philosophy":
+            initialState = philosophy;
+        break;
+        case "Non Martial Arts":
+            initialState = nma;
+        break;
+        case "Creative Writing":
+            initialState = writing;
+        break;
+        case "Unclog":
+            initialState = unclog;
+        break;
+    }
+    
+    const [posts, setPosts] = useState(initialState)
+
 
     function FilterCategories(category){
         switch(category){
@@ -97,7 +124,7 @@ export default function Writing({articles, images, categories, art, photography,
     }
 
     const subtitle = "Texts, articles, poems and thoughts, on various topics from art and rationality to exercise, mental health, and darkroom photography."
-    
+
     return(
         <>
             <Head>

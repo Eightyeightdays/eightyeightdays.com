@@ -10,11 +10,12 @@ export default function Home() {
           <meta name="description" content="Eightyeightdays" />
           <link rel="icon" href="/favicon.png" />
         </Head>
+
         <div className={styles.container}>
 
           <h1 className={styles.title}>Welcome</h1>
-          <p>What is this website about?</p>
-          <div className={styles.test}>TEST test</div>
+          <h2 className={styles.subtitle}>What is this website about?</h2>
+          
         
         </div>
       </div>
