@@ -125,7 +125,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
                 <meta name="description" content="Eightyeightdays" />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <h1>An Eye For An Eye</h1>
+            <h1 className={styles.title}>An Eye For An Eye</h1>
             
             <div className={styles.category_container}>
                 <VisualCategoryCard setCategory={setCategory} categoryData={curatedPreviews} url={categoryImages["Curated"].url} alt={categoryImages["Curated"].alt} title={data.curated.title} description={data.curated.description} />

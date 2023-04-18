@@ -13,9 +13,10 @@ export async function getStaticProps(){
 export default function Exhibitionism({galleryItems}){
     // console.log(galleryItems)
     const [modal, setModal] = useState();
+
     function closeModal(){
         setModal(null);
-        document.getElementsByTagName("body")[0].style.overflow = "scroll";
+        document.getElementsByTagName("body")[0].style.overflowY = "scroll";
     }
 
     return(
@@ -25,7 +26,9 @@ export default function Exhibitionism({galleryItems}){
                 <meta name="description" content="Eightyeightdays" />
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <h1>Random Art gallery</h1>
+
+            <h1 className={styles.title}>Exhibitionism</h1>
+
             <div className={styles.gallery_container}>
                 {galleryItems.map((item, index)=>{
                     if(item.videoPreview.data){

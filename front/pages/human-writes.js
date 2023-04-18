@@ -104,7 +104,7 @@ export default function Writing({articles, images, categories, art, photography,
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <h1>Human Writes</h1>
+            <h1 className={styles.title}>Human Writes</h1>
 
             <div className={styles.category_container}>
                 {categories.map((item, index) =>(

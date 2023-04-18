@@ -4,14 +4,20 @@
     /* color: black; */
     position: fixed;
     top: 0;
-    /* padding-top: 1rem; */
     width: 100%;
     z-index: 99;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 3rem 1fr 5fr;
     align-items: center;
-    height: 4rem;
+    height: 6rem;
     backdrop-filter: blur(10px);
+    padding: 0 2rem;
+    transition: all 0.3s ease-out;
+}
+
+.header_icon{
+    height: 40%;
+    transition: all 0.5s ease-out;
 }
 
 .header_title{
@@ -23,4 +29,18 @@
     font-family: "Quicksand";
     padding-left: 1rem;
     height: 3rem;
+    transition: all 0.3s ease-out;
+}
+
+.header:hover{
+    background: black;
+    color: white;
+}
+
+.header:hover .header_icon{
+    filter: invert();
+}
+
+.header_title:hover{
+    color: white;
 }
