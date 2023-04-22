@@ -1,9 +1,8 @@
 import fetchDataForProps from "../../../utils/fetchDataForProps.js"
-import styles from "../../../styles/GorillaGlue.module.css"
 import ProjectTemplate from "components/ProjectTemplate.js";
 
 export async function getStaticProps(){
-    const projectSlug = "gorilla-glue";
+    const projectSlug = "context-conflicts";
     const apiUrl = `visual-projects?populate=*&filters[slug][$eq]=${projectSlug}`;
     const rawData = await fetchDataForProps(apiUrl);
     var imgArr =[];
@@ -23,7 +22,7 @@ export async function getStaticProps(){
     return {props: {data}}
 }
 
-export default function GorillaGlue({data}){ 
+export default function ContextConflicts({data}){ 
     console.log(data)
     
     return (

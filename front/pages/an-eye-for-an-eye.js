@@ -35,7 +35,7 @@ export async function getStaticProps(){
     var miscPreviews = [];
 
     previews.forEach(preview =>{
-        switch(preview.type){       // in case of errors verify this corresponds with collection attributes in API
+        switch(preview.type){       // in case of errors verify this corresponds with collection attributes in API (Visual Project -> type)
             case "catastrophe-and-the-curator":
                 extractImageUrl(preview, "previewImg");
                 curatedPreviews.push(preview);
@@ -52,7 +52,7 @@ export async function getStaticProps(){
                 extractImageUrl(preview, "previewImg");
                 domesticationPreviews.push(preview);
             break;
-            case "procedural":
+            case "the-process-is-the-subject":
                 extractImageUrl(preview, "previewImg");
                 proceduralPreviews.push(preview);
             break;
@@ -114,11 +114,24 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
         case "photosynthesis":
             initialState = darkroomPreviews;
         break;
+        case "catastrophe-and-the-curator":
+            initialState = curatedPreviews;
+        break;
+        case "the-process-is-the-subject":
+            initialState = proceduralPreviews;
+        break;
+        case "illustrious":
+            initialState = miscPreviews;
+        break;
+        case "to-succeed":
+            initialState = videoPreviews;
+        break;
     }
     
     const [category, setCategory] = useState(initialState);
-    const subtitle = "Photography in many forms, from curated collections and alternative processes to videos, conceptual series and explorations into printmaking.";
+    const subtitle = "Photography in many forms, from curated collections and alternative processes, to videos, conceptual series, and explorations into printmaking.";
     
+    console.log(curatedPreviews)
     return(
         <>
             <Head>

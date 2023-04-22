@@ -1,9 +1,8 @@
 import fetchDataForProps from "../../../utils/fetchDataForProps.js"
-import styles from "../../../styles/GorillaGlue.module.css"
 import ProjectTemplate from "components/ProjectTemplate.js";
 
 export async function getStaticProps(){
-    const projectSlug = "gorilla-glue";
+    const projectSlug = "fleurs-a-l-interieur";
     const apiUrl = `visual-projects?populate=*&filters[slug][$eq]=${projectSlug}`;
     const rawData = await fetchDataForProps(apiUrl);
     var imgArr =[];
@@ -23,7 +22,7 @@ export async function getStaticProps(){
     return {props: {data}}
 }
 
-export default function GorillaGlue({data}){ 
+export default function Fleurs({data}){ 
     console.log(data)
     
     return (
