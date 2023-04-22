@@ -18,6 +18,7 @@ export async function getStaticProps(){
 
     rawData[0].images = imgArr;    // replace image objects with only the essential data
     const data = rawData[0];
+    data.mainUrl = data.imgMain.data.attributes.url; // add main image url simply
 
     return {props: {data}}
 }
