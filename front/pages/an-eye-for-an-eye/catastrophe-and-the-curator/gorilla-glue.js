@@ -1,6 +1,7 @@
-import fetchDataForProps from "../../../utils/fetchDataForProps.js"
-import styles from "../../../styles/GorillaGlue.module.css"
+import fetchDataForProps from "../../../utils/fetchDataForProps.js";
+import styles from "../../../styles/GorillaGlue.module.css";
 import ProjectTemplate from "components/ProjectTemplate.js";
+import SimpleImageGallery from "components/SimpleImageGallery.js";
 
 export async function getStaticProps(){
     const projectSlug = "gorilla-glue";
@@ -29,7 +30,7 @@ export default function GorillaGlue({data}){
     
     return (
        <ProjectTemplate data={data}>
-            {/* <div>TEST</div> */}
+            <SimpleImageGallery images={data.images}/>
        </ProjectTemplate>
     )
 }

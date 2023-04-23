@@ -28,3 +28,27 @@ a{
   text-decoration-line: none;
 }
 
+/* STYLES FOR CKEDITOR CLASSES */
+
+.image{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background: black; */
+  height: 70vh;
+  margin-top: 2rem;
+}
+
+.image img{
+  height: 100%;
+  align-self: center;
+}
+
+.image figcaption{
+  /* color: white; */
+  margin: 1rem;
+  text-align: center;
+  text-decoration: underline dashed 1px black;
+}
+
