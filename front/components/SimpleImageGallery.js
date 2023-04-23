@@ -1,7 +1,6 @@
 import styles from "../styles/SimpleImageGallery.module.css"
-import { useState
- } from "react";
-export default function ImageGallery({images}){
+import { useState } from "react";
+export default function ImageGallery({images, style}){
     console.log(images)
     
     const [current, setCurrent] = useState(0);
@@ -22,7 +21,7 @@ export default function ImageGallery({images}){
     }
 
     return(
-        <div className={styles.gallery_container}>
+        <div className={style? style :styles.gallery_container}>
             <div className={styles.gallery_card}>
                 <div className={styles.previous_btn} onClick={()=>setCurrent(previous)}>
                     <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">

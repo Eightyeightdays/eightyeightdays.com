@@ -1,12 +1,10 @@
 .gallery_container{
-   margin: 1rem;
+   margin-top: 2rem;
    gap: 2rem; 
-   /* background: gold; */
 }
 
 .gallery_card{
     background: gainsboro;
-    margin-top: 2rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -17,6 +15,7 @@
 
 .gallery_img{
     object-fit: cover;
+    height: 100%;
 }
 
 .gallery_img_caption{
@@ -26,7 +25,6 @@
 .previous_btn, .next_btn{
     position: absolute;
     top: 0;
-    /* background: palegreen; */
     height: 100%;
     display: flex;
     align-items: center;
