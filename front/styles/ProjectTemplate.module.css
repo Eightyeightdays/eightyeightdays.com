@@ -1,6 +1,6 @@
 .outer_container{
     /* background: gold; */
-    margin-top: 0rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;

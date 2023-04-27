@@ -1,5 +1,7 @@
 import fetchDataForProps from "../../../utils/fetchDataForProps.js"
 import ProjectTemplate from "components/ProjectTemplate.js";
+import styles from "../../../styles/ConditionalGallery.module.css";
+import SimpleImageGallery from "../../../components/SimpleImageGallery.js";
 
 export async function getStaticProps(){
     const projectSlug = "roots-routes";
@@ -24,11 +26,11 @@ export async function getStaticProps(){
 }
 
 export default function RootsRoutes({data}){ 
-    console.log(data)
+    // console.log(data)
     
     return (
        <ProjectTemplate data={data}>
-            {/* <div>TEST</div> */}
+                        <SimpleImageGallery images={data.images} style={styles.simple_gallery} />
        </ProjectTemplate>
     )
 }

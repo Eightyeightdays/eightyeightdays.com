@@ -30,6 +30,7 @@
 
 .preview_card_description{
     font-style: italic;
+    text-decoration: dashed underline;
 }
 
 .preview_card_preview{

@@ -1,7 +1,7 @@
 import fetchDataForProps from "../../../utils/fetchDataForProps.js"
 import ProjectTemplate from "components/ProjectTemplate.js";
 import SimpleImageGallery from "components/SimpleImageGallery.js"
-import styles from "../../../styles/TEST.module.css"
+import styles from "../../../styles/ConditionalGallery.module.css"
 
 export async function getStaticProps(){
     const projectSlug = "context-conflicts";
@@ -26,7 +26,7 @@ export async function getStaticProps(){
 }
 
 export default function ContextConflicts({data}){ 
-    console.log(data)
+    // console.log(data)
     
     return (
        <ProjectTemplate data={data}>

@@ -131,7 +131,6 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
     const [category, setCategory] = useState(initialState);
     const subtitle = "Photography in many forms, from curated collections and alternative processes, to videos, conceptual series, and explorations into printmaking.";
     
-    console.log(curatedPreviews)
     return(
         <>
             <Head>

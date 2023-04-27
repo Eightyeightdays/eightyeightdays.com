@@ -1,7 +1,7 @@
 import styles from "../styles/SimpleImageGallery.module.css"
 import { useState } from "react";
 export default function ImageGallery({images, style}){
-    console.log(images)
+    // console.log(images)
     
     const [current, setCurrent] = useState(0);
     const length = images.length -1;

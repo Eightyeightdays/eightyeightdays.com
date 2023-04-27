@@ -26,7 +26,7 @@ export async function getStaticProps(){
 }
 
 export default function GorillaGlue({data}){ 
-    console.log(data)
+    // console.log(data)
     
     return (
        <ProjectTemplate data={data}>

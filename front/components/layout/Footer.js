@@ -4,7 +4,7 @@ export default function Footer(){
     return(
         <footer className={styles.footer}>
             <div className={styles.footer_left}>
-                <div> &#169; 2023 X / Eightyeightdays</div>
+                <div> &#169; 2023 X </div>
             </div>
             <div className={styles.footer_right}>
                 <a href="https://github.com/Eightyeightdays">

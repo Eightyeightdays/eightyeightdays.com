@@ -66,9 +66,12 @@ export async function getStaticProps(){
 }
 
 export default function Writing({articles, images, categories, art, photography, philosophy, writing, nma, unclog}){
-    const [flag, setFlag] = useState(false)
     const params = useSearchParams();
     var query = params.get("category");
+    const initialFlag = query? true : false;
+    const [flag, setFlag] = useState(initialFlag)
+    
+
     var initialState;
 
     switch(query){
@@ -123,7 +126,7 @@ export default function Writing({articles, images, categories, art, photography,
         setPosts(articles)
     }
 
-    const subtitle = "Texts, articles, poems and thoughts, on various topics from art and rationality to exercise, mental health, and darkroom photography."
+    const subtitle = "Texts and articles on various topics from art and rationality, to exercise, mental health, and darkroom photography."
 
     return(
         <>

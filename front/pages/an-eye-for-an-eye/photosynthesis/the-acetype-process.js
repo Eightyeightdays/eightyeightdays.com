@@ -26,7 +26,7 @@ export async function getStaticProps(){
 }
 
 export default function TheAcetypeProcess({data}){ 
-    console.log(data)
+    // console.log(data)
     const embedCode = data.embedCode ? parse(data.embedCode) : null;
     return (
        <ProjectTemplate data={data}>
