@@ -8,8 +8,15 @@ export default function WritingCategoryCard({title, imgUrl, fun, count, latest, 
     }else{
         text = "Posts"
     }
+
+    function handleClick(){
+        fun(title)
+        setTimeout(()=>{
+            document.getElementById("previewContainer").scrollIntoView({block:"end", behavior:"smooth"})
+        }, 300);
+    }
     return(
-        <div id={name} className={`${styles.category_card} card`} onClick={()=>fun(title)}>
+        <div id={name} className={`${styles.category_card} card`} onClick={handleClick}>
             <img src={`http://localhost:1337${imgUrl}`} className={styles.category_card_img} alt="" ></img>
             <div className={styles.category_card_title}>{title}</div>
             <p className={styles.category_card_details}>{count} {text}</p>
