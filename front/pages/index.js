@@ -28,7 +28,9 @@ export default function Home({info}) {
             <img className={styles.main_image} src={`http://localhost:1337${url}`} alt=""></img>
             <div className={styles.divider}></div>
             <h2 className={styles.description}>{description}</h2>
-            {embedCode}
+            <div className={styles.video_container}>
+              {embedCode}
+            </div>
           </div>
         </div>
       </div>
