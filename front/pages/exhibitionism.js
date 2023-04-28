@@ -46,7 +46,6 @@ export default function Exhibitionism({galleryItems}){
                                 <GalleryPost key={index} data={item} setModalState={setModal}/>
                             )
                         }
-                        
                     })}
                 </div>
             </div>
@@ -61,7 +60,7 @@ export default function Exhibitionism({galleryItems}){
                         <div className={styles.modal_title}>{modal.title}</div>
                         <div className={styles.symbol_container}>&#9830;</div>
                         {modal.description && <div className={styles.modal_description}>{modal.description}</div>}
-                        <div className={styles.modal_date}><u>{modal.date}</u></div>
+                        <div className={styles.modal_date}>{modal.date}</div>
                     </div>
                 </div>
             }

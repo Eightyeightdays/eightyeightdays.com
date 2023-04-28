@@ -2,3 +2,9 @@
     padding: 6rem 1rem;
     background: #ededed;
 }
+
+@media(max-width: 800px){
+    .content{
+        padding: 6rem 0;
+    }
+}
