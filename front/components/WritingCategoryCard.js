@@ -12,7 +12,7 @@ export default function WritingCategoryCard({title, imgUrl, fun, count, latest, 
     function handleClick(){
         fun(title)
         setTimeout(()=>{
-            document.getElementById("previewContainer").scrollIntoView({block:"end", behavior:"smooth"})
+            document.getElementById("previewContainer").scrollIntoView({block:"start", behavior:"smooth"})
         }, 300);
     }
     return(

@@ -4,7 +4,7 @@ export default function VisualCategoryCard({setCategory, categoryData, url, alt,
     function handleClick(){
         setCategory(categoryData);
         setTimeout(()=>{
-            document.getElementById("previewContainer").scrollIntoView({block:"end", behavior:"smooth"})
+            document.getElementById("previewContainer").scrollIntoView({block:"start", behavior:"smooth"})
         }, 100);
     }
     return(
