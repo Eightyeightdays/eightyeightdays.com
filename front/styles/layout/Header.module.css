@@ -33,12 +33,66 @@
 .header:hover{
     background: black;
     color: white;
+
+}
+
+.header:hover .header_title{
+    color: white;
 }
 
 .header:hover .header_icon{
     filter: invert();
 }
 
+.header:hover  .menu_button{
+    background: white;
+    color: black;
+}
+
 .header_title:hover{
     color: white;
+}
+
+.menu_button{
+    background: black;
+    color: white;
+    padding: 0.25rem 1rem;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.3s ease-out;
+    font-family: 'Cormorant';
+}
+
+.menu_button:hover{
+    cursor: pointer;
+}
+
+/*  */
+
+@media (max-width: 850px){
+    .header{
+        grid-template-columns: 3rem 1fr;
+        gap: 0.5rem;
+    }
+    .menu_button{
+        display: flex;  
+    }
+}
+
+@media (max-width:480px){
+    .header{
+        grid-template-columns: 2rem 1fr;
+        padding: 1rem;
+    }
+    .header a{
+        width: max-content;
+    }
+    .header_icon{
+        height: 2rem;
+    }
+    .header_title{
+        padding: 0;
+    }
 }

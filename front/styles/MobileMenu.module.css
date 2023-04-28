@@ -1,0 +1,36 @@
+.menu{
+    display: none;
+    background: rgba(220, 220, 220, 1);
+    font-family: "Cormorant";
+    text-decoration-line: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6rem 0 0 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.menu_item{
+    display: grid;
+    place-items: center;
+    padding: 0.5rem 0.5rem;
+    transition: all 0.3s ease-out;
+    letter-spacing: 0.15rem;
+}
+
+.menu_item:hover{
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    background: black;
+}
+
+@media (max-width: 850px){
+    .menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+    }
+}

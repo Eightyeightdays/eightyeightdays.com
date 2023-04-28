@@ -24,3 +24,22 @@
     text-decoration: underline;
     text-underline-offset: 10px;
 }
+
+/*  */
+
+@media (max-width: 1040px){
+    .menu{
+        gap: 0rem;
+        margin-right: 0;
+    }
+    .menu_item{
+        letter-spacing: normal;
+        font-size: 1rem;
+    }   
+}
+
+@media (max-width: 850px){
+    .menu{
+        display: none;
+    }
+}
