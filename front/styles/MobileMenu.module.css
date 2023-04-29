@@ -22,7 +22,11 @@
 .menu_item:hover{
     text-decoration: underline;
     text-underline-offset: 10px;
-    background: black;
+    background: white;
+}
+
+.menu:hover{
+    color: black;
 }
 
 @media (max-width: 850px){

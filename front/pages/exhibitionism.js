@@ -53,7 +53,7 @@ export default function Exhibitionism({galleryItems}){
             {modal && 
                 <div className={styles.modal}>
                     <div className={styles.modal_image_container}>
-                        <img className={styles.modal_image} alt={modal.alt} src={`http://localhost:1337${modal.imgUrl}`} />
+                        <img className={styles.modal_image} alt={modal.alt} src={`${process.env.BASE_URL}${modal.imgUrl}`} />
                     </div>
                     <div className={styles.modal_text_container}>
                         <div className={styles.modal_button} onClick={()=>closeModal()}>X</div>

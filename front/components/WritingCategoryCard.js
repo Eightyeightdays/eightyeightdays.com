@@ -17,7 +17,7 @@ export default function WritingCategoryCard({title, imgUrl, fun, count, latest, 
     }
     return(
         <div id={name} className={`${styles.category_card} card`} onClick={handleClick}>
-            <img src={`http://localhost:1337${imgUrl}`} className={styles.category_card_img} alt="" ></img>
+            <img src={`${process.env.BASE_URL}${imgUrl}`} className={styles.category_card_img} alt="" ></img>
             <div className={styles.category_card_title}>{title}</div>
             <p className={styles.category_card_details}>{count} {text}</p>
             <p className={styles.category_card_details}>Updated: {date}</p>

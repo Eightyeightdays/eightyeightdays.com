@@ -25,7 +25,7 @@ export default function Home({info}) {
           
           <div className={styles.inner_container}>
             <h1 className={styles.title}>{info.title}</h1>
-            <img className={styles.main_image} src={`http://localhost:1337${url}`} alt=""></img>
+            <img className={styles.main_image} src={`${process.env.BASE_URL}${url}`} alt=""></img>
             <div className={styles.divider}></div>
             <h2 className={styles.description}>{description}</h2>
             <div className={styles.video_container}>
