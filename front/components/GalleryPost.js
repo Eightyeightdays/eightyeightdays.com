@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 import styles from "../styles/GalleryPost.module.css";
 
-export default function GalleryPost({data, setModalState}){
+export default function GalleryPost({data, setModalState, BASE_URL}){
     var imgUrl;
     var dateObj = new Date(data.publishedAt);
     var date = dateObj.toDateString();
@@ -33,12 +33,12 @@ export default function GalleryPost({data, setModalState}){
 
             {data.videoUrl && 
                 <a className={styles.video_link} href={data.videoUrl}>
-                    <img className={styles.post_video} src={`${process.env.BASE_URL}${state.videoPreview}`} alt={data.alt}/>
+                    <img className={styles.post_video} src={`${BASE_URL}${state.videoPreview}`} alt={data.alt}/>
                 </a>
             }
 
             {imgUrl && 
-                <img className={styles.post_img} src={`${process.env.BASE_URL}${imgUrl}`} alt={data.alt} />
+                <img className={styles.post_img} src={`${BASE_URL}${imgUrl}`} alt={data.alt} />
             }
 
         </div>

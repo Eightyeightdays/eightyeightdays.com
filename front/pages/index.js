@@ -6,10 +6,11 @@ import parse from "html-react-parser"
 export async function getStaticProps(){
   const data = await fetchDataForProps("page-infos?filters[pageName][$eq]=index&populate=*");
   const info = data[0];
-  return {props:{info}}
+  const BASE_URL = process.env.BASE_URL;
+  return {props:{info:info, BASE_URL:BASE_URL}}
 }
 
-export default function Home({info}) {
+export default function Home({info, BASE_URL}) {
   const description = parse(info.description);
   const embedCode = parse(info.embedCode)
   const url = info.image.data.attributes.url;
@@ -25,7 +26,7 @@ export default function Home({info}) {
           
           <div className={styles.inner_container}>
             <h1 className={styles.title}>{info.title}</h1>
-            <img className={styles.main_image} src={`${process.env.BASE_URL}${url}`} alt=""></img>
+            <img className={styles.main_image} src={`${BASE_URL}${url}`} alt=""></img>
             <div className={styles.divider}></div>
             <h2 className={styles.description}>{description}</h2>
             <div className={styles.video_container}>

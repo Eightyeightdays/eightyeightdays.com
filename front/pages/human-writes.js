@@ -50,8 +50,9 @@ export async function getStaticProps(){
     })
 
     const categories = await fetchDataForProps("categories?populate=*");
+    const BASE_URL = process.env.BASE_URL;
 
-  return {props: 
+    return {props: 
     {
         articles: articles, 
         images: imageObj, 
@@ -61,11 +62,12 @@ export async function getStaticProps(){
         philosophy: philArr,
         writing: textArr,
         nma: nmaArr,
-        unclog: blogArr
+        unclog: blogArr,
+        BASE_URL: BASE_URL
     }}
 }
 
-export default function Writing({articles, images, categories, art, photography, philosophy, writing, nma, unclog}){
+export default function Writing({articles, images, categories, art, photography, philosophy, writing, nma, unclog, BASE_URL}){
     const params = useSearchParams();
     var query = params.get("category");
     const initialFlag = query? true : false;
@@ -151,6 +153,7 @@ export default function Writing({articles, images, categories, art, photography,
                         fun={FilterCategories} 
                         count={item.articles.data.length} 
                         latest={item.articles.data[0].attributes.publishedAt}
+                        BASE_URL={BASE_URL}
                     />
                 ))}
             </div>

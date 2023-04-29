@@ -200,7 +200,7 @@ function getImageUrls(data) {
 }
 function Writing({ articles , images , categories  }) {
     const urls = getImageUrls(images);
-    console.log(urls);
+    // console.log(urls);
     const [posts, setPosts] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(articles);
     const [flag, setFlag] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
     let artArr = [];

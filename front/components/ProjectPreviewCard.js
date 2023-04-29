@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styles from "../styles/ProjectPreviewCard.module.css";
 
-export default function ProjectPreviewCard({type, slug, url, alt, title, description, year}){
+export default function ProjectPreviewCard({type, slug, url, alt, title, description, year, BASE_URL}){
     return(
         <Link className={styles.preview_card} href={`/an-eye-for-an-eye/${type}/${slug}`}>
-            <img className={styles.preview_card_img} src={`${process.env.BASE_URL}${url}`} alt={alt} />
+            <img className={styles.preview_card_img} src={`${BASE_URL}${url}`} alt={alt} />
             <div className={styles.preview_card_title}>{title}</div>
             <div className={styles.preview_card_description}>{description}</div>
             <div className={styles.symbol_container}>&#9830;</div>

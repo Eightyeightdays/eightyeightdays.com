@@ -1,6 +1,6 @@
 import styles from "../styles/WritingCategoryCard.module.css";
 
-export default function WritingCategoryCard({title, imgUrl, fun, count, latest, name}){
+export default function WritingCategoryCard({title, imgUrl, fun, count, latest, name, BASE_URL}){
     let date = new Date(latest).toString().substring(0,15)
     let text ="";
     if(count == 1){
@@ -17,7 +17,7 @@ export default function WritingCategoryCard({title, imgUrl, fun, count, latest, 
     }
     return(
         <div id={name} className={`${styles.category_card} card`} onClick={handleClick}>
-            <img src={`${process.env.BASE_URL}${imgUrl}`} className={styles.category_card_img} alt="" ></img>
+            <img src={`${BASE_URL}${imgUrl}`} className={styles.category_card_img} alt="" ></img>
             <div className={styles.category_card_title}>{title}</div>
             <p className={styles.category_card_details}>{count} {text}</p>
             <p className={styles.category_card_details}>Updated: {date}</p>

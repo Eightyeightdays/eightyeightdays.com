@@ -3,7 +3,7 @@ import styles from "../styles/ProjectTemplate.module.css"
 import parse from "html-react-parser"
 import Link from "next/link";
 
-export default function ProjectTemplate({data, children}){
+export default function ProjectTemplate({data, children, BASE_URL}){
     const content = parse(data.content);
     const dataType = data.type.replace(/-/g, " ");
 
@@ -18,7 +18,7 @@ export default function ProjectTemplate({data, children}){
                 <Link className={styles.navigate_button} href={`/an-eye-for-an-eye?category=${data.type}#previewContainer`}>Back to <div className={styles.dataType}>{dataType}</div></Link>
                 <div className={styles.main_container}>
                     <h1 className={styles.title}>{data.title}</h1>
-                    <img src={`${process.env.BASE_URL}${data.mainUrl}`} alt={``} className={styles.main_img}></img>
+                    <img src={`${BASE_URL}${data.mainUrl}`} alt={``} className={styles.main_img}></img>
                     <div className={styles.divider}></div>
                     <div className={styles.content}>{content}</div>
                 </div>

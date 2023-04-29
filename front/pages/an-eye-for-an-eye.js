@@ -90,6 +90,8 @@ export async function getStaticProps(){
         },
     }
 
+    const BASE_URL = process.env.BASE_URL;
+
     return {props: {
         curatedPreviews: curatedPreviews,
         darkroomPreviews: darkroomPreviews,
@@ -98,11 +100,12 @@ export async function getStaticProps(){
         proceduralPreviews: proceduralPreviews,
         miscPreviews: miscPreviews,
         categoryImages: imgObj,
-        data: categoryData 
+        data: categoryData,
+        BASE_URL: BASE_URL
     }}
 }
 
-export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data}){
+export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data, BASE_URL}){
     const params = useSearchParams();
     var query = params.get("category");
     var initialState;
@@ -146,12 +149,12 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
             </div>
             
             <div className={styles.category_container}>
-                <VisualCategoryCard setCategory={setCategory} categoryData={curatedPreviews} url={categoryImages["Curated"].url} alt={categoryImages["Curated"].alt} title={data.curated.title} description={data.curated.description} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={darkroomPreviews} url={categoryImages["Darkroom"].url} alt={categoryImages["Darkroom"].alt} title={data.darkroom.title} description={data.darkroom.description} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={miscPreviews} url={categoryImages["Conceptual"].url} alt={categoryImages["Conceptual"].alt} title={data.conceptual.title} description={data.conceptual.description} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={domesticationPreviews} url={categoryImages["Domestication"].url} alt={categoryImages["Domestication"].alt} title={data.domestication.title} description={data.domestication.description} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={videoPreviews} url={categoryImages["Video"].url} alt={categoryImages["Video"].alt} title={data.video.title} description={data.video.description} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={proceduralPreviews} url={categoryImages["Process Based"].url} alt={categoryImages["Process Based"].alt} title={data.process.title} description={data.process.description} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={curatedPreviews} url={categoryImages["Curated"].url} alt={categoryImages["Curated"].alt} title={data.curated.title} description={data.curated.description} BASE_URL={BASE_URL} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={darkroomPreviews} url={categoryImages["Darkroom"].url} alt={categoryImages["Darkroom"].alt} title={data.darkroom.title} description={data.darkroom.description} BASE_URL={BASE_URL} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={miscPreviews} url={categoryImages["Conceptual"].url} alt={categoryImages["Conceptual"].alt} title={data.conceptual.title} description={data.conceptual.description} BASE_URL={BASE_URL} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={domesticationPreviews} url={categoryImages["Domestication"].url} alt={categoryImages["Domestication"].alt} title={data.domestication.title} description={data.domestication.description} BASE_URL={BASE_URL} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={videoPreviews} url={categoryImages["Video"].url} alt={categoryImages["Video"].alt} title={data.video.title} description={data.video.description} BASE_URL={BASE_URL} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={proceduralPreviews} url={categoryImages["Process Based"].url} alt={categoryImages["Process Based"].alt} title={data.process.title} description={data.process.description} BASE_URL={BASE_URL} />
             </div>
 
             <div className={styles.divider_container}>
@@ -160,7 +163,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
 
             <div className={styles.preview_container}  id="previewContainer">
                 {category &&  category.map((preview, index) =>
-                    (<ProjectPreviewCard key={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} />)
+                    (<ProjectPreviewCard key={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} BASE_URL={BASE_URL}/>)
                 )}
             </div>
         </>

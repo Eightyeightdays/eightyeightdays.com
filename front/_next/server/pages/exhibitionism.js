@@ -53,7 +53,7 @@ html_react_parser__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__
 
 
 function GalleryPost({ data , click  }) {
-    console.log(data);
+    // console.log(data);
     var htmlText, imgUrl, largeImgUrl, videoPreview;
     if (data.htmlDescription) {
         // add style tags to rich text

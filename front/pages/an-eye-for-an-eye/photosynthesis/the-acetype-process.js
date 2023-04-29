@@ -22,14 +22,15 @@ export async function getStaticProps(){
     const data = rawData[0];
     data.mainUrl = data.imgMain.data.attributes.url; // add main image url simply
 
-    return {props: {data}}
+    const BASE_URL = process.env.BASE_URL;
+    return {props: {data:data, BASE_URL:BASE_URL}}
 }
 
-export default function TheAcetypeProcess({data}){ 
+export default function TheAcetypeProcess({data, BASE_URL}){ 
     // console.log(data)
     const embedCode = data.embedCode ? parse(data.embedCode) : null;
     return (
-       <ProjectTemplate data={data}>
+       <ProjectTemplate data={data} BASE_URL={BASE_URL}>
             <div className={styles.video}>{embedCode}</div>
        </ProjectTemplate>
     )

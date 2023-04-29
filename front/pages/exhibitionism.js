@@ -6,11 +6,12 @@ import { useState } from "react";
 
 export async function getStaticProps(){
     const galleryItems = await fetchDataForProps("random-media-posts?sort[0]=publishedAt:desc&populate=*");
-    return {props:{galleryItems:galleryItems}}
+    const BASE_URL = process.env.BASE_URL;
+    return {props:{galleryItems:galleryItems, BASE_URL:BASE_URL}}
 }
 
 
-export default function Exhibitionism({galleryItems}){
+export default function Exhibitionism({galleryItems, BASE_URL}){
     // console.log(galleryItems)
     const [modal, setModal] = useState();
     const subtitle = "\"We've painted beautiful wall to wall murals in our selfish youth, so we either face the four-storey critics, or die for our art.  I'll probably be found hung in a gallery somewhere.\"";
@@ -39,11 +40,11 @@ export default function Exhibitionism({galleryItems}){
                     {galleryItems.map((item, index)=>{
                         if(item.videoPreview.data){
                             return(
-                                <GalleryPost key={index} data={item} setModalState={false}/>
+                                <GalleryPost key={index} data={item} setModalState={false} BASE_URL={BASE_URL}/>
                             )
                         }else{
                             return(
-                                <GalleryPost key={index} data={item} setModalState={setModal}/>
+                                <GalleryPost key={index} data={item} setModalState={setModal} BASE_URL={BASE_URL}/>
                             )
                         }
                     })}
@@ -53,7 +54,7 @@ export default function Exhibitionism({galleryItems}){
             {modal && 
                 <div className={styles.modal}>
                     <div className={styles.modal_image_container}>
-                        <img className={styles.modal_image} alt={modal.alt} src={`${process.env.BASE_URL}${modal.imgUrl}`} />
+                        <img className={styles.modal_image} alt={modal.alt} src={`${BASE_URL}${modal.imgUrl}`} />
                     </div>
                     <div className={styles.modal_text_container}>
                         <div className={styles.modal_button} onClick={()=>closeModal()}>X</div>
