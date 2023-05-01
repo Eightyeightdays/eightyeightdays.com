@@ -1,6 +1,8 @@
 .gallery_container{
-   margin-top: 2rem;
-   gap: 2rem; 
+    margin-top: 2rem;
+    gap: 2rem; 
+    z-index: 0;
+    position: relative;
 }
 
 .gallery_card{
@@ -11,11 +13,13 @@
     align-items: center;
     height: 100%;
     position: relative;
+    z-index: 0;
 }
 
 .gallery_img{
     object-fit: cover;
-    height: 100%;
+    max-width: 100vw;
+    
 }
 
 .gallery_img_caption{
@@ -56,4 +60,30 @@
 
 .previous_btn:hover .icon, .next_btn:hover .icon{
     fill: white;
+}
+
+@media (max-width: 980px){
+    .gallery_card{
+        padding: 0;
+        margin-bottom: 2rem;
+    }
+    .icon{
+        height: 3rem;
+    }
+    .previous_btn, .next_btn{
+        top: 120%;
+        height: 0;
+        padding: 0;
+        border-left: 0px solid transparent;
+        border-right: 0px solid transparent;
+    }
+    .previous_btn{
+        left: 5rem;
+    }
+    .next_btn{
+        right: 5rem;
+    }
+    .previous_btn:hover .icon, .next_btn:hover .icon{
+        fill: black;
+    }
 }

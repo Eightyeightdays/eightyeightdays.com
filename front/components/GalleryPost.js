@@ -17,7 +17,7 @@ export default function GalleryPost({data, setModalState, BASE_URL}){
     }
     if(data.image.data){
         state.imgUrl = data.image.data.attributes.url;
-        imgUrl = data.image.data.attributes.formats.small.url;
+        imgUrl = data.image.data.attributes.url;
     }
     if(data.videoPreview.data){
         state.videoPreview = data.videoPreview.data.attributes.url;

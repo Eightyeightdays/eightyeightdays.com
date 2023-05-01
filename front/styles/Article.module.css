@@ -53,11 +53,30 @@
     padding: 0.5rem;
     border-left: 1px solid black;
     border-right: 1px solid black;
+    backdrop-filter: blur(5px);
 }
 
 .navigate_button:hover{
     background: black;
     color: white;
+}
+
+@media (max-width:1080px){
+    .article_container{
+        width: 100%;
+    }
+    .article_title{
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 650px){
+    .article_content{
+        width: 90%;
+    }
+    .navigate_button{
+        left: auto;
+    }
 }
 
 

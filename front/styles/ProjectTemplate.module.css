@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     font-family: "Cormorant";
+    position: relative;
 }
 
 .main_container{
@@ -13,7 +14,6 @@
     flex-direction: column;
     align-items: center;
     width: 75%;
-
 }
 
 .title{
@@ -36,6 +36,7 @@
     border-left: 1px solid black;
     border-right: 1px solid black;
     backdrop-filter: blur(5px);
+    z-index: 999;
 }
 
 .navigate_button:hover{
@@ -59,4 +60,22 @@
 
 .main_img{
     /* width: 100vw; */
+}
+
+@media (max-width: 1080px){
+    .title{
+        margin-top: 2rem;
+    }
+    .main_container{
+        width: 100%;
+    }
+    .content{
+        width: 90%;
+    }
+}
+
+@media (max-width: 420px){
+    .navigate_button{
+        left: auto;
+    }
 }

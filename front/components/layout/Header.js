@@ -19,7 +19,8 @@ export default function Header(){
         <>
             <header id="header" className={styles.header}>
                 <Link href="/">
-                    <img className={styles.header_icon} src="http://localhost:1337/uploads/Leaf_Photogram_95f13ca374.png"></img>
+                    {/* <img className={styles.header_icon} src="http://localhost:1337/uploads/Header_Icon_Leaf_Photogram_f750f7923c.png"></img> */}
+                    <img className={styles.header_icon} src="./uploads/Header_Icon_Leaf_Photogram_f750f7923c.png"></img>
                 </Link>
                 <div className={styles.header_title}>
                     <Link href="/">Eightyeightdays</Link>
