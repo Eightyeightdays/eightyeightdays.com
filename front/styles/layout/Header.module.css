@@ -96,4 +96,7 @@
     .header_title{
         padding: 0;
     }
+    .menu_button{
+        padding: 0.25rem;
+    }
 }
