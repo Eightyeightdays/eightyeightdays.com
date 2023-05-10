@@ -7,8 +7,12 @@ import styles from "../styles/Human-Writes.module.css";
 import { useSearchParams } from "next/navigation";
 
 export async function getStaticProps(){
-    let articles = await fetchDataForProps("articles?populate=*");
-    articles.sort((a,b)=> a.createdAt > b.createdAt? -1 : 1); // Sort by newest first
+    const URL = process.env.WP_API;
+    const POSTS_ENDPOINT = process.env.POSTS_API_ENDPOINT;
+    const IMAGES_ENDPOINT = process.env.VISUAL_CATEGORY_PREVIEWS_API_ENDPOINT;
+    const res = await fetch(`${URL}${POSTS_ENDPOINT}`);
+    const articles = await res.json();
+    
     let artArr = []
     let photoArr = []
     let philArr = []
@@ -17,8 +21,8 @@ export async function getStaticProps(){
     let blogArr = []
 
     articles.map(post=>{    
-        post.categories.data.map(category=>{
-            switch(category.attributes.category){
+        post.acf.category.map(category=>{
+            switch(category){
                 case "Art":
                 artArr.push(post);
                 break;
@@ -40,17 +44,25 @@ export async function getStaticProps(){
         })
     })
 
-    const imageData = await fetch("http://localhost:1337/api/writing-category-preview-images?populate=*");
+    const imageData = await fetch(`${URL}${IMAGES_ENDPOINT}`);
     const images = await imageData.json();
 
     // create an object where the category type is the key and the image url is the value //
     let imageObj = {};
-    images.data.map(item=>{
-        imageObj[item.attributes.type] = item.attributes.image.data.attributes.url;
+    images.map(item=>{
+        imageObj[item.acf.category] = item.acf.image.url;  
     })
 
-    const categories = await fetchDataForProps("categories?populate=*");
     const BASE_URL = process.env.BASE_URL;
+    
+    const categories = [
+        {category: "Art", count: artArr.length, latest: artArr[0].date},
+        {category: "Photography", count: photoArr.length, latest: photoArr[0].date},
+        {category: "Philosophy", count: philArr.length, latest: philArr[0].date},
+        {category: "Creative Writing", count: textArr.length, latest: textArr[0].date},
+        {category: "Non Martial Arts", count: nmaArr.length, latest: nmaArr[0].date},
+        {category: "Unclog", count: blogArr.length, latest: blogArr[0].date}
+    ]
 
     return {props: 
     {
@@ -151,8 +163,8 @@ export default function Writing({articles, images, categories, art, photography,
                         key={index} title={item.category} 
                         imgUrl={images[item.category]} 
                         fun={FilterCategories} 
-                        count={item.articles.data.length} 
-                        latest={item.articles.data[0].attributes.publishedAt}
+                        count={item.count} 
+                        latest={item.latest}
                         BASE_URL={BASE_URL}
                     />
                 ))}
