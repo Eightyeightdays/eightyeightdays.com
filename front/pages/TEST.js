@@ -3,9 +3,10 @@ import Head from "next/head";
 import styles from "../styles/TEST.module.css"
 
 export async function getStaticProps(){
-   const json = await fetch("http://eightyeightdays.com/wp-json/wp/v2/posts?_fields=title,content,yoast_head") ;
-   const data = await json.json()
-   return {props:{data}}
+    const WP_API = process.env.WP_API;
+    const json = await fetch(`${WP_API}/posts?_fields=title,content,yoast_head`) ;
+    const data = await json.json()
+    return {props:{data}}
 }
 
 export default function Test({data}){

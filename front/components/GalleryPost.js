@@ -1,26 +1,26 @@
 import parse from "html-react-parser";
 import styles from "../styles/GalleryPost.module.css";
 
-export default function GalleryPost({data, setModalState, BASE_URL}){
+export default function GalleryPost({data, setModalState}){
     var imgUrl;
-    var dateObj = new Date(data.publishedAt);
+    var dateObj = new Date(data.date);
     var date = dateObj.toDateString();
 
     let state = {
-        title: data.title,  
-        alt: data.alt, 
+        title: data.title.rendered,  
+        alt: data.acf.image.alt, 
         date: date,
     };
 
-    if(data.description){
-        state.description = parse(data.description);
+    if(data.acf.description){
+        state.description = parse(data.acf.description);
     }
-    if(data.image.data){
-        state.imgUrl = data.image.data.attributes.url;
-        imgUrl = data.image.data.attributes.url;
+    if(data.acf.image){
+        imgUrl = data.acf.image.url;
+        state.imgUrl = imgUrl;
     }
-    if(data.videoPreview.data){
-        state.videoPreview = data.videoPreview.data.attributes.url;
+    if(data.acf.video_preview_image){
+        state.videoPreview = data.acf.video_preview_image.url;
     }
 
     function openModal(){
@@ -33,12 +33,12 @@ export default function GalleryPost({data, setModalState, BASE_URL}){
 
             {data.videoUrl && 
                 <a className={styles.video_link} href={data.videoUrl}>
-                    <img className={styles.post_video} src={`${BASE_URL}${state.videoPreview}`} alt={data.alt}/>
+                    <img className={styles.post_video} src={state.videoPreview} alt={data.alt}/>
                 </a>
             }
 
             {imgUrl && 
-                <img className={styles.post_img} src={`${BASE_URL}${imgUrl}`} alt={data.alt} />
+                <img className={styles.post_img} src={imgUrl} alt={data.alt} />
             }
 
         </div>
