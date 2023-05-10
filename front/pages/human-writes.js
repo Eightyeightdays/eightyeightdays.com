@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Head from 'next/head.js';
-import fetchDataForProps from '../utils/fetchDataForProps.js';
 import ArticlePreview from '../components/ArticlePreview.js';
 import WritingCategoryCard from 'components/WritingCategoryCard.js';
 import styles from "../styles/Human-Writes.module.css";
@@ -52,8 +51,6 @@ export async function getStaticProps(){
     images.map(item=>{
         imageObj[item.acf.category] = item.acf.image.url;  
     })
-
-    const BASE_URL = process.env.BASE_URL;
     
     const categories = [
         {category: "Art", count: artArr.length, latest: artArr[0].date},
@@ -75,11 +72,10 @@ export async function getStaticProps(){
         writing: textArr,
         nma: nmaArr,
         unclog: blogArr,
-        BASE_URL: BASE_URL
     }}
 }
 
-export default function Writing({articles, images, categories, art, photography, philosophy, writing, nma, unclog, BASE_URL}){
+export default function Writing({articles, images, categories, art, photography, philosophy, writing, nma, unclog}){
     const params = useSearchParams();
     var query = params.get("category");
     const initialFlag = query? true : false;
@@ -107,10 +103,12 @@ export default function Writing({articles, images, categories, art, photography,
         case "Unclog":
             initialState = unclog;
         break;
+        case "All categories":
+            initialState = articles;
     }
     
     const [posts, setPosts] = useState(initialState)
-
+    const [currentCategory, setCurrentCategory] = useState()
 
     function FilterCategories(category){
         switch(category){
@@ -130,14 +128,19 @@ export default function Writing({articles, images, categories, art, photography,
             setPosts(nma);
             break;
             case "Unclog":
-            setPosts(unclog)
+            setPosts(unclog);
+            break;
+            case "All categories":
+            setPosts(articles);
         }    
 
         setFlag(true)
+        setCurrentCategory(category)
     }
 
     function ShowAllCategories(){
-        setPosts(articles)
+        setPosts(articles);
+        setCurrentCategory("All categories");
     }
 
     const subtitle = "Texts and articles on various topics from art and rationality, to exercise, mental health, and darkroom photography."
@@ -165,7 +168,6 @@ export default function Writing({articles, images, categories, art, photography,
                         fun={FilterCategories} 
                         count={item.count} 
                         latest={item.latest}
-                        BASE_URL={BASE_URL}
                     />
                 ))}
             </div>
@@ -180,7 +182,7 @@ export default function Writing({articles, images, categories, art, photography,
             
             <div className={styles.preview_container} id="previewContainer">
                 {posts && posts.map((obj, index) => (
-                    <ArticlePreview data={obj} key={index} />
+                    <ArticlePreview data={obj} key={index} category={currentCategory}/>
                 ))}
             </div>   
         </>

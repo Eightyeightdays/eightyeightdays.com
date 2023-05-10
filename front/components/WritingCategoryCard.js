@@ -1,6 +1,6 @@
 import styles from "../styles/WritingCategoryCard.module.css";
 
-export default function WritingCategoryCard({title, imgUrl, fun, count, latest, name, BASE_URL}){
+export default function WritingCategoryCard({title, imgUrl, fun, count, latest, name}){
     console.log(title)
     
     let date = new Date(latest).toString().substring(0,15);
