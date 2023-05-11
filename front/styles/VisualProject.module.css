@@ -9,7 +9,7 @@
 }
 
 .main_container{
-    /* background: white; */
+    /* background: tomato; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,6 +24,10 @@
 
 .content{
     width: 75%;
+    /* background: gold; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navigate_button{

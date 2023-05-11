@@ -1,4 +1,3 @@
-import fetchDataForProps from "../../utils/fetchDataForProps.js"
 import Head from "next/head.js"
 import parse from "html-react-parser";
 import styles from "../../styles/Article.module.css"
@@ -8,7 +7,7 @@ import { useSearchParams } from "next/navigation.js";
 
 export async function getStaticPaths(){
     const URL = process.env.WP_API
-    const ENDPOINT = process.env.SLUGS
+    const ENDPOINT = process.env.POST_SLUGS
     // const res = await fetch(`${URL}${ENDPOINT}`);    // ISNT WORKING FOR SOME REASON ???
     const res = await fetch(`${URL}posts?_fields=slug`);
     const articles = await res.json();
