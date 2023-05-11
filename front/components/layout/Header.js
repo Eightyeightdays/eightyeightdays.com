@@ -5,6 +5,7 @@ import MobileMenu from "../MobileMenu.js";
 import { useState } from "react";
 
 export default function Header(){
+    const ICON = process.env.HEADER_ICON;
     const [state, setState] = useState(false)
     function toggleMenu(){
         if(!state){
@@ -19,8 +20,7 @@ export default function Header(){
         <>
             <header id="header" className={styles.header}>
                 <Link href="/">
-                    {/* <img className={styles.header_icon} src="http://localhost:1337/uploads/Header_Icon_Leaf_Photogram_f750f7923c.png"></img> */}
-                    <img className={styles.header_icon} src="./uploads/Header_Icon_Leaf_Photogram_f750f7923c.png"></img>
+                    <img className={styles.header_icon} src={ICON}></img>
                 </Link>
                 <div className={styles.header_title}>
                     <Link href="/">Eightyeightdays</Link>

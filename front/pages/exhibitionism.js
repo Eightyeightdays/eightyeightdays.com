@@ -13,7 +13,7 @@ export async function getStaticProps(){
 
 
 export default function Exhibitionism({galleryItems}){
-    console.log(galleryItems)
+    // console.log(galleryItems)
     const [modal, setModal] = useState();
     const subtitle = "\"We've painted beautiful wall to wall murals in our selfish youth, so we either face the four-storey critics, or die for our art.  I'll probably be found hung in a gallery somewhere.\"";
 

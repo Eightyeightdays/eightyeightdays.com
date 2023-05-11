@@ -6,11 +6,6 @@ export default function GalleryPost({data, setModalState}){
     var alt;
     var dateObj = new Date(data.date);
     var date = dateObj.toDateString();
-
-    console.log(data.date)
-    console.log(dateObj)
-    console.log(date)
-    
     
     if(data.acf.image){
         imgUrl = data.acf.image.url;

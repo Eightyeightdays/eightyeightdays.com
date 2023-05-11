@@ -1,7 +1,7 @@
 import styles from "../styles/WritingCategoryCard.module.css";
 
 export default function WritingCategoryCard({title, imgUrl, fun, count, latest, name}){
-    console.log(title)
+    // console.log(title)
     
     let date = new Date(latest).toString().substring(0,15);
     let text ="";

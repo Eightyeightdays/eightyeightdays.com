@@ -1,32 +1,34 @@
 import Head from 'next/head'
 import styles from "../styles/index.module.css"
-import fetchDataForProps from 'utils/fetchDataForProps';
 import parse from "html-react-parser"
 
 export async function getStaticProps(){
-  const data = await fetchDataForProps("page-infos?filters[pageName][$eq]=index&populate=*");
-  const info = data[0];
-  const BASE_URL = process.env.BASE_URL;
-  return {props:{info:info, BASE_URL:BASE_URL}}
+  const URL = process.env.WP_API;
+  const SINGLE_PAGE = process.env.SINGLE_PAGE;
+  const SLUG = "the-wisdom-of-multiple-perspectives";
+  const data = await fetch(`${URL}${SINGLE_PAGE}${SLUG}`);
+  const res = await data.json();
+  const info = res[0];
+  return {props:{info}}
 }
 
-export default function Home({info, BASE_URL}) {
-  const description = parse(info.description);
-  const embedCode = parse(info.embedCode)
-  const url = info.image.data.attributes.url;
+export default function Home({info}) {
+  const description = parse(info.acf.description);
+  const embedCode = parse(info.acf.embed_code)
+  const url = info.acf.image.url;
+  const alt = info.acf.image.alt;
   return (
       <div>
         <Head>
-          <title>{info.metaTitle}</title>
-          <meta name="description" content={info.metaDescription} />
+          <title>{info.acf.meta_title}</title>
+          <meta name="description" content={info.acf.meta_description} />
           <link rel="icon" href="/favicon.png" />
         </Head>
 
         <div className={styles.main_container}>
-          
           <div className={styles.inner_container}>
-            <h1 className={styles.title}>{info.title}</h1>
-            <img className={styles.main_image} src={`${BASE_URL}${url}`} alt=""></img>
+            <h1 className={styles.title}>{info.title.rendered}</h1>
+            <img className={styles.main_image} src={url} alt={alt}></img>
             <div className={styles.divider}></div>
             <h2 className={styles.description}>{description}</h2>
             <div className={styles.video_container}>
