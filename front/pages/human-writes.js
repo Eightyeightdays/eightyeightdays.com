@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 export async function getStaticProps(){
     const URL = process.env.WP_API;
     const POSTS_ENDPOINT = process.env.POSTS_API_ENDPOINT;
-    const IMAGES_ENDPOINT = process.env.VISUAL_CATEGORY_PREVIEWS_API_ENDPOINT;
+    const IMAGES_ENDPOINT = process.env.WRITING_CATEGORY_PREVIEWS_API_ENDPOINT;
     const res = await fetch(`${URL}${POSTS_ENDPOINT}`);
     const articles = await res.json();
     

@@ -1,32 +1,30 @@
 import { useState } from 'react';
 import Head from 'next/head.js'
 import styles from "../styles/An-Eye-For-An-Eye.module.css"
-import fetchDataForProps from 'utils/fetchDataForProps.js'
 import VisualCategoryCard from 'components/VisualCategoryCard';
 import ProjectPreviewCard from 'components/ProjectPreviewCard';
 import { useSearchParams } from "next/navigation";
 
 export async function getStaticProps(){
-    const categoryImages = await fetchDataForProps("visual-category-preview-images?populate=*");
+    const URL = process.env.WP_API;
+    const CATEGORY_PREVIEW_ENDPOINT = process.env.VISUAL_CATEGORY_PREVIEWS_API_ENDPOINT;
+    const res = await fetch(`${URL}${CATEGORY_PREVIEW_ENDPOINT}`);
+    const categoryPreviews = await res.json(); 
 
-    function extractImageUrl(obj, type){
-        let url = obj[`${type}`].data.attributes.url;
-        obj.url = url;
-        delete obj[`${type}`];
-        delete obj.publishedAt;
-        delete obj.createdAt;
-        delete obj.updatedAt;
-        delete obj.id;
-    }
-    
-    let imgObj = {};
-    categoryImages.map(item=>{
-        extractImageUrl(item, "image");
-        imgObj[item.type] = item;
-        delete item.type;
+    var previewObj = {};
+
+    categoryPreviews.map(obj=>{
+        previewObj[obj.acf.category] = {};
+        previewObj[obj.acf.category].url = obj.acf.image.url;
+        previewObj[obj.acf.category].alt = obj.acf.image.alt;
+        previewObj[obj.acf.category].title = obj.acf.category;
+        previewObj[obj.acf.category].description = obj.acf.description;
     })
 
-    const previews = await fetchDataForProps("visual-projects?&populate=*");
+    const PROJECT_PREVIEW_ENDPOINT = process.env.VP_PREVIEWS;
+    const data = await fetch(`${URL}${PROJECT_PREVIEW_ENDPOINT}`);
+    const previews = await data.json();
+
     var curatedPreviews = [];
     var darkroomPreviews = [];
     var videoPreviews = [];
@@ -35,63 +33,27 @@ export async function getStaticProps(){
     var miscPreviews = [];
 
     previews.forEach(preview =>{
-        switch(preview.type){       // in case of errors verify this corresponds with collection attributes in API (Visual Project -> type)
-            case "catastrophe-and-the-curator":
-                extractImageUrl(preview, "previewImg");
+        switch(preview.acf.category){       // in case of errors verify this corresponds with collection attributes in API (Visual Project -> Category)
+            case "Catastrophe & The Curator":
                 curatedPreviews.push(preview);
             break;
-            case "photosynthesis":
-                extractImageUrl(preview, "previewImg");
+            case "Photosynthesis":
                 darkroomPreviews.push(preview);
             break;
-            case "to-succeed":
-                extractImageUrl(preview, "previewImg");
+            case "To Succeed":
                 videoPreviews.push(preview)
             break;
-            case "domestication":
-                extractImageUrl(preview, "previewImg");
+            case "Domestication":
                 domesticationPreviews.push(preview);
             break;
-            case "the-process-is-the-subject":
-                extractImageUrl(preview, "previewImg");
+            case "The Process Is The Subject":
                 proceduralPreviews.push(preview);
             break;
-            case "illustrious":
-                extractImageUrl(preview, "previewImg");
+            case "Illustrious":
                 miscPreviews.push(preview);
         }
     })
-
-    // TODO: add on back end
-    const categoryData = {
-        curated: {
-            title: "Catastrophe & The Curator",
-            description: "Curated series of found and accidental photos"
-        },
-        darkroom: {
-            title: "Photosynthesis",
-            description: "Alternative photography processes for the darkroom"
-        },
-        conceptual: {
-            title: "Illustrious",
-            description: "Conceptual photography series"
-        },
-        domestication: {
-            title: "Domestication",
-            description: "A group of series based on the conceptual metaphor of 'domestication'"
-        },
-        video: {
-            title: "To Succeed",
-            description: "Moving images / Images moving"
-        },
-        process: {
-            title: "The Process Is The Subject",
-            description: "Photographic series focused on the process"
-        },
-    }
-
-    const BASE_URL = process.env.BASE_URL;
-
+ 
     return {props: {
         curatedPreviews: curatedPreviews,
         darkroomPreviews: darkroomPreviews,
@@ -99,13 +61,11 @@ export async function getStaticProps(){
         domesticationPreviews: domesticationPreviews,
         proceduralPreviews: proceduralPreviews,
         miscPreviews: miscPreviews,
-        categoryImages: imgObj,
-        data: categoryData,
-        BASE_URL: BASE_URL
+        categoryPreviews: previewObj,
     }}
 }
 
-export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data, BASE_URL}){
+export default function AnEyeForAnEye({categoryPreviews, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data,}){
     const params = useSearchParams();
     var query = params.get("category");
     var initialState;
@@ -149,12 +109,12 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
             </div>
             
             <div className={styles.category_container}>
-                <VisualCategoryCard setCategory={setCategory} categoryData={curatedPreviews} url={categoryImages["Curated"].url} alt={categoryImages["Curated"].alt} title={data.curated.title} description={data.curated.description} BASE_URL={BASE_URL} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={darkroomPreviews} url={categoryImages["Darkroom"].url} alt={categoryImages["Darkroom"].alt} title={data.darkroom.title} description={data.darkroom.description} BASE_URL={BASE_URL} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={miscPreviews} url={categoryImages["Conceptual"].url} alt={categoryImages["Conceptual"].alt} title={data.conceptual.title} description={data.conceptual.description} BASE_URL={BASE_URL} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={domesticationPreviews} url={categoryImages["Domestication"].url} alt={categoryImages["Domestication"].alt} title={data.domestication.title} description={data.domestication.description} BASE_URL={BASE_URL} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={videoPreviews} url={categoryImages["Video"].url} alt={categoryImages["Video"].alt} title={data.video.title} description={data.video.description} BASE_URL={BASE_URL} />
-                <VisualCategoryCard setCategory={setCategory} categoryData={proceduralPreviews} url={categoryImages["Process Based"].url} alt={categoryImages["Process Based"].alt} title={data.process.title} description={data.process.description} BASE_URL={BASE_URL} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={curatedPreviews} url={categoryPreviews["Catastrophe & The Curator"].url} alt={categoryPreviews["Catastrophe & The Curator"].alt} title={categoryPreviews["Catastrophe & The Curator"].title} description={categoryPreviews["Catastrophe & The Curator"].description} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={darkroomPreviews} url={categoryPreviews["Photosynthesis"].url} alt={categoryPreviews["Photosynthesis"].alt} title={categoryPreviews["Photosynthesis"].title} description={categoryPreviews["Photosynthesis"].description} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={miscPreviews} url={categoryPreviews["Illustrious"].url} alt={categoryPreviews["Illustrious"].alt} title={categoryPreviews["Illustrious"].title} description={categoryPreviews["Illustrious"].description} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={domesticationPreviews} url={categoryPreviews["Domestication"].url} alt={categoryPreviews["Domestication"].alt} title={categoryPreviews["Domestication"].title} description={categoryPreviews["Domestication"].description} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={videoPreviews} url={categoryPreviews["To Succeed"].url} alt={categoryPreviews["To Succeed"].alt} title={categoryPreviews["To Succeed"].title} description={categoryPreviews["To Succeed"].description} />
+                <VisualCategoryCard setCategory={setCategory} categoryData={proceduralPreviews} url={categoryPreviews["The Process Is The Subject"].url} alt={categoryPreviews["The Process Is The Subject"].alt} title={categoryPreviews["The Process Is The Subject"].title} description={categoryPreviews["The Process Is The Subject"].description} />
             </div>
 
             <div className={styles.divider_container}>
@@ -163,7 +123,7 @@ export default function AnEyeForAnEye({categoryImages, curatedPreviews, darkroom
 
             <div className={styles.preview_container}  id="previewContainer">
                 {category &&  category.map((preview, index) =>
-                    (<ProjectPreviewCard key={index} type={preview.type} slug={preview.slug} url={preview.url} alt={preview.alt} title={preview.title} description={preview.description} year={preview.year} BASE_URL={BASE_URL}/>)
+                    (<ProjectPreviewCard key={index} type={preview.acf.type} slug={preview.slug} url={preview.acf.preview_image.url} alt={preview.acf.preview_image.alt} title={preview.title.rendered} description={preview.acf.description} year={preview.acf.year}/>)
                 )}
             </div>
         </>
