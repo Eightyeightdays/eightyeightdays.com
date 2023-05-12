@@ -9,7 +9,7 @@ export default function ArticlePreview({data, category}){   // props object dest
     return(
         <Link href={`/human-writes/${data.slug}?category=${category}`} className={styles.preview_card}>
             <div className={styles.preview_card_title}>{data.title.rendered}</div>
-            <div className={styles.preview_card_description}>{data.description}</div>
+            <div className={styles.preview_card_description}>{data.acf.description}</div>
             <div className={styles.preview_card_preview}>{preview}</div>
             <div className={styles.symbol_container}>&#9830;</div>
             <div className={styles.preview_card_date}>Posted {date}</div>

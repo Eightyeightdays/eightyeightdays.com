@@ -2,19 +2,19 @@
 
 /* figure */
 .wp-block-image{  
-    background: #dcdcdc;
+    /* background: #dcdcdc; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* width: 50%; */
+    /* width: max-content; */
     position: relative;
 }
 
 /* img */
 .wp-block-image img{
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     object-fit: contain;
 }
 
@@ -32,27 +32,31 @@
 
 /* gallery */
 .wp-block-gallery{
-    /* background: gold; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
     gap: 1rem;
+    position: relative;
+    width: 100%;
+    /* background: gold; */
 }
 
 /* gallery figure */
 .wp-block-gallery .wp-block-image{
-    /* display: grid; */
-    /* grid-template-columns: 1fr; */
-    /* place-items: center; */
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
     width: 100%;
-    
+    position: relative;
+    /* outline: 3px solid dodgerblue; */
 }
 
 /* gallery figure img */
 .wp-block-gallery .wp-block-image img{
-    /* border: 5px solid dodgerblue; */
+    width: 100%;
     height: 100%;
     object-fit: cover;
+    /* border: 5px solid dodgerblue; */
 }
 
 /* gallery figure caption */
@@ -62,6 +66,22 @@
     align-items: center;
 }
 
+/* ALIGNMENT */
+
+.has-text-align-center{
+    text-align: center;
+}
+
 .alignright{
     align-self: flex-end;
+}
+
+/* CUSTOM CLASSES */
+.article_quote{
+    font-size: 1.5rem;
+}
+
+.article_quote_author{
+    font-weight: bold;
+    text-decoration-style: dashed;
 }

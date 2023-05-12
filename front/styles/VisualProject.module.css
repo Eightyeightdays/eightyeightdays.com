@@ -29,6 +29,10 @@
     flex-direction: column;
 }
 
+.content figure{
+    align-self: center;
+}
+
 .navigate_button{
     background: rgba(237, 237, 237, 0.5);
     position: fixed;
@@ -68,6 +72,11 @@
 
 .main_img{
     width: 100vw;
+}
+
+.embed{
+    /* width: 100%;
+    outline: 5px solid red;; */
 }
 
 @media (max-width: 1080px){

@@ -40,10 +40,9 @@ export default function Article({article}){
             <Head>
                 <title>{article.title.rendered}</title>
                 <meta name="description" content={article.acf.meta_description} />
-                <link rel="icon" href="/favicon.png" />
             </Head>
             <div className={styles.main_container}>
-                <Link className={styles.navigate_button} href={`/human-writes?category=${category}#previewContainer`}>Back to {category}</Link>
+                <Link className={styles.navigate_button} href={`/human-writes?category=${category}#previewContainer`}>Back to <div className={styles.category_title}>{category}</div></Link>
                 <div className={styles.article_container}>
                     <h1 className={styles.article_title}>{article.title.rendered}</h1>
                     <h2 className={styles.article_description}>{article.acf.description}</h2>

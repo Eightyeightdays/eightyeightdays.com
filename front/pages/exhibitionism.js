@@ -27,7 +27,6 @@ export default function Exhibitionism({galleryItems}){
             <Head>
                 <title>Exhibitionism</title>
                 <meta name="description" content="Eightyeightdays" />
-                <link rel="icon" href="/favicon.png" />
             </Head>
 
             <div className={styles.heading_container}>

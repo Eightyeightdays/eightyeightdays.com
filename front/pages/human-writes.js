@@ -150,7 +150,6 @@ export default function Writing({articles, images, categories, art, photography,
             <Head>
                 <title>Human Writes</title>
                 <meta name="description" content="Eightyeightdays" />
-                <link rel="icon" href="/favicon.png" />
             </Head>
 
             <div className={styles.heading_container}>

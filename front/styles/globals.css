@@ -35,9 +35,13 @@ a{
 }
 
 p a{
-  /* color: rgb(5, 161, 65); */
   color: white;
   background: black;
+}
+
+p a:hover{
+  color: black;
+  background:gold;
 }
 
 

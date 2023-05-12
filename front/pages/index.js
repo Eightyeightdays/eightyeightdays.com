@@ -22,7 +22,6 @@ export default function Home({info}) {
         <Head>
           <title>{info.acf.meta_title}</title>
           <meta name="description" content={info.acf.meta_description} />
-          <link rel="icon" href="/favicon.png" />
         </Head>
 
         <div className={styles.main_container}>

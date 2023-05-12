@@ -6,6 +6,17 @@ import ProjectPreviewCard from 'components/ProjectPreviewCard';
 import { useSearchParams } from "next/navigation";
 
 export async function getStaticProps(){
+    const FAVICON_S = process.env.FAVICON_S;
+    const FAVICON_M = process.env.FAVICON_M;
+    const FAVICON_L = process.env.FAVICON_L;
+    const FAVICON_XL = process.env.FAVICON_XL;
+    const favicons={
+        small: FAVICON_S,
+        medium: FAVICON_M,
+        large: FAVICON_L,
+        xl: FAVICON_XL
+    };
+
     const URL = process.env.WP_API;
     const CATEGORY_PREVIEW_ENDPOINT = process.env.VISUAL_CATEGORY_PREVIEWS_API_ENDPOINT;
     const res = await fetch(`${URL}${CATEGORY_PREVIEW_ENDPOINT}`);
@@ -62,10 +73,11 @@ export async function getStaticProps(){
         proceduralPreviews: proceduralPreviews,
         miscPreviews: miscPreviews,
         categoryPreviews: previewObj,
+        favicons: favicons
     }}
 }
 
-export default function AnEyeForAnEye({categoryPreviews, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data,}){
+export default function AnEyeForAnEye({favicons, categoryPreviews, curatedPreviews, darkroomPreviews, videoPreviews, domesticationPreviews, proceduralPreviews, miscPreviews, data,}){
     const params = useSearchParams();
     var query = params.get("category");
     var initialState;
@@ -99,7 +111,6 @@ export default function AnEyeForAnEye({categoryPreviews, curatedPreviews, darkro
             <Head>
                 <title>An Eye For An Eye</title>
                 <meta name="description" content="Eightyeightdays" />
-                <link rel="icon" href="/favicon.png" />
             </Head>
             
             <div className={styles.heading_container}>
