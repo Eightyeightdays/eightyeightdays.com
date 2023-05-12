@@ -14,7 +14,7 @@ html{
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+body, h1, h2, h3, h4, h5, h6, ol, ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -25,10 +25,19 @@ body{
   overflow-x: hidden;
 }
 
+p{
+  margin: 0.5rem;
+}
+
 a{
   color: inherit;
   text-decoration-line: none;
 }
 
+p a{
+  /* color: rgb(5, 161, 65); */
+  color: white;
+  background: black;
+}
 
 

@@ -28,6 +28,8 @@
     text-align: center;
 }
 
+/* GALLERIES */
+
 /* gallery */
 .wp-block-gallery{
     /* background: gold; */
@@ -35,18 +37,15 @@
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
     gap: 1rem;
-    width: 75%;
 }
 
 /* gallery figure */
 .wp-block-gallery .wp-block-image{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 4rem;
-    place-items: center;
+    /* display: grid; */
+    /* grid-template-columns: 1fr; */
+    /* place-items: center; */
     width: 100%;
-    height: 500px;
-    gap: 1rem;
+    
 }
 
 /* gallery figure img */
@@ -61,7 +60,6 @@
     /* background: white; */
     display: flex;
     align-items: center;
-    /* height: 100%; */
 }
 
 .alignright{
