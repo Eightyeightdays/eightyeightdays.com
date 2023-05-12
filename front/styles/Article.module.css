@@ -19,6 +19,10 @@
     /* background: tomato; */
 }
 
+.article_content p{
+    margin: 1rem 0;
+}
+
 .article_title{
     /* background: darkcyan; */
     padding: 1rem;

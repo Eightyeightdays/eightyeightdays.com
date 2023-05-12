@@ -29,6 +29,10 @@
     flex-direction: column;
 }
 
+.content p{
+    margin: 1rem 0;
+}
+
 .content figure{
     align-self: center;
 }

@@ -8,8 +8,7 @@ import { useSearchParams } from "next/navigation.js";
 export async function getStaticPaths(){
     const URL = process.env.WP_API
     const ENDPOINT = process.env.POST_SLUGS
-    // const res = await fetch(`${URL}${ENDPOINT}`);    // ISNT WORKING FOR SOME REASON ???
-    const res = await fetch(`${URL}posts?_fields=slug`);
+    const res = await fetch(`${URL}${ENDPOINT}`);    
     const articles = await res.json();
     const paths = articles.map(post=>({
         params: {slug: post.slug}
@@ -20,7 +19,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({params}){
     const URL = process.env.WP_API;
-    const fields = "&_fields=title, content, acf.description, acf.meta_description";
+    const fields = "&_fields=title, content, acf.description, acf.meta_description, acf.content";
     const apiUrl = `${URL}posts?slug=${params.slug}${fields}`;
     const res = await fetch(apiUrl);
     const data = await res.json();
@@ -33,8 +32,7 @@ export default function Article({article}){
     const params = useSearchParams();
     const category = params.get("category");
     const htmlString = article.content.rendered;
-    const content = parse(htmlString)
-
+    const content = parse(htmlString);
     return(
         <>
             <Head>

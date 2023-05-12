@@ -76,12 +76,5 @@
     align-self: flex-end;
 }
 
-/* CUSTOM CLASSES */
-.article_quote{
-    font-size: 1.5rem;
-}
+/* CUSTOM WORDPRESS CLASSES */
 
-.article_quote_author{
-    font-weight: bold;
-    text-decoration-style: dashed;
-}
